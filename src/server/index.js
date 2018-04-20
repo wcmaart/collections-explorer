@@ -12,6 +12,8 @@ import routes from '../routes';
 import serverExtend from '../server-extend';
 import { getMetaTags } from '../helpers';
 
+require('dotenv').config();
+
 const clientAssets = require(KYT.ASSETS_MANIFEST); // eslint-disable-line import/no-dynamic-require
 const port = parseInt(KYT.SERVER_PORT, 10);
 
