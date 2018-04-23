@@ -15,8 +15,8 @@ const importHome = (nextState, cb) => {
     });
 };
 
-const importTestPage = (nextState, cb) => {
-  import(/* webpackChunkName: "testPage" */ '../components/TestPage')
+const importArtObjects = (nextState, cb) => {
+  import(/* webpackChunkName: "artObjects" */ '../components/ArtObjects')
     .then(module => cb(null, module.default))
     .catch(e => {
       throw e;
@@ -28,7 +28,7 @@ const importTestPage = (nextState, cb) => {
 const routes = (
   <Route path="/" component={App}>
     <IndexRoute getComponent={importHome} />
-    <Route path="test-page" getComponent={importTestPage} />
+    <Route path="art-objects" getComponent={importArtObjects} />
   </Route>
 );
 
@@ -37,7 +37,7 @@ const routes = (
 // https://github.com/gaearon/react-hot-loader/issues/288
 if (module.hot) {
   require('../components/Home'); // eslint-disable-line global-require
-  require('../components/TestPage'); // eslint-disable-line global-require
+  require('../components/ArtObjects'); // eslint-disable-line global-require
 }
 
 export default routes;

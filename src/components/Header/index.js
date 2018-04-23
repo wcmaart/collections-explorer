@@ -14,8 +14,8 @@ function Header() {
             </Link>
           </li>
           <li className={styles.navItem}>
-            <Link className={styles.link} to="/test-page">
-              TestPage
+            <Link className={styles.link} to="/art-objects">
+              Art Objects
             </Link>
           </li>
         </ul>
