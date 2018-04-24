@@ -10,9 +10,18 @@ import match from 'react-router/lib/match';
 import template from './template';
 import routes from '../routes';
 import serverExtend from '../server-extend';
+import { META_TAGS, META_TAGS_DEFAULT, CANONICAL_DOMAIN } from '../constants';
 
 const clientAssets = require(KYT.ASSETS_MANIFEST); // eslint-disable-line import/no-dynamic-require
 const port = parseInt(KYT.SERVER_PORT, 10);
+
+const getMetaTags = (path) => {
+  const tags = META_TAGS[path] || META_TAGS_DEFAULT
+
+  tags.canonical = CANONICAL_DOMAIN + path
+
+  return tags;
+}
 
 var app = express();
 
@@ -46,6 +55,7 @@ app.get('*', (request, response) => {
           mainJSBundle: clientAssets['main.js'],
           vendorJSBundle: clientAssets['vendor.js'],
           mainCSSBundle: clientAssets['main.css'],
+          metaTags: getMetaTags(request.url),
         })
       );
     } else {
