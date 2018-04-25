@@ -6,7 +6,6 @@ function TestPage() {
   return (
     <section>
       <h1>Test Page</h1>
-      <Link to="/">Home</Link>
     </section>
   );
 }
