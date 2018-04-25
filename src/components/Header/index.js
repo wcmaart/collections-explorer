@@ -5,8 +5,9 @@ import styles from './styles.scss';
 function Header() {
   return (
     <section>
-      <nav className="comp-nav-main nav-extended color-primary">
-        <ul className={styles.nav}>
+      <nav className={styles.comp}>
+        <a href="/" className={styles.brandLogo}>BRAND</a>
+        <ul className={styles.navMenu}>
           <li className={styles.navItem}>
             <Link className={styles.link} to="/">
               Home

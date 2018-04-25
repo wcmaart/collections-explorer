@@ -5,7 +5,7 @@ import Link from 'react-router/lib/Link';
 function Home() {
 
   return (
-    <section>
+    <section className={styles.section}>
       <h1>Home</h1>
     </section>
   );
