@@ -1,15 +1,18 @@
-import React, { PropTypes } from 'react';
-import Link from 'react-router/lib/Link';
+import React, { PropTypes, Component } from 'react';
 import styles from './styles.scss';
+import HelmetHeader from '../HelmetHeader';
 
-function App({ children }) {
-  return (
-    <div>
-      <div className={styles.content}>
-        {children}
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <HelmetHeader path={this.props.location.pathname} />
+        <div className={styles.content}>
+          {this.props.children}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 App.propTypes = {
