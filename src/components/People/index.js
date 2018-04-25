@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './styles.scss';
 
-function ArtObjects() {
+function People() {
   return (
-    <h1>Art Objects Page</h1>
+    <h1>People Page</h1>
   );
 }
 
-export default ArtObjects;
+export default People;

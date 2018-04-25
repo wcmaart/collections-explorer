@@ -18,6 +18,11 @@ function Header() {
               Art Objects
             </Link>
           </li>
+          <li className={styles.navItem}>
+            <Link className={styles.link} to="/people">
+              People
+            </Link>
+          </li>
         </ul>
       </nav>
     </section>
