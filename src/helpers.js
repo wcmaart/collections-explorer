@@ -8,7 +8,7 @@ export const getMetaTags = (path) => {
   return tags;
 }
 
-export const getGlobalConstants = () => {
+export const getGlobalAppData = () => {
   // if we're already in the browser, we don't have access to the process.env values
   // but, the server/index.js uses this same helper function to populate the global
   // window.__APP_DATA__ with these values. So we can access them here.

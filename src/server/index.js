@@ -10,7 +10,7 @@ import match from 'react-router/lib/match';
 import template from './template';
 import routes from '../routes';
 import serverExtend from '../server-extend';
-import { getMetaTags, getGlobalConstants } from '../helpers';
+import { getMetaTags, getGlobalAppData } from '../helpers';
 
 require('dotenv').config();
 
@@ -35,7 +35,7 @@ app.use(express.static(path.join(process.cwd(), KYT.PUBLIC_DIR)));
 // Setup server side routing.
 app.get('*', (request, response) => {
   const history = createMemoryHistory(request.originalUrl);
-  const globalConstants = getGlobalConstants();
+  const globalAppData = getGlobalAppData();
 
   match({ routes, history }, (error, redirectLocation, renderProps) => {
     if (error) {
@@ -53,7 +53,7 @@ app.get('*', (request, response) => {
           vendorJSBundle: clientAssets['vendor.js'],
           mainCSSBundle: clientAssets['main.css'],
           metaTags: getMetaTags(request.url),
-          appData: JSON.stringify(globalConstants),
+          appData: JSON.stringify(globalAppData),
         })
       );
     } else {

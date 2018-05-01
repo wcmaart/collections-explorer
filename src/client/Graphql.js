@@ -8,7 +8,7 @@ import { ApolloProvider, Query } from "react-apollo";
 import fetch from 'node-fetch';
 import gql from "graphql-tag";
 
-import { getGlobalConstants } from '../helpers';
+import { getGlobalAppData } from '../helpers';
 
 const getApolloClient = ({ uri }) => {
   const client = new ApolloClient({
@@ -42,7 +42,7 @@ const getApolloClient = ({ uri }) => {
 };
 
 // Fetch GraphQL data with a Query component
-const ExchangeRates = () => (
+const ArtObjectQueryResult = () => (
   <Query
     query={gql`
       {
@@ -86,14 +86,14 @@ const ExchangeRates = () => (
 );
 
 const GraphqLApp = () => {
-  const globalConstants = getGlobalConstants();
-  const client = getApolloClient({uri: globalConstants.GRAPHQL_URL});
+  const globalAppData = getGlobalAppData();
+  const client = getApolloClient({uri: globalAppData.GRAPHQL_URL});
 
   return (
     <ApolloProvider client={client}>
       <div>
         <h2>My first Apollo app 🚀</h2>
-        <ExchangeRates />
+        <ArtObjectQueryResult />
       </div>
     </ApolloProvider>
   )
