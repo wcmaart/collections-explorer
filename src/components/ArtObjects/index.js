@@ -1,9 +1,13 @@
 import React from 'react';
 import styles from './styles.scss';
+import Graphql from '../../client/Graphql';
 
 function ArtObjects() {
   return (
-    <h1>Art Objects Page</h1>
+    <div>
+      <h1>Art Objects Page</h1>
+      <Graphql />
+    </div>
   );
 }
 
