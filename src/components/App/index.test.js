@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import App from './';
 
 it('Test example', () => {
-  const wrapper = shallow(<App>test</App>);
+  const location = { pathname: '/fakepath' };
+  const wrapper = shallow(<App location={location}>test</App>);
   expect(wrapper.is('div')).toBeTruthy();
 });
