@@ -5,23 +5,24 @@ import gql from "graphql-tag";
 import GraphqlClient from '../../GraphqlClient';
 import ArtObjectCard from '../ArtObjectCard';
 
+// todo: replace query, don't use sample ids
+const gqlQuery = gql`
+  {
+    objects(ids:[4,10,14,19,35,123]) {
+      id
+      title
+      medium
+      maker
+      dimensions
+      people
+      creditline
+    }
+  }
+`;
+
 // Fetch GraphQL data with a Query component
 const ArtObjectQueryResult = () => (
-  <Query
-    query={gql`
-      {
-        objects(ids:[123,1,4]) {
-          id
-          title
-          medium
-          maker
-          dimensions
-          people
-          creditline
-        }
-      }
-    `}
-  >
+  <Query query={gqlQuery}>
     {({ loading, error, data }) => {
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :(</p>;
@@ -30,7 +31,7 @@ const ArtObjectQueryResult = () => (
         <div className={`${styles.artObjects} row`}>
           {
             data.objects.map(obj => (
-              <div key={obj.id} className={`${styles.artObjects} col s12 l4`}>
+              <div key={obj.id} className={`col s12 l4`}>
                 <ArtObjectCard {...obj} />
               </div>
             ))
@@ -47,19 +48,7 @@ function ArtObjects() {
   // Fetch GraphQL data with plain JS
   client
     .query({
-      query: gql`
-        {
-          objects(ids:[123,5]) {
-            id
-            title
-            medium
-            maker
-            dimensions
-            people
-            creditline
-          }
-        }
-      `
+      query: gqlQuery,
     })
     .then(({ data }) => console.log({ data }));
 

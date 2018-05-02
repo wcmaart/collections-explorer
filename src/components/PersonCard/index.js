@@ -2,39 +2,29 @@ import React, { Component } from 'react'
 import styles from './styles.scss';
 
 // todo: #consolidateCards
-class ArtObjectCard extends Component {
+class PersonCard extends Component {
   render() {
-    const testImg = this.props.imgUrl || `https://picsum.photos/500/500?random&${this.props.id}`;
+    const testImg = this.props.img || `https://picsum.photos/500/500?random&${this.props.id}`;
     const statListItems = [
       {
-        label: 'Title',
-        value: this.props.title,
-
+        label: 'Name',
+        value: this.props.name,
       },
       {
-        label: 'Medium',
-        value: this.props.medium,
-
+        label: 'Born',
+        value: this.props.born,
       },
       {
-        label: 'Maker',
-        value: this.props.maker,
-
+        label: 'Died',
+        value: this.props.died,
       },
       {
-        label: 'Dimensions',
-        value: this.props.dimensions,
-
+        label: 'On View',
+        value: this.props.onView,
       },
       {
-        label: 'People',
-        value: this.props.people,
-
-      },
-      {
-        label: 'Creditline',
-        value: this.props.creditline,
-
+        label: 'Periods',
+        value: this.props.periods,
       },
     ];
 
@@ -64,4 +54,4 @@ class ArtObjectCard extends Component {
   }
 }
 
-export default ArtObjectCard;
+export default PersonCard;
