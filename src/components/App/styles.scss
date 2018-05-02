@@ -1,6 +1,7 @@
 @import '../../shared-styles/variables';
-@import '../../shared-styles/materialize/index.scss';
 
-.content {
-  @extend .container;
+// import materialize globally
+:global {
+  @import '../../shared-styles/materialize/index.scss';
 }
+

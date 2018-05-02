@@ -9,7 +9,7 @@ class App extends Component {
       <div>
         <HelmetHeader path={this.props.location.pathname} />
         <Header />
-        <div className={styles.content}>
+        <div className="container">
           {this.props.children}
         </div>
       </div>
