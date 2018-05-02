@@ -25,7 +25,7 @@ const ArtObjectQueryResult = () => (
   <Query query={gqlQuery}>
     {({ loading, error, data }) => {
       if (loading) return <p>Loading...</p>;
-      if (error) return <p>Error :(</p>;
+      if (error) return <p className="red-text">Oops! 😱 It looks like you need to setup your api</p>;
 
       return (
         <div className={`${styles.artObjects} row`}>
