@@ -9,6 +9,7 @@ import fetch from 'node-fetch';
 import gql from "graphql-tag";
 
 import { getGlobalAppData } from '../helpers';
+import ArtObjectCard from '../components/ArtObjectCard';
 
 const getApolloClient = ({ uri }) => {
   const client = new ApolloClient({
@@ -63,20 +64,10 @@ const ArtObjectQueryResult = () => (
       if (error) return <p>Error :(</p>;
 
       return (
-        <div>
+        <div className="row">
           {
             data.objects.map(obj => (
-              <div key={obj.id}>
-                <ul>
-                  <li>id: {obj.id}</li>
-                  <li>title: {obj.title}</li>
-                  <li>medium: {obj.medium}</li>
-                  <li>maker: {obj.maker}</li>
-                  <li>dimensions: {obj.dimensions}</li>
-                  <li>people: {obj.people}</li>
-                  <li>creditline: {obj.creditline}</li>
-                </ul>
-              </div>
+              <ArtObjectCard {...obj} />
             ))
           }
         </div>
@@ -91,10 +82,7 @@ const GraphqLApp = () => {
 
   return (
     <ApolloProvider client={client}>
-      <div>
-        <h2>My first Apollo app 🚀</h2>
-        <ArtObjectQueryResult />
-      </div>
+      <ArtObjectQueryResult />
     </ApolloProvider>
   )
 };
