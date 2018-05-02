@@ -7,11 +7,14 @@ To be more specific, it does not fork KYT, but rather it forks KYT's Universal R
 In the future, it may be possible to make these starter kit templates official KYT "packages" so that you could use KTY to initialize one of these templates. But for now, you can simple fork one of the branches from this repo to start your project.
 
 ## Different branches for different kits.
-  - `master` aka `kyt-starter-universal`
-    - The master branch is set to the kyt-starter-universal which is just the inital commit produced by KYT if you select the "universal" option.
+  - `kyt-starter-universal`
+    - This branch is the initial commit. It is the inial code created by KYT when you select the kyt-starter-universal package option.
+
+  - `master`
+    - The master branch is simply the kyt-starter-universal branch, plus some documentation.
 
   - `generic-materializecss`
-    - This branch extends the kyt-starter-universal branch. And it adds materializecss to the project.
+    - This branch extends the master branch. And it adds materializecss to the project.
 
   - `collections-explorer-generic`
     - This branch extends generic-materializecss. And it adds the basic outline of a collections-explorer app.
