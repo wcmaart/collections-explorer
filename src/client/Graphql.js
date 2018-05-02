@@ -67,7 +67,9 @@ const ArtObjectQueryResult = () => (
         <div className="row">
           {
             data.objects.map(obj => (
-              <ArtObjectCard {...obj} />
+              <div key={obj.id}>
+                <ArtObjectCard {...obj} />
+              </div>
             ))
           }
         </div>
