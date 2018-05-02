@@ -3,7 +3,9 @@ import styles from './styles.scss';
 
 function People() {
   return (
-    <h1>People Page</h1>
+    <div>
+      <h1>People Page</h1>
+    </div>
   );
 }
 

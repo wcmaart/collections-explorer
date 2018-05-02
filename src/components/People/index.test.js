@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import People from './';
 
-it('Test example', () => {
+it('Test People component', () => {
   const wrapper = shallow(<People />);
-  expect(wrapper.is('ul')).toBeTruthy();
+  expect(wrapper.is('div')).toBeTruthy();
 });
