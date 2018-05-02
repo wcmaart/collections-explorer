@@ -27,10 +27,10 @@ const ArtObjectQueryResult = () => (
       if (error) return <p>Error :(</p>;
 
       return (
-        <div className="row">
+        <div className={`${styles.artObjects} row`}>
           {
             data.objects.map(obj => (
-              <div key={obj.id}>
+              <div key={obj.id} className={`${styles.artObjects} col s12 l4`}>
                 <ArtObjectCard {...obj} />
               </div>
             ))
