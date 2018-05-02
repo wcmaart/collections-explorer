@@ -4,7 +4,7 @@ const validateServerSetup = () => {
   const GRAPHQL_URL = process.env.GRAPHQL_URL;
 
   if (!GRAPHQL_URL) {
-    console.warn(`⚠️ Oops, it looks like you need to set your GRAPHQL_URL environment variable. Please see the readme.\n`);
+    console.warn(`❗️ Oops, it looks like you need to set your GRAPHQL_URL environment variable. Please see the readme.\n`);
   }
 }
 
