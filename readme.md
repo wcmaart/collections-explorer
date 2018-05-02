@@ -7,6 +7,8 @@ To be more specific, it does not fork KYT, but rather it forks KYT's Universal R
 In the future, it may be possible to make these starter kit templates official KYT "packages" so that you could use KTY to initialize one of these templates. But for now, you can simple fork one of the branches from this repo to start your project.
 
 ## Different branches for different kits.
+![graph of repo branches](src/public/readme-diagram-kyt-branches.png "graph of repo branches")
+
   - `kyt-starter-universal`
     - This branch is the initial commit. It is the inial code created by KYT when you select the kyt-starter-universal package option.
 
