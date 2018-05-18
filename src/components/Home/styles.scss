@@ -1,1 +1,56 @@
 @import '../../shared-styles/variables';
+@import '../../shared-styles/mixins';
+
+.backdrop {
+  background: $color-black;
+
+  & img {
+    @include full-size();
+  }
+
+  img {
+    @include img-fit-cover();
+    opacity: .9;
+  }
+}
+
+.frontdrop {
+  @include full-size();
+
+  z-index: 2;
+}
+
+.h1,
+.h2 {
+  color: $color-white;
+  text-align: center;
+}
+
+.h1 {
+  @include center-h();
+  margin-top: 0;
+  top: 5%;
+  font-size: $font-size-md;
+}
+
+.h2 {
+  @include center-both();
+
+  margin: 0;
+  // bias it up a nudge
+  margin-top: -1%;
+  font-size: $font-size-lg;
+  min-width: 70%;
+  max-width: 80rem;
+}
+
+.buttonsWrap {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  bottom: 10%;
+
+  .btn {
+    margin: 0 1.5rem;
+  }
+}
