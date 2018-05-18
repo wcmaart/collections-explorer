@@ -15,6 +15,22 @@ const importHome = (nextState, cb) => {
     });
 };
 
+const importSearch = (nextState, cb) => {
+  import(/* webpackChunkName: "search" */ '../components/Search')
+    .then(module => cb(null, module.default))
+    .catch(e => {
+      throw e;
+    });
+};
+
+const importBrowse = (nextState, cb) => {
+  import(/* webpackChunkName: "browse" */ '../components/Browse')
+    .then(module => cb(null, module.default))
+    .catch(e => {
+      throw e;
+    });
+};
+
 const importArtObjects = (nextState, cb) => {
   import(/* webpackChunkName: "artObjects" */ '../components/ArtObjects')
     .then(module => cb(null, module.default))
@@ -37,6 +53,8 @@ const routes = (
   <Route path="/" component={App}>
     <IndexRoute getComponent={importHome} />
     <Route path="art-objects" getComponent={importArtObjects} />
+    <Route path="search" getComponent={importSearch} />
+    <Route path="browse" getComponent={importBrowse} />
     <Route path="people" getComponent={importPeople} />
   </Route>
 );
@@ -46,6 +64,8 @@ const routes = (
 // https://github.com/gaearon/react-hot-loader/issues/288
 if (module.hot) {
   require('../components/Home'); // eslint-disable-line global-require
+  require('../components/Search'); // eslint-disable-line global-require
+  require('../components/Browse'); // eslint-disable-line global-require
   require('../components/ArtObjects'); // eslint-disable-line global-require
   require('../components/People'); // eslint-disable-line global-require
 }
