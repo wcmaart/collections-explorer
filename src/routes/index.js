@@ -23,8 +23,8 @@ const importSearch = (nextState, cb) => {
     });
 };
 
-const importBrowse = (nextState, cb) => {
-  import(/* webpackChunkName: "browse" */ '../components/Browse')
+const importExplore = (nextState, cb) => {
+  import(/* webpackChunkName: "explore" */ '../components/Explore')
     .then(module => cb(null, module.default))
     .catch(e => {
       throw e;
@@ -54,7 +54,7 @@ const routes = (
     <IndexRoute getComponent={importHome} />
     <Route path="art-objects" getComponent={importArtObjects} />
     <Route path="search" getComponent={importSearch} />
-    <Route path="browse" getComponent={importBrowse} />
+    <Route path="explore" getComponent={importExplore} />
     <Route path="people" getComponent={importPeople} />
   </Route>
 );
@@ -65,7 +65,7 @@ const routes = (
 if (module.hot) {
   require('../components/Home'); // eslint-disable-line global-require
   require('../components/Search'); // eslint-disable-line global-require
-  require('../components/Browse'); // eslint-disable-line global-require
+  require('../components/Explore'); // eslint-disable-line global-require
   require('../components/ArtObjects'); // eslint-disable-line global-require
   require('../components/People'); // eslint-disable-line global-require
 }

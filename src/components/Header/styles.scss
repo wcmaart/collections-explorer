@@ -1,18 +1,15 @@
 @import '../../shared-styles/variables';
 @import '../../shared-styles/materialize/index.scss';
 
-.comp {
+.banner {
   padding: 0 $padding-md;
+  text-align: center;
 
   // example of extending with materialize classes
   @extend .teal;
 }
 
 .brandLogo {
-  float: left;
   font-size: 2rem;
 }
 
-.navMenu {
-  float: right;
-}

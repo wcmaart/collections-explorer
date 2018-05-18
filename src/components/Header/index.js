@@ -1,30 +1,15 @@
 import React from 'react';
 import Link from 'react-router/lib/Link';
 import styles from './styles.scss';
+import NavMenu from '../NavMenu';
 
 function Header() {
   return (
     <section>
-      <nav className={styles.comp}>
+      <nav className={styles.banner}>
         <a href="/" className={styles.brandLogo}>BRAND</a>
-        <ul className={styles.navMenu}>
-          <li className={styles.navItem}>
-            <Link className={styles.link} to="/">
-              Home
-            </Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link className={styles.link} to="/art-objects">
-              Art Objects
-            </Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link className={styles.link} to="/people">
-              People
-            </Link>
-          </li>
-        </ul>
       </nav>
+      <NavMenu/>
     </section>
   );
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Browse from './';
+import Explore from './';
 
 it('Test example', () => {
-  const wrapper = shallow(<Browse />);
+  const wrapper = shallow(<Explore />);
   expect(wrapper.is('div')).toBeTruthy();
 });

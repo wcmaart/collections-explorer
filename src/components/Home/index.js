@@ -17,7 +17,7 @@ function Home() {
         <h2 className={styles.h2} >Some words about our collection go here to tell our unique story</h2>
         <div className={styles.buttonsWrap}>
           <Link className={`${styles.btn} btn btn-large`} to="/search/">Search</Link>
-          <Link className={`${styles.btn} btn btn-large`} to="/browse/">Browse</Link>
+          <Link className={`${styles.btn} btn btn-large`} to="/explore/">explore</Link>
         </div>
       </div>
     </section>
