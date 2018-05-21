@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import Link from 'react-router/lib/Link';
+import { Link } from 'react-router-dom';
 import styles from './styles.scss';
 import { withRouter } from 'react-router'
 
 class NavMenu extends Component {
   render() {
     const { match, location, history } = this.props;
-    debugger;
+
     return (
       <div className="container">
         <ul className={styles.navMenu}>

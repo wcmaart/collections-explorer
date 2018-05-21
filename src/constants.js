@@ -4,8 +4,11 @@ export const META_TAGS = {
   '/': {
     title: 'home',
   },
-  '/art-objects': {
-    title: 'art-objects',
+  '/search': {
+    title: 'search',
+  },
+  '/explore': {
+    title: 'explore',
   },
 };
 

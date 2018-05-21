@@ -8,10 +8,7 @@ import styles from './styles.scss';
 const App = () =>
   <div>
     <HelmetHeader />
-    <Header />
-    <div className="container">
-      {Routes}
-    </div>
+    {Routes}
   </div>;
 
 export default App;
