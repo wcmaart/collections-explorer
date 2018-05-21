@@ -1,5 +1,7 @@
 import ensureHttps from './ensure-https';
 
+const dotenv = require('dotenv');
+
 const validateServerSetup = () => {
   const GRAPHQL_URL = process.env.GRAPHQL_URL;
 
@@ -8,14 +10,13 @@ const validateServerSetup = () => {
   }
 }
 
-const serverExtend = (app) => {
-  require('dotenv').config();
+const serverExtend = app => {
+  dotenv.config();
   app = ensureHttps(app);
 
   validateServerSetup();
 
   return app;
-}
-
+};
 
 export default serverExtend;

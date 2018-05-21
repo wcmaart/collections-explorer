@@ -1,12 +1,12 @@
 import { META_TAGS, META_TAGS_DEFAULT, CANONICAL_DOMAIN } from './constants';
 
-export const getMetaTags = (path) => {
-  const tags = META_TAGS[path] || META_TAGS_DEFAULT
+export const getMetaTags = path => {
+  const tags = META_TAGS[path] || META_TAGS_DEFAULT;
 
-  tags.canonical = CANONICAL_DOMAIN + path
+  tags.canonical = CANONICAL_DOMAIN + path;
 
   return tags;
-}
+};
 
 export const getGlobalAppData = () => {
   // if we're already in the browser, we don't have access to the process.env values
@@ -20,4 +20,4 @@ export const getGlobalAppData = () => {
   return {
     GRAPHQL_URL: process.env.GRAPHQL_URL,
   }
-}
+};

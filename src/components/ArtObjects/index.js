@@ -42,7 +42,6 @@ const ArtObjectQueryResult = () => (
   </Query>
 );
 
-
 function ArtObjects() {
   const client = GraphqlClient();
   // Fetch GraphQL data with plain JS

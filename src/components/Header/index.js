@@ -1,12 +1,14 @@
 import React from 'react';
-import Link from 'react-router/lib/Link';
+import { Link } from 'react-router-dom';
 import styles from './styles.scss';
 
 function Header() {
   return (
     <section>
       <nav className={styles.comp}>
-        <a href="/" className={styles.brandLogo}>BRAND</a>
+        <a href="/" className={styles.brandLogo}>
+          BRAND
+        </a>
         <ul className={styles.navMenu}>
           <li className={styles.navItem}>
             <Link className={styles.link} to="/">

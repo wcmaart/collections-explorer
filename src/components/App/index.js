@@ -1,24 +1,17 @@
-import React, { PropTypes, Component } from 'react';
-import styles from './styles.scss';
+import React from 'react';
 import HelmetHeader from '../HelmetHeader';
 import Header from '../Header';
+import Routes from '../../routes/';
+// eslint-disable-next-line no-unused-vars
+import styles from './styles.scss';
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <HelmetHeader path={this.props.location.pathname} />
-        <Header />
-        <div className="container">
-          {this.props.children}
-        </div>
-      </div>
-    );
-  }
-}
-
-App.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+const App = () =>
+  <div>
+    <HelmetHeader />
+    <Header />
+    <div className="container">
+      {Routes}
+    </div>
+  </div>;
 
 export default App;

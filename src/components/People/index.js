@@ -56,7 +56,6 @@ const PersonQueryResult = () => (
   </Query>
 );
 
-
 function People() {
   const client = GraphqlClient();
   // Fetch GraphQL data with plain JS

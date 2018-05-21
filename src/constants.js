@@ -1,4 +1,4 @@
-export const CANONICAL_DOMAIN = 'https://mydomain.com'
+export const CANONICAL_DOMAIN = 'https://mydomain.com';
 
 export const META_TAGS = {
   '/': {
@@ -6,9 +6,9 @@ export const META_TAGS = {
   },
   '/art-objects': {
     title: 'art-objects',
-  }
-}
+  },
+};
 
 export const META_TAGS_DEFAULT = {
   title: 'default title',
-}
+};
