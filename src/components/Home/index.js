@@ -1,12 +1,11 @@
 import React from 'react';
 import styles from './styles.scss';
-import Link from 'react-router/lib/Link';
+import { Link } from 'react-router-dom';
 
 // const testImg = `https://picsum.photos/500/500?random`;
 const testImg = `/sample-gallery-img.jpg`;
 
 function Home() {
-
   return (
     <section className={styles.section}>
       <div className={styles.backdrop}>

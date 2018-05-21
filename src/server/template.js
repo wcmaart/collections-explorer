@@ -23,6 +23,11 @@ export default vo => `
     <link data-react-helmet="true" rel="canonical" href="${vo.metaTags.canonical}">
     <meta data-react-helmet="true" name="title" content="${vo.metaTags.title}" />
     <title data-react-helmet="true">${vo.metaTags.title}</title>
+
+    <!-- Bootstrap in some data from the back end -->
+    <script type="text/javascript">
+      window.__APP_DATA__ = ${vo.appData};
+    </script>
   </head>
 
   <body>
