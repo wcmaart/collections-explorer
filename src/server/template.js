@@ -26,7 +26,7 @@ export default vo => `
 
     <!-- Bootstrap in some data from the back end -->
     <script type="text/javascript">
-      window.__APP_DATA__ = ${vo.appData};
+      window.APP_DATA = ${vo.appData};
     </script>
   </head>
 
