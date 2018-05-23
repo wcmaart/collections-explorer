@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Home from '../components/Home';
-import ArtObjects from '../components/ArtObjects';
-import People from '../components/People';
+import SearchAll from '../components/SearchAll';
+import SearchByType from '../components/SearchByType';
+import GenericPage from '../components/GenericPage';
 
 // with guidance from https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/guides/server-rendering.md
 const Status = ({ code, children }) =>
@@ -36,8 +37,15 @@ function Routes() {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/art-objects" component={ArtObjects} />
-      <Route path="/people" component={People} />
+      <Route path="/all" component={SearchAll} />
+      <Route path="/explore" component={SearchByType} />
+      <Route path="/maker" component={()=> <GenericPage title="Maker"/> } />
+      <Route path="/period" component={()=> <GenericPage title="Period"/> } />
+      <Route path="/place" component={()=> <GenericPage title="Place"/> } />
+      <Route path="/material" component={()=> <GenericPage title="Material"/> } />
+      <Route path="/technique" component={()=> <GenericPage title="Technique"/> } />
+      <Route path="/color" component={()=> <GenericPage title="Color"/> } />
+      <Route path="/event" component={()=> <GenericPage title="Event"/> } />
       <Route component={NotFound} />
     </Switch>
   );

@@ -1,6 +1,12 @@
 @import '../../shared-styles/variables';
 
+
 // import materialize globally
 :global {
   @import '../../shared-styles/materialize/index.scss';
+
+  // set base font-size for rems
+  html {
+    font-size: $font-size-base;
+  }
 }

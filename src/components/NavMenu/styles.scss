@@ -1,0 +1,11 @@
+@import '../../shared-styles/variables';
+@import '../../shared-styles/mixins';
+@import '../../shared-styles/materialize/index.scss';
+
+.navMenu {
+  background: $color-grey;
+}
+
+.link {
+  font-size: $font-size-md;
+}

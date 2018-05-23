@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import People from './';
+import GenericPage from './';
 
-it('Test People Page', () => {
-  const wrapper = shallow(<People />);
+it('Test example', () => {
+  const wrapper = shallow(<GenericPage />);
   expect(wrapper.is('div')).toBeTruthy();
 });
