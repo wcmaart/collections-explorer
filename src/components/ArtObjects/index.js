@@ -12,7 +12,6 @@ const gqlQuery = gql`
       id
       title
       medium
-      maker
       dimensions
       people
       creditline
