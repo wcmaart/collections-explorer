@@ -1,3 +1,19 @@
 @import '../../shared-styles/variables';
 @import '../../shared-styles/mixins';
 
+.artObjects {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.col {
+  display: flex;
+  align-items: stretch;
+}
+
+.quickPagination {
+  margin-top: 2rem;
+  font-size: 2rem;
+  width: 100%;
+  text-align: center;
+}

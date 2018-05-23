@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styles from './styles.scss';
+import { Link } from 'react-router-dom';
 
 // todo: #consolidateCards
 class ArtObjectCard extends Component {
@@ -44,7 +45,9 @@ class ArtObjectCard extends Component {
           <img src={testImg} />
         </div>
         <div className="card-content">
-          <a href={"#"}><span className={`${styles.cardTitle} card-title`}>{this.props.title}</span></a>
+          <Link className={styles.link} to={`/art-objects/${this.props.id}`}>
+            <span className={`${styles.cardTitle} card-title`}>{this.props.title}</span>
+          </Link>
           <ul>
             {
               statListItems.map(statListItem => {
