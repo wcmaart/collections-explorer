@@ -129,6 +129,23 @@ const ArtObjectQueryResult = ({artObjectId, paginationIdx}) => {
 
 
 class SearchAll extends Component {
+  constructor() {
+    super();
+
+    this.onSubmitSearch = this.onSubmitSearch.bind(this);
+  }
+
+  onSubmitSearch(e) {
+    // quick and dirty for now
+    e.preventDefault();
+    const inputVal = e.target[0].value;
+
+    // clear the input first
+    e.target[0].value = '';
+
+    this.props.history.push(`/art-objects/${inputVal}`);
+  }
+
   render() {
     const { match: { params } } = this.props;
     // get values from the router
@@ -168,7 +185,15 @@ class SearchAll extends Component {
       <div>
         <Header />
         <div className="container">
-          <h1>Art Objects Page</h1>
+          <form onSubmit={this.onSubmitSearch}>
+            <div className="row">
+              <div className="input-field col s12">
+                <div className={styles.searchWrapper}>
+                  <input id="search" type="text" placeholder="Search" value={this.props.searchVal || null} />
+                </div>
+              </div>
+            </div>
+          </form>
           <ApolloProvider client={client}>
             <ArtObjectQueryResult
               artObjectId={artObjectId}
