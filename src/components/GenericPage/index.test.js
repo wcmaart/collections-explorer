@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Search from './';
+import GenericPage from './';
 
 it('Test example', () => {
-  const wrapper = shallow(<Search />);
+  const wrapper = shallow(<GenericPage />);
   expect(wrapper.is('div')).toBeTruthy();
 });

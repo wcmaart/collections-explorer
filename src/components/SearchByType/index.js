@@ -2,15 +2,15 @@ import React from 'react';
 import styles from './styles.scss';
 import Header from '../Header';
 
-function Search() {
+function SearchByType() {
   return (
     <div>
       <Header />
       <div className="container">
-        <h1>Search Page</h1>
+        <h1>Search By Type Page</h1>
       </div>
     </div>
   );
 }
 
-export default Search;
+export default SearchByType;

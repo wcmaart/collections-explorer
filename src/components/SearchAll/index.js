@@ -2,15 +2,15 @@ import React from 'react';
 import styles from './styles.scss';
 import Header from '../Header';
 
-function Explore() {
+function SearchAll() {
   return (
     <div>
       <Header />
       <div className="container">
-        <h1>Explore Page</h1>
+        <h1>Search All Page</h1>
       </div>
     </div>
   );
 }
 
-export default Explore;
+export default SearchAll;
