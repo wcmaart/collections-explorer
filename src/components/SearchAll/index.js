@@ -189,7 +189,7 @@ class SearchAll extends Component {
             <div className="row">
               <div className="input-field col s12">
                 <div className={styles.searchWrapper}>
-                  <input id="search" type="text" placeholder="Search" value={this.props.searchVal || null} />
+                  <input id="search" type="text" placeholder="Search" />
                 </div>
               </div>
             </div>
