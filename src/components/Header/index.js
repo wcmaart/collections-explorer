@@ -7,7 +7,9 @@ function Header() {
   return (
     <section>
       <nav className={styles.banner}>
-        <a href="/" className={styles.brandLogo}>BRAND</a>
+        <div className="container">
+          <a href="/" className={styles.brandLogo}>BRAND</a>
+        </div>
       </nav>
       <NavMenu/>
     </section>

@@ -108,13 +108,13 @@ const ArtObjectQueryResult = ({artObjectId, paginationIdx}) => {
               <ul className="pagination">
                 { prevPageIdx &&
                   <li>
-                    <Link to={`/art-objects/page/${prevPageIdx}`}>
+                    <Link to={`/objects/page/${prevPageIdx}`}>
                       <i className="material-icons">&larr;</i>
                     </Link>
                   </li>
                 }
                 <li className="waves-effect">
-                  <Link to={`/art-objects/page/${nextPageIdx}`}>
+                  <Link to={`/objects/page/${nextPageIdx}`}>
                     <i className="material-icons">&rarr;</i>
                   </Link>
                 </li>
@@ -143,7 +143,7 @@ class SearchAll extends Component {
     // clear the input first
     e.target[0].value = '';
 
-    this.props.history.push(`/art-objects/${inputVal}`);
+    this.props.history.push(`/objects/${inputVal}`);
   }
 
   render() {

@@ -38,8 +38,8 @@ function Routes() {
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/all" component={SearchAll} />
-      <Route path="/art-objects/page/:page" component={SearchAll} />
-      <Route path="/art-objects/:id" component={SearchAll} />
+      <Route path="/objects/page/:page" component={SearchAll} />
+      <Route path="/objects/:id" component={SearchAll} />
       <Route path="/explore" component={SearchByType} />
       <Route path="/maker" component={()=> <GenericPage title="Maker"/> } />
       <Route path="/period" component={()=> <GenericPage title="Period"/> } />

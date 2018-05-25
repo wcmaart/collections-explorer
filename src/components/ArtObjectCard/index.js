@@ -45,7 +45,7 @@ class ArtObjectCard extends Component {
           <img src={testImg} />
         </div>
         <div className="card-content">
-          <Link className={styles.link} to={`/art-objects/${this.props.id}`}>
+          <Link className={styles.link} to={`/objects/${this.props.id}`}>
             <span className={`${styles.cardTitle} card-title`}>{this.props.title}</span>
           </Link>
           <ul>
