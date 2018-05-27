@@ -18,10 +18,6 @@ export const NAV_LINKS = [
     url: '/objects',
   },
   {
-    content: 'Object Type',
-    url: '/explore',
-  },
-  {
     content: 'Maker',
     url: '/maker',
   },
@@ -48,6 +44,17 @@ export const NAV_LINKS = [
   {
     content: 'Event',
     url: '/event',
+  },
+];
+
+export const SEARCH_TABS = [
+  {
+    content: 'Top Results',
+    id: 'topResults',
+  },
+  {
+    content: 'By Type',
+    id: 'byType',
   },
 ];
 

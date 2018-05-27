@@ -4,7 +4,7 @@ import Header from '../Header';
 import { ApolloProvider, Query } from "react-apollo";
 import gql from "graphql-tag";
 import GraphqlClient from '../../GraphqlClient';
-import SearchResult from '../SearchResult';
+import SearchResults from '../SearchResults';
 import { withRouter } from 'react-router';
 import { Link, Route } from 'react-router-dom';
 
@@ -91,7 +91,7 @@ const ArtObjectQuery = ({artObjectId, paginationIdx}) => {
         return <p className="red-text">Sorry, no results</p>;
       }
 
-      return <SearchResult
+      return <SearchResults
         objects={data.objects}
         thisPageIdx={thisPageIdx}
       />

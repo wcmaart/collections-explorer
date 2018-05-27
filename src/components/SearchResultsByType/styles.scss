@@ -1,0 +1,25 @@
+@import '../../shared-styles/variables';
+@import '../../shared-styles/mixins';
+@import '../../shared-styles/materialize/index.scss';
+
+.artObjects {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.col {
+  display: flex;
+  align-items: stretch;
+}
+
+.tab {
+  margin-left: 1.5rem;
+
+  &.active {
+    text-decoration: underline !important;
+  }
+
+  a {
+    color: $color-black;
+  }
+}
