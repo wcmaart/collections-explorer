@@ -37,7 +37,7 @@ function Routes() {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route exact path="/all" component={SearchAll} />
+      <Route exact path="/objects" component={SearchAll} />
       <Route path="/objects/page/:page" component={SearchAll} />
       <Route path="/objects/:id" component={SearchAll} />
       <Route path="/explore" component={SearchByType} />

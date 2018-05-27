@@ -4,7 +4,7 @@ import Header from '../Header';
 import { ApolloProvider, Query } from "react-apollo";
 import gql from "graphql-tag";
 import GraphqlClient from '../../GraphqlClient';
-import ArtObjectCard from '../ArtObjectCard';
+import SearchResult from '../SearchResult';
 import { withRouter } from 'react-router';
 import { Link, Route } from 'react-router-dom';
 
@@ -60,14 +60,12 @@ const getGqlQuery = ({ids, paginationIdx}) => {
 }
 
 // Fetch GraphQL data with a Query component
-const ArtObjectQueryResult = ({artObjectId, paginationIdx}) => {
+const ArtObjectQuery = ({artObjectId, paginationIdx}) => {
   const ids = artObjectId ? [artObjectId] : null;
   const query = getGqlQuery({ids, paginationIdx});
 
   // todo: clean up this quick pagination
   const thisPageIdx = artObjectId ? null : paginationIdx || 1;
-  const nextPageIdx = thisPageIdx && thisPageIdx + 1;
-  const prevPageIdx = thisPageIdx && (thisPageIdx - 1 || null);
 
   return <Query
     query={query}
@@ -75,7 +73,15 @@ const ArtObjectQueryResult = ({artObjectId, paginationIdx}) => {
     errorPolicy="all"
   >
     {({ loading, error, data }) => {
-      if (loading) return <p>Loading...</p>;
+      if (loading) {
+        return (
+          <div className="row">
+            <span className="col s12 l4">
+              Loading...
+            </span>
+          </div>
+        );
+      }
 
       if (!data) {
         return <p className="red-text">Oops! 😱 It looks like you need to setup your api</p>;
@@ -85,44 +91,10 @@ const ArtObjectQueryResult = ({artObjectId, paginationIdx}) => {
         return <p className="red-text">Sorry, no results</p>;
       }
 
-      if (data.objects.length <= 1) {
-        return (
-          <ArtObjectCard {...data.objects[0]} />
-        )
-      }
-
-      return (
-        <div className={`${styles.artObjects} row`}>
-          {
-            data.objects.map(obj => (
-              <div key={obj.id} className={`col s12 l4`}>
-                <ArtObjectCard {...obj} />
-              </div>
-            ))
-          }
-          { thisPageIdx &&
-            <div className={styles.quickPagination}>
-              <span>
-                Quick Pagination
-              </span>
-              <ul className="pagination">
-                { prevPageIdx &&
-                  <li>
-                    <Link to={`/objects/page/${prevPageIdx}`}>
-                      <i className="material-icons">&larr;</i>
-                    </Link>
-                  </li>
-                }
-                <li className="waves-effect">
-                  <Link to={`/objects/page/${nextPageIdx}`}>
-                    <i className="material-icons">&rarr;</i>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          }
-        </div>
-      );
+      return <SearchResult
+        objects={data.objects}
+        thisPageIdx={thisPageIdx}
+      />
     }}
   </Query>
 }
@@ -189,13 +161,13 @@ class SearchAll extends Component {
             <div className="row">
               <div className="input-field col s12">
                 <div className={styles.searchWrapper}>
-                  <input id="search" type="text" placeholder="Search" />
+                  <input id="search" type="text" placeholder="Search Entire Collection" />
                 </div>
               </div>
             </div>
           </form>
           <ApolloProvider client={client}>
-            <ArtObjectQueryResult
+            <ArtObjectQuery
               artObjectId={artObjectId}
               paginationIdx={paginationIdx}
             />

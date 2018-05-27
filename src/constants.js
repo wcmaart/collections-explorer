@@ -4,8 +4,8 @@ export const META_TAGS = {
   '/': {
     title: 'home',
   },
-  '/all': {
-    title: 'search all',
+  '/objects': {
+    title: 'search objects',
   },
   '/explore': {
     title: 'Search by Type',
@@ -14,8 +14,8 @@ export const META_TAGS = {
 
 export const NAV_LINKS = [
   {
-    content: 'All',
-    url: '/all',
+    content: 'Objects',
+    url: '/objects',
   },
   {
     content: 'Object Type',
