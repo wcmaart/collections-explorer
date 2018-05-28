@@ -34,6 +34,7 @@ class SearchResultsWrapper extends Component {
     const props = this.props;
     const objects = props.objects;
     const thisPageIdx = props.thisPageIdx;
+    const objectType = props.objectType;
 
     if (objects.length <= 1) {
       return (
@@ -46,23 +47,32 @@ class SearchResultsWrapper extends Component {
         { objects.length &&
           <div>
             <div className={`${styles.searchResultsHeader} row`}>
-              <div className="col s12">
-                <span className="left">
-                  XXX Total Results
-                </span>
-                <ul className="tabs left">
-                  {
-                    SEARCH_TABS.map((tab) => (
-                      <li
-                        className={`${styles.tab} tab left ${this.getActiveClass(tab.key)}`}
-                        key={tab.key}
-                      >
-                        <a href="#" onClick={this.onTabClick.bind(this)} data-key={tab.key}>{tab.content}</a>
-                      </li>
-                    ))
-                  }
-                </ul>
-              </div>
+              { objectType &&
+                <div className="col s12">
+                  <span className="left">
+                    XXX Total Results for {objectType}
+                  </span>
+                </div>
+              }
+              { !objectType &&
+                <div className="col s12">
+                  <span className="left">
+                    XXX Total Results
+                  </span>
+                  <ul className="tabs left">
+                    {
+                      SEARCH_TABS.map((tab) => (
+                        <li
+                          className={`${styles.tab} tab left ${this.getActiveClass(tab.key)}`}
+                          key={tab.key}
+                        >
+                          <a href="#" onClick={this.onTabClick.bind(this)} data-key={tab.key}>{tab.content}</a>
+                        </li>
+                      ))
+                    }
+                  </ul>
+                </div>
+              }
             </div>
             {
               this.state.searchTab === 'topResults' &&

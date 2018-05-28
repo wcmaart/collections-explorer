@@ -19,7 +19,7 @@ class SearchResultsByType extends Component {
                   {type.content}
                 </h3>
                 <div className={`${styles.sectionHeaderRight} right`}>
-                  <Link className={styles.viewAllLink} to="" >View all</Link>
+                  <Link className={styles.viewAllLink} to={`/objects/type/${type.key}`} >View all</Link>
                   (xxxxx)
                 </div>
                 <div className={`${styles.clearBoth} row`}>

@@ -60,13 +60,14 @@ const getGqlQuery = ({ids, paginationIdx}) => {
 }
 
 // Fetch GraphQL data with a Query component
-const ArtObjectQuery = ({artObjectId, paginationIdx}) => {
+const ArtObjectQuery = ({artObjectId, paginationIdx, objectType}) => {
   const ids = artObjectId ? [artObjectId] : null;
   const query = getGqlQuery({ids, paginationIdx});
 
   // todo: clean up this quick pagination
   const thisPageIdx = artObjectId ? null : paginationIdx || 1;
 
+  // todo: filter by objectType
   return <Query
     query={query}
     variables={{ ids, paginationIdx }}
@@ -94,6 +95,7 @@ const ArtObjectQuery = ({artObjectId, paginationIdx}) => {
       return <SearchResultsWrapper
         objects={data.objects}
         thisPageIdx={thisPageIdx}
+        objectType={objectType}
       />
     }}
   </Query>
@@ -123,6 +125,7 @@ class SearchAll extends Component {
     // get values from the router
     const artObjectId = params.id ? parseInt(params.id, 10) : null;
     const paginationIdx = params.page ? parseInt(params.page, 10) : null;
+    const objectType = params.type || null;
 
     // todo: consolidate 404 code
     if (isNaN(artObjectId)) {
@@ -170,6 +173,7 @@ class SearchAll extends Component {
             <ArtObjectQuery
               artObjectId={artObjectId}
               paginationIdx={paginationIdx}
+              objectType={objectType}
             />
           </ApolloProvider>
         </div>
