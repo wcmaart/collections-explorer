@@ -2,24 +2,37 @@
 @import '../../shared-styles/mixins';
 @import '../../shared-styles/materialize/index.scss';
 
-.artObjects {
-  display: flex;
-  flex-flow: row wrap;
+.section {
+  &:first-child {
+    .sectionInner {
+      border-top: $border-light;
+    }
+  }
 }
 
-.col {
-  display: flex;
-  align-items: stretch;
+.sectionInner {
+  border-bottom: $border-light;
+  padding: $padding-md 0;
 }
 
-.tab {
-  margin-left: 1.5rem;
+.sectionHeaderRight {
+  text-align: right;
+}
 
-  &.active {
-    text-decoration: underline !important;
-  }
+.h3 {
+  margin: 0;
+  font-size: $font-size-md;
+}
 
-  a {
-    color: $color-black;
-  }
+.viewAllLink {
+  display: block;
+}
+
+.clearBoth {
+  clear: both;
+  padding-top: $padding-sm;
+}
+
+.imageWrap img {
+  @include img-fit-contain();
 }

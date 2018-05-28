@@ -2,12 +2,10 @@
 @import '../../shared-styles/mixins';
 @import '../../shared-styles/materialize/index.scss';
 
-.artObjects {
-  display: flex;
-  flex-flow: row wrap;
-}
+.tab {
+  margin-left: 1.5rem;
 
-.col {
-  display: flex;
-  align-items: stretch;
+  &.active {
+    text-decoration: underline;
+  }
 }

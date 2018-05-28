@@ -2,8 +2,10 @@
 $color-black: #000000;
 $color-white: #ffffff;
 $color-grey: #e9e9e9;
-$color-link-active: #e9e9e9;
+$color-grey-border: #979797;
+$color-link-active: $color-grey;
 $color-brand: #ff2d58;
+$color-link: $color-black;
 $padding-sm: .5rem;
 $padding-md: 1rem;
 $padding-lg: 3rem;
@@ -15,3 +17,4 @@ $font-size-md: 1.5rem;
 $font-size-lg: 3rem;
 $font-weight-bold: 600;
 $border: 1px solid $color-black;
+$border-light: 1px solid $color-grey-border;

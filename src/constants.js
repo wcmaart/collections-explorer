@@ -50,11 +50,30 @@ export const NAV_LINKS = [
 export const SEARCH_TABS = [
   {
     content: 'Top Results',
-    id: 'topResults',
+    key: 'topResults',
   },
   {
     content: 'By Type',
-    id: 'byType',
+    key: 'byType',
+  },
+];
+
+export const OBJECT_TYPES = [
+  {
+    content: 'Prints',
+    key: 'prints',
+  },
+  {
+    content: 'Photographs',
+    key: 'photographs',
+  },
+  {
+    content: 'Drawings',
+    key: 'drawings',
+  },
+  {
+    content: 'Paintings',
+    key: 'paintings',
   },
 ];
 
