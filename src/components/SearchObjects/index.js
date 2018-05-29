@@ -53,7 +53,7 @@ const ArtObjectQuery = ({artObjectId, paginationIdx, objectType}) => {
 }
 
 
-class SearchAll extends Component {
+class SearchObjects extends Component {
   constructor() {
     super();
 
@@ -122,4 +122,4 @@ class SearchAll extends Component {
   }
 }
 
-export default SearchAll;
+export default SearchObjects;

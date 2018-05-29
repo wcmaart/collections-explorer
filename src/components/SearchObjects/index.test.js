@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import SearchAll from './';
+import SearchObjects from './';
 
 it('Test example', () => {
-  const wrapper = shallow(<SearchAll />);
+  const wrapper = shallow(<SearchObjects />);
   expect(wrapper.is('div')).toBeTruthy();
 });
