@@ -18,32 +18,32 @@ export const NAV_LINKS = [
     url: '/objects',
   },
   {
-    content: 'Maker',
-    url: '/maker',
+    content: 'Makers',
+    url: '/makers',
   },
   {
-    content: 'Period',
-    url: '/period',
+    content: 'Periods',
+    url: '/periods',
   },
   {
-    content: 'Place',
-    url: '/place',
+    content: 'Places',
+    url: '/places',
   },
   {
-    content: 'Material',
-    url: '/material',
+    content: 'Materials',
+    url: '/materials',
   },
   {
-    content: 'Technique',
-    url: '/technique',
+    content: 'Techniques',
+    url: '/techniques',
   },
   {
-    content: 'Color',
-    url: '/color',
+    content: 'Colors',
+    url: '/colors',
   },
   {
-    content: 'Event',
-    url: '/event',
+    content: 'Events',
+    url: '/events',
   },
 ];
 

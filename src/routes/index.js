@@ -41,13 +41,13 @@ function Routes() {
       <Route path="/objects/type/:type" component={SearchAll} />
       <Route path="/objects/type/:type/page/:page" component={SearchAll} />
       <Route path="/objects/:id" component={SearchAll} />
-      <Route path="/maker" component={()=> <GenericPage title="Maker"/> } />
-      <Route path="/period" component={()=> <GenericPage title="Period"/> } />
-      <Route path="/place" component={()=> <GenericPage title="Place"/> } />
-      <Route path="/material" component={()=> <GenericPage title="Material"/> } />
-      <Route path="/technique" component={()=> <GenericPage title="Technique"/> } />
-      <Route path="/color" component={()=> <GenericPage title="Color"/> } />
-      <Route path="/event" component={()=> <GenericPage title="Event"/> } />
+      <Route path="/makers" component={()=> <GenericPage title="Makers"/> } />
+      <Route path="/periods" component={()=> <GenericPage title="Periods"/> } />
+      <Route path="/places" component={()=> <GenericPage title="Places"/> } />
+      <Route path="/materials" component={()=> <GenericPage title="Materials"/> } />
+      <Route path="/techniques" component={()=> <GenericPage title="Techniques"/> } />
+      <Route path="/colors" component={()=> <GenericPage title="Colors"/> } />
+      <Route path="/events" component={()=> <GenericPage title="Events"/> } />
       <Route component={NotFound} />
     </Switch>
   );
