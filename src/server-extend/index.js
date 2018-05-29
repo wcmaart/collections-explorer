@@ -1,25 +1,23 @@
 import ensureHttps from './ensure-https';
-
-const dotenv = require('dotenv');
+import basicAuth from './basic-auth';
 
 const validateServerSetup = () => {
   const GRAPHQL_URL = process.env.GRAPHQL_URL;
 
   if (!GRAPHQL_URL) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      `❗️ Oops, it looks like you need to set your GRAPHQL_URL environment variable. Please see the readme.\n`
-    );
+    console.warn(`❗️ Oops, it looks like you need to set your GRAPHQL_URL environment variable. Please see the readme.\n`);
   }
-};
+}
 
-const serverExtend = app => {
-  dotenv.config();
+const serverExtend = (app) => {
+  require('dotenv').config();
+  app = basicAuth(app);
   app = ensureHttps(app);
 
   validateServerSetup();
 
   return app;
-};
+}
+
 
 export default serverExtend;
