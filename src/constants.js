@@ -4,8 +4,8 @@ export const META_TAGS = {
   '/': {
     title: 'home',
   },
-  '/all': {
-    title: 'search all',
+  '/objects': {
+    title: 'search objects',
   },
   '/explore': {
     title: 'Search by Type',
@@ -14,12 +14,8 @@ export const META_TAGS = {
 
 export const NAV_LINKS = [
   {
-    content: 'All',
-    url: '/all',
-  },
-  {
-    content: 'Object Type',
-    url: '/explore',
+    content: 'Objects',
+    url: '/objects',
   },
   {
     content: 'Maker',
@@ -48,6 +44,36 @@ export const NAV_LINKS = [
   {
     content: 'Event',
     url: '/event',
+  },
+];
+
+export const SEARCH_TABS = [
+  {
+    content: 'Top Results',
+    key: 'topResults',
+  },
+  {
+    content: 'By Type',
+    key: 'byType',
+  },
+];
+
+export const OBJECT_TYPES = [
+  {
+    content: 'Prints',
+    key: 'prints',
+  },
+  {
+    content: 'Photographs',
+    key: 'photographs',
+  },
+  {
+    content: 'Drawings',
+    key: 'drawings',
+  },
+  {
+    content: 'Paintings',
+    key: 'paintings',
   },
 ];
 

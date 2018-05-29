@@ -1,0 +1,38 @@
+@import '../../shared-styles/variables';
+@import '../../shared-styles/mixins';
+@import '../../shared-styles/materialize/index.scss';
+
+.section {
+  &:first-child {
+    .sectionInner {
+      border-top: $border-light;
+    }
+  }
+}
+
+.sectionInner {
+  border-bottom: $border-light;
+  padding: $padding-md 0;
+}
+
+.sectionHeaderRight {
+  text-align: right;
+}
+
+.h3 {
+  margin: 0;
+  font-size: $font-size-md;
+}
+
+.viewAllLink {
+  display: block;
+}
+
+.clearBoth {
+  clear: both;
+  padding-top: $padding-sm;
+}
+
+.imageWrap img {
+  @include img-fit-contain();
+}

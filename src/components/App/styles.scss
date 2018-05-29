@@ -9,4 +9,9 @@
   html {
     font-size: $font-size-base;
   }
+
+  // set global link color for now
+  .container a {
+    color: $color-link;
+  }
 }

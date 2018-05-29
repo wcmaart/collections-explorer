@@ -4,7 +4,7 @@ import Header from '../Header';
 import { ApolloProvider, Query } from "react-apollo";
 import gql from "graphql-tag";
 import GraphqlClient from '../../GraphqlClient';
-import ArtObjectCard from '../ArtObjectCard';
+import SearchResultsWrapper from '../SearchResultsWrapper';
 import { withRouter } from 'react-router';
 import { Link, Route } from 'react-router-dom';
 
@@ -60,22 +60,29 @@ const getGqlQuery = ({ids, paginationIdx}) => {
 }
 
 // Fetch GraphQL data with a Query component
-const ArtObjectQueryResult = ({artObjectId, paginationIdx}) => {
+const ArtObjectQuery = ({artObjectId, paginationIdx, objectType}) => {
   const ids = artObjectId ? [artObjectId] : null;
   const query = getGqlQuery({ids, paginationIdx});
 
   // todo: clean up this quick pagination
   const thisPageIdx = artObjectId ? null : paginationIdx || 1;
-  const nextPageIdx = thisPageIdx && thisPageIdx + 1;
-  const prevPageIdx = thisPageIdx && (thisPageIdx - 1 || null);
 
+  // todo: filter by objectType
   return <Query
     query={query}
     variables={{ ids, paginationIdx }}
     errorPolicy="all"
   >
     {({ loading, error, data }) => {
-      if (loading) return <p>Loading...</p>;
+      if (loading) {
+        return (
+          <div className="row">
+            <span className="col s12 l4">
+              Loading...
+            </span>
+          </div>
+        );
+      }
 
       if (!data) {
         return <p className="red-text">Oops! 😱 It looks like you need to setup your api</p>;
@@ -85,44 +92,11 @@ const ArtObjectQueryResult = ({artObjectId, paginationIdx}) => {
         return <p className="red-text">Sorry, no results</p>;
       }
 
-      if (data.objects.length <= 1) {
-        return (
-          <ArtObjectCard {...data.objects[0]} />
-        )
-      }
-
-      return (
-        <div className={`${styles.artObjects} row`}>
-          {
-            data.objects.map(obj => (
-              <div key={obj.id} className={`col s12 l4`}>
-                <ArtObjectCard {...obj} />
-              </div>
-            ))
-          }
-          { thisPageIdx &&
-            <div className={styles.quickPagination}>
-              <span>
-                Quick Pagination
-              </span>
-              <ul className="pagination">
-                { prevPageIdx &&
-                  <li>
-                    <Link to={`/art-objects/page/${prevPageIdx}`}>
-                      <i className="material-icons">&larr;</i>
-                    </Link>
-                  </li>
-                }
-                <li className="waves-effect">
-                  <Link to={`/art-objects/page/${nextPageIdx}`}>
-                    <i className="material-icons">&rarr;</i>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          }
-        </div>
-      );
+      return <SearchResultsWrapper
+        objects={data.objects}
+        thisPageIdx={thisPageIdx}
+        objectType={objectType}
+      />
     }}
   </Query>
 }
@@ -143,7 +117,7 @@ class SearchAll extends Component {
     // clear the input first
     e.target[0].value = '';
 
-    this.props.history.push(`/art-objects/${inputVal}`);
+    this.props.history.push(`/objects/${inputVal}`);
   }
 
   render() {
@@ -151,6 +125,7 @@ class SearchAll extends Component {
     // get values from the router
     const artObjectId = params.id ? parseInt(params.id, 10) : null;
     const paginationIdx = params.page ? parseInt(params.page, 10) : null;
+    const objectType = params.type || null;
 
     // todo: consolidate 404 code
     if (isNaN(artObjectId)) {
@@ -189,15 +164,16 @@ class SearchAll extends Component {
             <div className="row">
               <div className="input-field col s12">
                 <div className={styles.searchWrapper}>
-                  <input id="search" type="text" placeholder="Search" />
+                  <input id="search" type="text" placeholder="Search Entire Collection" />
                 </div>
               </div>
             </div>
           </form>
           <ApolloProvider client={client}>
-            <ArtObjectQueryResult
+            <ArtObjectQuery
               artObjectId={artObjectId}
               paginationIdx={paginationIdx}
+              objectType={objectType}
             />
           </ApolloProvider>
         </div>

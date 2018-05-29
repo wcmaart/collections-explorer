@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Home from '../components/Home';
 import SearchAll from '../components/SearchAll';
-import SearchByType from '../components/SearchByType';
 import GenericPage from '../components/GenericPage';
 
 // with guidance from https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/guides/server-rendering.md
@@ -37,10 +36,11 @@ function Routes() {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route exact path="/all" component={SearchAll} />
-      <Route path="/art-objects/page/:page" component={SearchAll} />
-      <Route path="/art-objects/:id" component={SearchAll} />
-      <Route path="/explore" component={SearchByType} />
+      <Route exact path="/objects" component={SearchAll} />
+      <Route path="/objects/page/:page" component={SearchAll} />
+      <Route path="/objects/type/:type" component={SearchAll} />
+      <Route path="/objects/type/:type/page/:page" component={SearchAll} />
+      <Route path="/objects/:id" component={SearchAll} />
       <Route path="/maker" component={()=> <GenericPage title="Maker"/> } />
       <Route path="/period" component={()=> <GenericPage title="Period"/> } />
       <Route path="/place" component={()=> <GenericPage title="Place"/> } />
