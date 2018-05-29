@@ -96,17 +96,6 @@ class SearchAll extends Component {
 
     const client = GraphqlClient();
 
-    // todo remove test
-    // Test fetching GraphQL data with plain JS
-    // client
-    //   .query({
-    //     query: getGqlQuery({
-    //       artObjectId: artObjectId,
-    //       paginationIdx: paginationIdx,
-    //     }),
-    //   })
-    //   .then(({ data }) => console.log({ data }));
-
     return (
       <div>
         <Header />
