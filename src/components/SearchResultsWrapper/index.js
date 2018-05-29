@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './styles.scss';
 import SearchPagination from '../SearchPagination';
 import SearchResults from '../SearchResults';
+import ArtObjectCard from '../ArtObjectCard';
 import SearchResultsByType from '../SearchResultsByType';
 import { Link } from 'react-router-dom';
 import { SEARCH_TABS } from '../../constants';

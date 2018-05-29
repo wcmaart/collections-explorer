@@ -2,70 +2,21 @@ import React, { Component } from 'react';
 import styles from './styles.scss';
 import Header from '../Header';
 import { ApolloProvider, Query } from "react-apollo";
-import gql from "graphql-tag";
+import { searchQuery, searchQueryByIds, searchQueryByPaginationIdx } from '../../gqlQueries';
 import GraphqlClient from '../../GraphqlClient';
 import SearchResultsWrapper from '../SearchResultsWrapper';
 import { withRouter } from 'react-router';
 import { Link, Route } from 'react-router-dom';
 
-const getGqlQuery = ({ids, paginationIdx}) => {
-  // todo consolidate fragments?
-  var gqlstr;
-
-  if (ids) {
-    gqlstr = gql`
-      query objects($ids: [ID!]) {
-        objects(ids: $ids) {
-          id
-          title
-          medium
-          maker
-          dimensions
-          people
-          creditline
-        }
-      }
-    `;
-  } else if (paginationIdx) {
-    gqlstr = gql`
-      query objects($paginationIdx: Int) {
-        objects(paginationIdx: $paginationIdx) {
-          id
-          title
-          medium
-          maker
-          dimensions
-          people
-          creditline
-        }
-      }
-    `;
-  } else {
-    gqlstr = gql`
-      {
-        objects {
-          id
-          title
-          medium
-          maker
-          dimensions
-          people
-          creditline
-        }
-      }
-    `;
-  }
-
-  return gqlstr
-}
-
 // Fetch GraphQL data with a Query component
 const ArtObjectQuery = ({artObjectId, paginationIdx, objectType}) => {
   const ids = artObjectId ? [artObjectId] : null;
-  const query = getGqlQuery({ids, paginationIdx});
-
   // todo: clean up this quick pagination
   const thisPageIdx = artObjectId ? null : paginationIdx || 1;
+
+  const query = ids ? searchQueryByIds :
+    paginationIdx ? searchQueryByPaginationIdx :
+    searchQuery;
 
   // todo: filter by objectType
   return <Query
@@ -144,17 +95,6 @@ class SearchAll extends Component {
     }
 
     const client = GraphqlClient();
-
-    // todo remove test
-    // Test fetching GraphQL data with plain JS
-    // client
-    //   .query({
-    //     query: getGqlQuery({
-    //       artObjectId: artObjectId,
-    //       paginationIdx: paginationIdx,
-    //     }),
-    //   })
-    //   .then(({ data }) => console.log({ data }));
 
     return (
       <div>
