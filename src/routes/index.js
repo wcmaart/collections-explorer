@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Home from '../components/Home';
 import SearchObjects from '../components/SearchObjects';
 import SearchMakers from '../components/SearchMakers';
+import SearchEvents from '../components/SearchEvents';
 import GenericPage from '../components/GenericPage';
 
 // with guidance from https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/guides/server-rendering.md
@@ -47,12 +48,17 @@ function Routes() {
       <Route path="/makers/page/:page" component={SearchMakers} />
       <Route path="/makers/:id" component={SearchMakers} />
 
+
       <Route path="/periods" component={()=> <GenericPage title="Periods"/> } />
       <Route path="/places" component={()=> <GenericPage title="Places"/> } />
       <Route path="/materials" component={()=> <GenericPage title="Materials"/> } />
       <Route path="/techniques" component={()=> <GenericPage title="Techniques"/> } />
       <Route path="/colors" component={()=> <GenericPage title="Colors"/> } />
-      <Route path="/events" component={()=> <GenericPage title="Events"/> } />
+
+      <Route exact path="/events" component={SearchEvents} />
+      <Route path="/events/page/:page" component={SearchEvents} />
+      <Route path="/events/:id" component={SearchEvents} />
+
       <Route component={NotFound} />
     </Switch>
   );

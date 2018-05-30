@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import SearchMakers from './';
+import SearchEvents from './';
 
 it('Test example', () => {
-  const wrapper = shallow(<SearchMakers />);
+  const wrapper = shallow(<SearchEvents />);
   expect(wrapper.is('div')).toBeTruthy();
 });
