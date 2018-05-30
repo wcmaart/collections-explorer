@@ -37,6 +37,8 @@ class SearchResultsWrapper extends Component {
     const thisPageIdx = props.thisPageIdx;
     const objectType = props.objectType;
 
+    console.log(thisPageIdx);
+
     if (objects.length <= 1) {
       return (
         <ArtObjectCard {...objects[0]} />
