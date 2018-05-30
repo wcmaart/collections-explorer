@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import styles from './styles.scss';
 import Header from '../Header';
 import { ApolloProvider, Query } from "react-apollo";
-import gqlQueries from '../../gqlQueries/objects';
+import gqlQueries from '../../gqlQueries/events';
 import SearchResultsWrapper from '../SearchResultsWrapper';
 import SearchGeneric from '../SearchGeneric';
 
 const searchParams = {
-  searchInputPlaceholder: 'Search Entire Collection',
-  slugPrefix: '/objects',
+  searchInputPlaceholder: 'Search events',
+  slugPrefix: '/events',
 };
 
-class SearchObjects extends Component {
+class SearchEvents extends Component {
   render() {
     return (
       <div>
@@ -31,4 +31,4 @@ class SearchObjects extends Component {
   }
 }
 
-export default SearchObjects;
+export default SearchEvents;

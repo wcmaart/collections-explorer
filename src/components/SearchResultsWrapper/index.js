@@ -4,7 +4,6 @@ import SearchPagination from '../SearchPagination';
 import SearchResults from '../SearchResults';
 import ArtObjectCard from '../ArtObjectCard';
 import SearchResultsByType from '../SearchResultsByType';
-import { Link } from 'react-router-dom';
 import { SEARCH_TABS } from '../../constants';
 
 // Fetch GraphQL data with a Query component
@@ -33,9 +32,13 @@ class SearchResultsWrapper extends Component {
 
   render() {
     const props = this.props;
-    const objects = props.objects;
-    const thisPageIdx = props.thisPageIdx;
-    const objectType = props.objectType;
+
+    const {
+      objects,
+      thisPageIdx,
+      objectType,
+      slugPrefix,
+    } = props;
 
     if (objects.length <= 1) {
       return (
@@ -86,7 +89,7 @@ class SearchResultsWrapper extends Component {
           </div>
         }
         { !objects.length && <div>No results</div> }
-        { thisPageIdx && <SearchPagination thisPageIdx={thisPageIdx} /> }
+        { thisPageIdx && <SearchPagination {...props} /> }
       </div>
     );
   }
