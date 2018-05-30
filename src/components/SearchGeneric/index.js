@@ -126,8 +126,13 @@ class SearchGeneric extends Component {
       routeError,
     } = this.state;
 
+    const {
+      searchInputPlaceholder,
+    } = this.props;
+
     // catch any errors that might have been set in getRouteState
     if (routeError) {
+      // todo: make a helper for this and move this logic
       return <Route
         render={({ staticContext }) => {
           // there is no `staticContext` on the client, so
@@ -151,7 +156,7 @@ class SearchGeneric extends Component {
           <div className="row">
             <div className="input-field col s12">
               <div className={styles.searchWrapper}>
-                <input id="search" type="text" placeholder="Search Entire Collection" />
+                <input id="search" type="text" placeholder={searchInputPlaceholder} />
               </div>
             </div>
           </div>
