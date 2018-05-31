@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from './styles.scss';
-import { OBJECT_TYPES } from '../../constants';
+import { OBJECT_MEDIUMS } from '../../constants';
 import { Link } from 'react-router-dom';
 
 class SearchResultsByMedium extends Component {
@@ -11,7 +11,7 @@ class SearchResultsByMedium extends Component {
 
     return (
        <div className={`${styles.artObjects} row`}>
-        { OBJECT_TYPES.map(type => (
+        { OBJECT_MEDIUMS.map(type => (
             <div key={type.key} className={`${styles.section} col s12`}>
               <div className={styles.sectionInner}>
                 <div className={styles.sectionInnerHeader}>

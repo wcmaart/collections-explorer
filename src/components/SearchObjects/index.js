@@ -2,14 +2,10 @@ import React, { Component } from 'react';
 import styles from './styles.scss';
 import Header from '../Header';
 import { ApolloProvider, Query } from "react-apollo";
-import gqlQueries from '../../gqlQueries/objects';
 import SearchResultsWrapper from '../SearchResultsWrapper';
 import SearchGeneric from '../SearchGeneric';
-
-const searchParams = {
-  searchInputPlaceholder: 'Search Entire Collection',
-  slugPrefix: '/objects',
-};
+import gqlQueries from '../../gqlQueries/objects';
+import { SEARCH_OBJECTS_CONSTS as searchParams } from '../../constants';
 
 class SearchObjects extends Component {
   render() {
@@ -22,6 +18,7 @@ class SearchObjects extends Component {
             gqlQueries={gqlQueries}
             getResultsWrapper={(params) => {
               const mergedParams = Object.assign({}, params, searchParams);
+
               return <SearchResultsWrapper {...mergedParams} />
             }}
           />

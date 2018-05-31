@@ -62,7 +62,7 @@ export const SEARCH_TABS = [
   },
 ];
 
-export const OBJECT_TYPES = [
+export const OBJECT_MEDIUMS = [
   {
     content: 'Prints',
     key: 'prints',
@@ -91,3 +91,15 @@ export const ALPHABET = [
   'Q','R','S','T','U','V','W','X',
   'Y','Z'
 ];
+
+export const SEARCH_OBJECTS_CONSTS = {
+  searchType: 'objects',
+  slugPrefix: '/objects',
+  searchInputPlaceholder: 'Search All Objects',
+};
+
+export const SEARCH_MAKERS_CONSTS = {
+  searchType: 'makers',
+  slugPrefix: '/makers',
+  searchInputPlaceholder: 'Search Makers',
+};

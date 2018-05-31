@@ -6,29 +6,35 @@
   width: 100%;
 }
 
-.imageWrap{
+.cardContent {
+  padding: $padding-sm;
 
+  li {
+    margin-bottom: $padding-sm;
+  }
 }
 
 .cardTitle {
-  margin-bottom: 2rem !important;
-}
-
-.statListItem {
-  margin-bottom: 1rem;
-}
-
-.statLabel {
+  font-size: $font-size-20;
+  display: inline-block;
+  margin: $padding-sm 0;
 }
 
 @media #{$large-and-up} {
+  .cardTitle {
+    font-size: $font-size-20;
+    display: inline-block;
+    margin: $padding-md 0;
+  }
+
   .statLabel {
     font-weight: $font-weight-bold;
+    line-height: 1.5em;
     display: block;
   }
 
   .statValue {
-    font-size: $font-size-md;
+    font-size: $font-size-base;
   }
 
   .colon {

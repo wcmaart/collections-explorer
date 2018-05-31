@@ -8,11 +8,6 @@ class ArtObjectCard extends Component {
     const testImg = this.props.imgUrl || `https://picsum.photos/500/500?random&${this.props.id}`;
     const statListItems = [
       {
-        label: 'Title',
-        value: this.props.title,
-
-      },
-      {
         label: 'Medium',
         value: this.props.medium,
 
@@ -44,9 +39,11 @@ class ArtObjectCard extends Component {
         <div className="card-image">
           <img src={testImg} />
         </div>
-        <div className="card-content">
-          <Link className={styles.link} to={`/objects/${this.props.id}`}>
-            <span className={`${styles.cardTitle} card-title`}>{this.props.title}</span>
+        <div className={styles.cardContent}>
+          <Link className={styles.cardTitle} to={`/objects/${this.props.id}`}>
+            <span>
+              {this.props.title}
+            </span>
           </Link>
           <ul>
             {
