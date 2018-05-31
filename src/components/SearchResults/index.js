@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './styles.scss';
 import ArtObjectCard from '../ArtObjectCard';
 import MakerCard from '../MakerCard';
+import EventCard from '../EventCard';
 
 class SearchResults extends Component {
   render() {
@@ -22,6 +23,10 @@ class SearchResults extends Component {
               {
                 searchType === 'makers' &&
                 <MakerCard {...obj} />
+              }
+              {
+                searchType === 'events' &&
+                <EventCard {...obj} />
               }
             </div>
           ))

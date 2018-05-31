@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styles from './styles.scss';
 import Header from '../Header';
-import { ApolloProvider, Query } from "react-apollo";
 import SearchResultsWrapper from '../SearchResultsWrapper';
 import SearchGeneric from '../SearchGeneric';
 import gqlQueries from '../../gqlQueries/objects';

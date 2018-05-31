@@ -103,3 +103,9 @@ export const SEARCH_MAKERS_CONSTS = {
   slugPrefix: '/makers',
   searchInputPlaceholder: 'Search Makers',
 };
+
+export const SEARCH_EVENTS_CONSTS = {
+  searchType: 'events',
+  slugPrefix: '/events',
+  searchInputPlaceholder: 'Search Events',
+};
