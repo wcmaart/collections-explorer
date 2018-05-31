@@ -9,7 +9,7 @@ class NavMenu extends Component {
     const { match, location, history } = this.props;
 
     const getActiveClass = (url) => {
-      return url === this.props.location.pathname ? 'active' : '';
+      return url === this.props.location.pathname ? styles.active : '';
     };
 
     return (
