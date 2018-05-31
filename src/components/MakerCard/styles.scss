@@ -1,12 +1,3 @@
 @import '../../shared-styles/variables';
 @import '../../shared-styles/materialize/index.scss';
-
-.card {
-  box-shadow: none;
-}
-
-.cardTitle {
-  font-size: $font-size-20;
-  display: inline-block;
-  margin: $padding-sm 0;
-}
+@import '../../shared-styles/searchResultCard';

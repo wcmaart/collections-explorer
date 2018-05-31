@@ -8,16 +8,16 @@ class MakerCard extends Component {
 
     return (
       <div key={this.props.id} className={`${styles.card} card`}>
-        <div className="card-image">
-          <img src={testImg} />
-        </div>
-        <div>
-          <Link className={styles.cardTitle} to={`/makers/${this.props.id}`}>
+        <Link to={`/makers/${this.props.id}`}>
+          <div className="card-image">
+            <img src={testImg} />
+          </div>
+          <div className={styles.cardTitle}>
             <span>
-              Fake Name
+              Fake Maker's Name
             </span>
-          </Link>
-        </div>
+          </div>
+        </Link>
       </div>
     );
   }

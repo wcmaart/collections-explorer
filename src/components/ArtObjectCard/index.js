@@ -30,35 +30,34 @@ class ArtObjectCard extends Component {
       {
         label: 'Creditline',
         value: this.props.creditline,
-
       },
     ];
 
     return (
       <div key={this.props.id} className={`${styles.card} card`}>
-        <div className="card-image">
-          <img src={testImg} />
-        </div>
-        <div className={styles.cardContent}>
-          <Link className={styles.cardTitle} to={`/objects/${this.props.id}`}>
-            <span>
+        <Link to={`/objects/${this.props.id}`}>
+          <div className="card-image">
+            <img src={testImg} />
+          </div>
+          <div className={styles.cardContent}>
+            <div className={styles.cardTitle}>
               {this.props.title}
-            </span>
-          </Link>
-          <ul>
-            {
-              statListItems.map(statListItem => {
-                return statListItem.value && (
-                  <li className={styles.statListItem} key={statListItem.label}>
-                    <span className={styles.statLabel}>{statListItem.label}</span>
-                    <span className={styles.colon}>: </span>
-                    <span className={styles.statValue}>{statListItem.value}</span>
-                  </li>
-                );
-              })
-            }
-          </ul>
-        </div>
+            </div>
+            <ul>
+              {
+                statListItems.map(statListItem => {
+                  return statListItem.value && (
+                    <li className={styles.statListItem} key={statListItem.label}>
+                      <span className={styles.statLabel}>{statListItem.label}</span>
+                      <span className={styles.colon}>: </span>
+                      <span className={styles.statValue}>{statListItem.value}</span>
+                    </li>
+                  );
+                })
+              }
+            </ul>
+          </div>
+        </Link>
       </div>
     );
   }

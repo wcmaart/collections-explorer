@@ -1,9 +1,9 @@
 @import '../../shared-styles/variables';
 @import '../../shared-styles/materialize/index.scss';
+@import '../../shared-styles/searchResultCard';
 
-// todo: #consolidateCards
 .card {
-  width: 100%;
+  box-shadow: $materialize-shadow;
 }
 
 .cardContent {
@@ -12,12 +12,6 @@
   li {
     margin-bottom: $padding-sm;
   }
-}
-
-.cardTitle {
-  font-size: $font-size-20;
-  display: inline-block;
-  margin: $padding-sm 0;
 }
 
 @media #{$large-and-up} {

@@ -8,16 +8,16 @@ class EventCard extends Component {
 
     return (
       <div key={this.props.id} className={`${styles.card} card`}>
-        <div className="card-image">
-          <img src={testImg} />
-        </div>
-        <div>
-          <Link className={styles.cardTitle} to={`/events/${this.props.id}`}>
+        <Link to={`/events/${this.props.id}`}>
+          <div className="card-image">
+            <img src={testImg} />
+          </div>
+          <div className={styles.cardTitle}>
             <span>
               Fake Event Name
             </span>
-          </Link>
-        </div>
+          </div>
+        </Link>
       </div>
     );
   }

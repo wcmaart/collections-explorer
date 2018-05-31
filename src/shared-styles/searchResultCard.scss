@@ -1,0 +1,13 @@
+@import '../../shared-styles/variables';
+@import '../../shared-styles/materialize/index.scss';
+
+.card {
+  // undo materialize style. Todo: remove this class later
+  box-shadow: none;
+}
+
+.cardTitle {
+  font-size: $font-size-20;
+  display: inline-block;
+  margin: $padding-sm 0;
+}
