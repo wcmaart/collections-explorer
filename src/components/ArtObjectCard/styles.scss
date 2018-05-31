@@ -1,34 +1,34 @@
 @import '../../shared-styles/variables';
 @import '../../shared-styles/materialize/index.scss';
+@import '../../shared-styles/searchResultCard';
 
-// todo: #consolidateCards
 .card {
-  width: 100%;
+  box-shadow: $materialize-shadow;
 }
 
-.imageWrap{
+.cardContent {
+  padding: $padding-sm;
 
-}
-
-.cardTitle {
-  margin-bottom: 2rem !important;
-}
-
-.statListItem {
-  margin-bottom: 1rem;
-}
-
-.statLabel {
+  li {
+    margin-bottom: $padding-sm;
+  }
 }
 
 @media #{$large-and-up} {
+  .cardTitle {
+    font-size: $font-size-20;
+    display: inline-block;
+    margin: $padding-md 0;
+  }
+
   .statLabel {
     font-weight: $font-weight-bold;
+    line-height: 1.5em;
     display: block;
   }
 
   .statValue {
-    font-size: $font-size-md;
+    font-size: $font-size-base;
   }
 
   .colon {

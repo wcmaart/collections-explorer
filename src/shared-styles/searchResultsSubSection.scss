@@ -1,6 +1,6 @@
-@import '../../shared-styles/variables';
-@import '../../shared-styles/mixins';
-@import '../../shared-styles/materialize/index.scss';
+@import './variables';
+@import './mixins';
+@import './materialize/index.scss';
 
 .section {
   &:first-child {
@@ -15,8 +15,16 @@
   padding: $padding-md 0;
 }
 
+.sectionInnerHeader {
+  margin-bottom: $padding-md;
+}
+
 .sectionHeaderRight {
   text-align: right;
+}
+
+.alphabeticalListings {
+  line-height: 1.5em;
 }
 
 .h3 {
@@ -24,13 +32,12 @@
   font-size: $font-size-md;
 }
 
-.viewAllLink {
-  display: block;
+.clearfix {
+  @include clearfix();
 }
 
-.clearBoth {
-  clear: both;
-  padding-top: $padding-sm;
+.viewAllLink {
+  display: block;
 }
 
 .imageWrap img {

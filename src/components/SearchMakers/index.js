@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import styles from './styles.scss';
 import Header from '../Header';
-import { ApolloProvider, Query } from "react-apollo";
-import gqlQueries from '../../gqlQueries/makers';
 import SearchResultsWrapper from '../SearchResultsWrapper';
 import SearchGeneric from '../SearchGeneric';
-
-const searchParams = {
-  searchInputPlaceholder: 'Search Makers',
-  slugPrefix: '/makers',
-};
+import gqlQueries from '../../gqlQueries/makers';
+import { SEARCH_MAKERS_CONSTS as searchParams } from '../../constants';
 
 class SearchMakers extends Component {
   render() {
@@ -22,6 +17,7 @@ class SearchMakers extends Component {
             gqlQueries={gqlQueries}
             getResultsWrapper={(params) => {
               const mergedParams = Object.assign({}, params, searchParams);
+
               return <SearchResultsWrapper {...mergedParams} />
             }}
           />

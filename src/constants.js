@@ -53,12 +53,16 @@ export const SEARCH_TABS = [
     key: 'topResults',
   },
   {
-    content: 'By Type',
-    key: 'byType',
+    content: 'By Medium',
+    key: 'byMedium',
+  },
+  {
+    content: 'A-Z',
+    key: 'byAlphabetical',
   },
 ];
 
-export const OBJECT_TYPES = [
+export const OBJECT_MEDIUMS = [
   {
     content: 'Prints',
     key: 'prints',
@@ -79,4 +83,29 @@ export const OBJECT_TYPES = [
 
 export const META_TAGS_DEFAULT = {
   title: 'default title',
+};
+
+export const ALPHABET = [
+  'A','B','C','D','E','F','G','H',
+  'I','J','K','L','M','N','O','P',
+  'Q','R','S','T','U','V','W','X',
+  'Y','Z'
+];
+
+export const SEARCH_OBJECTS_CONSTS = {
+  searchType: 'objects',
+  slugPrefix: '/objects',
+  searchInputPlaceholder: 'Search All Objects',
+};
+
+export const SEARCH_MAKERS_CONSTS = {
+  searchType: 'makers',
+  slugPrefix: '/makers',
+  searchInputPlaceholder: 'Search Makers',
+};
+
+export const SEARCH_EVENTS_CONSTS = {
+  searchType: 'events',
+  slugPrefix: '/events',
+  searchInputPlaceholder: 'Search Events',
 };

@@ -8,11 +8,6 @@ class ArtObjectCard extends Component {
     const testImg = this.props.imgUrl || `https://picsum.photos/500/500?random&${this.props.id}`;
     const statListItems = [
       {
-        label: 'Title',
-        value: this.props.title,
-
-      },
-      {
         label: 'Medium',
         value: this.props.medium,
 
@@ -35,33 +30,34 @@ class ArtObjectCard extends Component {
       {
         label: 'Creditline',
         value: this.props.creditline,
-
       },
     ];
 
     return (
       <div key={this.props.id} className={`${styles.card} card`}>
-        <div className="card-image">
-          <img src={testImg} />
-        </div>
-        <div className="card-content">
-          <Link className={styles.link} to={`/objects/${this.props.id}`}>
-            <span className={`${styles.cardTitle} card-title`}>{this.props.title}</span>
-          </Link>
-          <ul>
-            {
-              statListItems.map(statListItem => {
-                return statListItem.value && (
-                  <li className={styles.statListItem} key={statListItem.label}>
-                    <span className={styles.statLabel}>{statListItem.label}</span>
-                    <span className={styles.colon}>: </span>
-                    <span className={styles.statValue}>{statListItem.value}</span>
-                  </li>
-                );
-              })
-            }
-          </ul>
-        </div>
+        <Link to={`/objects/${this.props.id}`}>
+          <div className="card-image">
+            <img src={testImg} />
+          </div>
+          <div className={styles.cardContent}>
+            <div className={styles.cardTitle}>
+              {this.props.title}
+            </div>
+            <ul>
+              {
+                statListItems.map(statListItem => {
+                  return statListItem.value && (
+                    <li className={styles.statListItem} key={statListItem.label}>
+                      <span className={styles.statLabel}>{statListItem.label}</span>
+                      <span className={styles.colon}>: </span>
+                      <span className={styles.statValue}>{statListItem.value}</span>
+                    </li>
+                  );
+                })
+              }
+            </ul>
+          </div>
+        </Link>
       </div>
     );
   }
