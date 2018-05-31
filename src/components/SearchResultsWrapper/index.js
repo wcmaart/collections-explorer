@@ -4,9 +4,9 @@ import SearchPagination from '../SearchPagination';
 import SearchResults from '../SearchResults';
 import ArtObjectCard from '../ArtObjectCard';
 import SearchResultsByType from '../SearchResultsByType';
+import SearchResultsByAlphabetical from '../SearchResultsByAlphabetical';
 import { SEARCH_TABS } from '../../constants';
 
-// Fetch GraphQL data with a Query component
 class SearchResultsWrapper extends Component {
   constructor() {
     super();
@@ -40,7 +40,13 @@ class SearchResultsWrapper extends Component {
       slugPrefix,
     } = props;
 
-    if (objects.length <= 1) {
+    if (objects.length < 1) {
+      return (
+        <div>No results</div>
+      )
+    }
+
+    if (objects.length === 1) {
       return (
         <ArtObjectCard {...objects[0]} />
       )
@@ -86,10 +92,18 @@ class SearchResultsWrapper extends Component {
               this.state.searchTab === 'byType' &&
               <SearchResultsByType {...props} />
             }
+            {
+              this.state.searchTab === 'byAlphabetical' &&
+              <SearchResultsByAlphabetical {...props} />
+            }
           </div>
         }
-        { !objects.length && <div>No results</div> }
-        { thisPageIdx && <SearchPagination {...props} /> }
+        {
+          // todo: figure out this proper logic
+          thisPageIdx &&
+          this.state.searchTab === 'topResults' &&
+          <SearchPagination {...props} />
+        }
       </div>
     );
   }

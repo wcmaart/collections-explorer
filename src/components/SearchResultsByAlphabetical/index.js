@@ -1,36 +1,31 @@
 import React, { Component } from 'react';
 import styles from './styles.scss';
 import ArtObjectCard from '../ArtObjectCard';
-import { OBJECT_TYPES } from '../../constants';
+import { ALPHABET } from '../../constants';
 import { Link } from 'react-router-dom';
 
-class SearchResultsByType extends Component {
+class SearchResultsByAlphabetical extends Component {
   render() {
     const testImg = this.props.imgUrl || `https://picsum.photos/500/500?random&${this.props.id}`;
     const objects = this.props.objects;
     const thisPageIdx = this.props.thisPageIdx;
+    const dummyCounter = 16;
 
     return (
        <div className={`${styles.artObjects} row`}>
-        { OBJECT_TYPES.map(type => (
-            <div key={type.key} className={`${styles.section} col s12`}>
+        { ALPHABET.map(letter => (
+            <div key={letter} className={`${styles.section} col s12`}>
               <div className={styles.sectionInner}>
                 <div className={styles.sectionInnerHeader}>
                   <h3 className={`${styles.h3} left`}>
-                    {type.content}
+                    {letter}
                   </h3>
-                  <div className={`${styles.sectionHeaderRight} right`}>
-                    <Link className={styles.viewAllLink} to={`/objects/type/${type.key}`} >View all</Link>
-                    (xxxxx)
-                  </div>
                   <div className={styles.clearfix}></div>
                 </div>
-                <div className="row">
-                  { [1,2,3,4].map(idx => (
+                <div className={`${styles.alphabeticalListings} row`}>
+                  { Array(dummyCounter).fill(null).map((val, idx) => (
                       <div key={idx} className={`col s6 m3`}>
-                        <div className={styles.imageWrap}>
-                          <img src={testImg} />
-                        </div>
+                        {letter} Dummy Name
                       </div>
                     ))
                   }
@@ -48,4 +43,4 @@ class SearchResultsByType extends Component {
   }
 }
 
-export default SearchResultsByType;
+export default SearchResultsByAlphabetical;

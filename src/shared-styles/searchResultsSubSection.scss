@@ -1,0 +1,45 @@
+@import './variables';
+@import './mixins';
+@import './materialize/index.scss';
+
+.section {
+  &:first-child {
+    .sectionInner {
+      border-top: $border-light;
+    }
+  }
+}
+
+.sectionInner {
+  border-bottom: $border-light;
+  padding: $padding-md 0;
+}
+
+.sectionInnerHeader {
+  margin-bottom: $padding-md;
+}
+
+.sectionHeaderRight {
+  text-align: right;
+}
+
+.alphabeticalListings {
+  line-height: 1.5em;
+}
+
+.h3 {
+  margin: 0;
+  font-size: $font-size-md;
+}
+
+.clearfix {
+  @include clearfix();
+}
+
+.viewAllLink {
+  display: block;
+}
+
+.imageWrap img {
+  @include img-fit-contain();
+}

@@ -56,6 +56,10 @@ export const SEARCH_TABS = [
     content: 'By Type',
     key: 'byType',
   },
+  {
+    content: 'A-Z',
+    key: 'byAlphabetical',
+  },
 ];
 
 export const OBJECT_TYPES = [
@@ -80,3 +84,10 @@ export const OBJECT_TYPES = [
 export const META_TAGS_DEFAULT = {
   title: 'default title',
 };
+
+export const ALPHABET = [
+  'A','B','C','D','E','F','G','H',
+  'I','J','K','L','M','N','O','P',
+  'Q','R','S','T','U','V','W','X',
+  'Y','Z'
+];
