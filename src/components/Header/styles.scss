@@ -4,13 +4,11 @@
 .banner {
   padding: 0 $padding-md;
   text-align: center;
+  background-color: $color-brand;
 
-  // example of extending with materialize classes
-  @extend .teal;
+  .brandLogo {
+    color: $color-white;
+    font-size: $font-size-20;
+    float: left;
+  }
 }
-
-.brandLogo {
-  font-size: $font-size-20;
-  float: left;
-}
-

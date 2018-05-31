@@ -3,7 +3,7 @@
 
 .card {
   // undo materialize style. Todo: remove this class later
-  box-shadow: none;
+  box-shadow: none !important;
 }
 
 .cardTitle {
