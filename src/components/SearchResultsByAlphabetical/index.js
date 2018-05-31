@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styles from './styles.scss';
-import ArtObjectCard from '../ArtObjectCard';
 import { ALPHABET } from '../../constants';
 import { Link } from 'react-router-dom';
 

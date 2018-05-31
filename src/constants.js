@@ -53,8 +53,8 @@ export const SEARCH_TABS = [
     key: 'topResults',
   },
   {
-    content: 'By Type',
-    key: 'byType',
+    content: 'By Medium',
+    key: 'byMedium',
   },
   {
     content: 'A-Z',

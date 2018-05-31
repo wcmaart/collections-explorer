@@ -3,7 +3,7 @@ import styles from './styles.scss';
 import SearchPagination from '../SearchPagination';
 import SearchResults from '../SearchResults';
 import ArtObjectCard from '../ArtObjectCard';
-import SearchResultsByType from '../SearchResultsByType';
+import SearchResultsByMedium from '../SearchResultsByMedium';
 import SearchResultsByAlphabetical from '../SearchResultsByAlphabetical';
 import { SEARCH_TABS } from '../../constants';
 
@@ -89,8 +89,8 @@ class SearchResultsWrapper extends Component {
               <SearchResults {...props} />
             }
             {
-              this.state.searchTab === 'byType' &&
-              <SearchResultsByType {...props} />
+              this.state.searchTab === 'byMedium' &&
+              <SearchResultsByMedium {...props} />
             }
             {
               this.state.searchTab === 'byAlphabetical' &&

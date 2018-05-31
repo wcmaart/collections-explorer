@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import styles from './styles.scss';
-import ArtObjectCard from '../ArtObjectCard';
 import { OBJECT_TYPES } from '../../constants';
 import { Link } from 'react-router-dom';
 
-class SearchResultsByType extends Component {
+class SearchResultsByMedium extends Component {
   render() {
     const testImg = this.props.imgUrl || `https://picsum.photos/500/500?random&${this.props.id}`;
     const objects = this.props.objects;
@@ -48,4 +47,4 @@ class SearchResultsByType extends Component {
   }
 }
 
-export default SearchResultsByType;
+export default SearchResultsByMedium;
