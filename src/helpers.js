@@ -17,7 +17,9 @@ export const getGlobalAppData = () => {
   }
 
   // otherwise, we're on the server.
+  // Set them here and they'll get passed to the front end from server/index.js
   return {
     GRAPHQL_URL: process.env.GRAPHQL_URL,
+    GRAPHQL_TOKEN: process.env.GRAPHQL_TOKEN,
   };
 };
