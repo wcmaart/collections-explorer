@@ -6,27 +6,26 @@ import EventCard from '../EventCard';
 
 class SearchResults extends Component {
   render() {
-    // todo: change objects to searchData to avoid confusion.
     const {
-      objects,
+      searchResultItems,
       searchType,
     } = this.props
 
     return (
-      <div className={`${styles.artObjects} row`}>
-        { objects.map(obj => (
-            <div key={obj.id} className={`col s12 l4`}>
+      <div className={`${styles.searchResultItems} row`}>
+        { searchResultItems.map(item => (
+            <div key={item.id} className={`col s12 l4`}>
               {
                 searchType === 'objects' &&
-                <ArtObjectCard {...obj} />
+                <ArtObjectCard {...item} />
               }
               {
                 searchType === 'makers' &&
-                <MakerCard {...obj} />
+                <MakerCard {...item} />
               }
               {
                 searchType === 'events' &&
-                <EventCard {...obj} />
+                <EventCard {...item} />
               }
             </div>
           ))

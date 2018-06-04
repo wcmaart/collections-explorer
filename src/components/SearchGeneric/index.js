@@ -79,7 +79,7 @@ class SearchGeneric extends Component {
         }
 
         return getResultsWrapper({
-          objects: data.objects,
+          searchResultItems: data.objects,
           thisPageIdx: thisPageIdx,
           objectType: objectType,
         });

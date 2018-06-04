@@ -34,27 +34,15 @@ class SearchResultsWrapper extends Component {
     const props = this.props;
 
     const {
-      objects,
+      searchResultItems,
       thisPageIdx,
       objectType,
       slugPrefix,
     } = props;
 
-    if (objects.length < 1) {
-      return (
-        <div>No results</div>
-      )
-    }
-
-    if (objects.length === 1) {
-      return (
-        <ArtObjectCard {...objects[0]} />
-      )
-    }
-
     return (
       <div>
-        { objects.length &&
+        { searchResultItems.length &&
           <div>
             <div className={`${styles.searchResultsHeader} row`}>
               { objectType &&

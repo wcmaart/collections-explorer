@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import styles from './styles.scss';
 import { Link } from 'react-router-dom';
 
-// todo: #consolidateCards
 class ArtObjectCard extends Component {
   render() {
     const testImg = this.props.imgUrl || `https://picsum.photos/500/500?random&${this.props.id}`;
