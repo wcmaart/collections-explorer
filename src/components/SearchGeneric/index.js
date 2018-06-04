@@ -11,7 +11,7 @@ class SearchGeneric extends Component {
 
     this.state = {
       thingId: null,
-      paginationIdx: null,
+      pageIdx: null,
       objectType: null,
     };
 
@@ -36,30 +36,29 @@ class SearchGeneric extends Component {
 
     const {
       thingId,
-      paginationIdx,
+      pageIdx,
       objectType,
     } = this.state;
 
     // normalize mixed data
-    const ids = thingId ? [thingId] : null;
-    const thisPageIdx = thingId ? null : paginationIdx || 1;
+    const id = thingId || null;
+    const page = pageIdx || 0;
 
     // determine which gqlQuery to use
-    const gqlQueryKey = ids ? 'byIds' :
-      thisPageIdx ? 'byPaginationIdx' :
-      'default';
-
+    const gqlQueryKey = id ? 'byId' : 'byPageIdx';
     // get the correct gqlQuery
     const gqlQuery = gqlQueries[gqlQueryKey];
 
     // todo: filter by objectType
     return <Query
       query={gqlQuery}
-      variables={{ ids, paginationIdx }}
+      variables={{ id, page }}
       // this is needed to catch errors instead of silently swallowing them
       errorPolicy="all"
     >
       {({ loading, error, data }) => {
+        let searchResultItems = [];
+
         if (loading) {
           return (
             <div className="row">
@@ -74,13 +73,19 @@ class SearchGeneric extends Component {
           return <p className="red-text">Oops! 😱 It looks like you need to setup your api</p>;
         }
 
-        if (!data.objects) {
+        if (data.object) {
+          searchResultItems = [data.object];
+        } else {
+          searchResultItems = data.objects || [];
+        }
+
+        if (!searchResultItems.length) {
           return <p className="red-text">Sorry, no results</p>;
         }
 
         return getResultsWrapper({
-          searchResultItems: data.objects,
-          thisPageIdx: thisPageIdx,
+          searchResultItems,
+          thisPageIdx: page,
           objectType: objectType,
         });
       }}
@@ -102,7 +107,7 @@ class SearchGeneric extends Component {
     // get values from the router
     const { match: { params } } = props;
     const thingId = params.id ? parseInt(params.id, 10) : null;
-    const paginationIdx = params.page ? parseInt(params.page, 10) : null;
+    const pageIdx = params.page ? parseInt(params.page, 10) : null;
     const objectType = params.type || null;
 
     // protect against a bogus id
@@ -116,7 +121,7 @@ class SearchGeneric extends Component {
 
     this.setState({
       thingId,
-      paginationIdx,
+      pageIdx,
       objectType,
     });
   }

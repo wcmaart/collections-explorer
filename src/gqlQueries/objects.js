@@ -4,34 +4,35 @@ const ObjectProps = gql `
   fragment ObjectProps on Object {
     id
     title
-    medium
     maker
-    dimensions
-    people
-    creditline
+    period
+    object_name
+    medium
+    remote {
+      status
+      original_image_id
+      public_id
+      version
+      signature
+      width
+      height
+      format
+    }
   }
 `;
 
 const gqlQueries = {
-  default: gql`
-    query objects {
-      objects {
+  byId: gql`
+    query object($id: String!) {
+      object(id: $id) {
         ...ObjectProps
       }
     }
     ${ObjectProps}
   `,
-  byIds: gql`
-    query objects($ids: [ID!]) {
-      objects(ids: $ids) {
-        ...ObjectProps
-      }
-    }
-    ${ObjectProps}
-  `,
-  byPaginationIdx: gql`
-    query objects($paginationIdx: Int) {
-      objects(paginationIdx: $paginationIdx) {
+  byPageIdx: gql`
+    query objects($page: Int) {
+      objects(page: $page, per_page: 40) {
         ...ObjectProps
       }
     }

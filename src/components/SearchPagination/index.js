@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 
 // Fetch GraphQL data with a Query component
 const SearchPagination = ({thisPageIdx, slugPrefix}) => {
-  const nextPageIdx = thisPageIdx && thisPageIdx + 1;
-  const prevPageIdx = thisPageIdx && (thisPageIdx - 1 || null);
+  const hasPageIdx = thisPageIdx || thisPageIdx === 0;
+  const nextPageIdx = hasPageIdx && thisPageIdx + 1;
+  const prevPageIdx = hasPageIdx && thisPageIdx - 1;
+  const hasPrevPageIdx = prevPageIdx >= 0;
 
   return (
     <div className={styles.quickPagination}>
@@ -13,7 +15,7 @@ const SearchPagination = ({thisPageIdx, slugPrefix}) => {
         Pagination
       </span>
       <ul className="pagination">
-        { prevPageIdx &&
+        { hasPrevPageIdx &&
           <li>
             <Link to={`${slugPrefix}/page/${prevPageIdx}`}>
               <i className="material-icons">&larr;</i>

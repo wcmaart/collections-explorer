@@ -37,9 +37,13 @@ const NotFound = () =>
 function Routes() {
   return (
     <Switch>
+      <Redirect from='/objects/page/0' to='/objects' />
+      <Redirect from='/makers/page/0' to='/makers' />
+
       <Route exact path="/" component={Home} />
       <Route exact path="/objects" component={SearchObjects} />
       <Route path="/objects/page/:page" component={SearchObjects} />
+
       <Route path="/objects/type/:type" component={SearchObjects} />
       <Route path="/objects/type/:type/page/:page" component={SearchObjects} />
       <Route path="/objects/:id" component={SearchObjects} />
@@ -47,7 +51,6 @@ function Routes() {
       <Route exact path="/makers" component={SearchMakers} />
       <Route path="/makers/page/:page" component={SearchMakers} />
       <Route path="/makers/:id" component={SearchMakers} />
-
 
       <Route path="/periods" component={()=> <GenericPage title="Periods"/> } />
       <Route path="/places" component={()=> <GenericPage title="Places"/> } />

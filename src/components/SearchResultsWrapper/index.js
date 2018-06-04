@@ -40,6 +40,8 @@ class SearchResultsWrapper extends Component {
       slugPrefix,
     } = props;
 
+    const hasPageIdx = thisPageIdx || thisPageIdx === 0;
+
     return (
       <div>
         { searchResultItems.length &&
@@ -88,7 +90,7 @@ class SearchResultsWrapper extends Component {
         }
         {
           // todo: figure out this proper logic
-          thisPageIdx &&
+          hasPageIdx &&
           this.state.searchTab === 'topResults' &&
           <SearchPagination {...props} />
         }
