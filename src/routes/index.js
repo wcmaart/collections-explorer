@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Home from '../components/Home';
 import SearchObjects from '../components/SearchObjects';
+import SingleObject from '../components/SingleObject';
 import SearchMakers from '../components/SearchMakers';
 import SearchEvents from '../components/SearchEvents';
 import GenericPage from '../components/GenericPage';
@@ -46,11 +47,11 @@ function Routes() {
 
       <Route path="/objects/type/:type" component={SearchObjects} />
       <Route path="/objects/type/:type/page/:page" component={SearchObjects} />
-      <Route path="/objects/:id" component={SearchObjects} />
+      <Route path="/objects/:id" component={SingleObject} />
 
       <Route exact path="/makers" component={SearchMakers} />
       <Route path="/makers/page/:page" component={SearchMakers} />
-      <Route path="/makers/:id" component={SearchMakers} />
+      <Route path="/makers/:id" component={SingleObject} />
 
       <Route path="/periods" component={()=> <GenericPage title="Periods"/> } />
       <Route path="/places" component={()=> <GenericPage title="Places"/> } />
@@ -60,7 +61,7 @@ function Routes() {
 
       <Route exact path="/events" component={SearchEvents} />
       <Route path="/events/page/:page" component={SearchEvents} />
-      <Route path="/events/:id" component={SearchEvents} />
+      <Route path="/events/:id" component={SingleObject} />
 
       <Route component={NotFound} />
     </Switch>
