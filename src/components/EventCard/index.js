@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 class EventCard extends Component {
   render() {
-    const testImg = this.props.imgUrl || `https://picsum.photos/500/500?random&${this.props.id}`;
+    const testImg = this.props.imageUrl || `https://picsum.photos/500/500?random&${this.props.id}`;
 
     return (
       <div key={this.props.id} className={`${styles.card} card`}>

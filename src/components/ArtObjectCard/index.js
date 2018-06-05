@@ -1,46 +1,50 @@
 import React, { Component } from 'react'
 import styles from './styles.scss';
 import { Link } from 'react-router-dom';
+import { parseObjectProps } from '../../helpers';
 
 class ArtObjectCard extends Component {
   render() {
-    const testImg = this.props.imgUrl || `https://picsum.photos/500/500?random&${this.props.id}`;
+
+    const props = parseObjectProps(this.props);
+
+    const testImg = props.imageUrl || `https://picsum.photos/500/500?random&${props.id}`;
     const statListItems = [
       {
         label: 'Medium',
-        value: this.props.medium,
+        value: props.medium,
 
       },
       {
         label: 'Maker',
-        value: this.props.maker,
+        value: props.maker,
 
       },
       {
         label: 'Dimensions',
-        value: this.props.dimensions,
+        value: props.dimensions,
 
       },
       {
         label: 'People',
-        value: this.props.people,
+        value: props.people,
 
       },
       {
         label: 'Creditline',
-        value: this.props.creditline,
+        value: props.creditline,
       },
     ];
 
     return (
-      <div key={this.props.id} className={`${styles.card} card`}>
-        <Link to={`/objects/${this.props.id}`}>
+      <div key={props.id} className={`${styles.card} card`}>
+        <Link to={`/objects/${props.id}`}>
           <div className="card-image">
             <img src={testImg} />
           </div>
           <div className={styles.cardContent}>
             <div className={styles.cardTitle}>
-              {this.props.title}
+              {props.title}
             </div>
             <ul>
               {
