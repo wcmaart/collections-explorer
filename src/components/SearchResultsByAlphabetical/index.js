@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 class SearchResultsByAlphabetical extends Component {
   render() {
-    const testImg = this.props.imgUrl || `https://picsum.photos/500/500?random&${this.props.id}`;
+    const testImg = this.props.imageUrl || `https://picsum.photos/500/500?random&${this.props.id}`;
     const objects = this.props.objects;
     const thisPageIdx = this.props.thisPageIdx;
     const dummyCounter = 16;

@@ -93,19 +93,19 @@ export const ALPHABET = [
 ];
 
 export const SEARCH_OBJECTS_CONSTS = {
-  searchType: 'objects',
+  searchCategory: 'objects',
   slugPrefix: '/objects',
   searchInputPlaceholder: 'Search All Objects',
 };
 
 export const SEARCH_MAKERS_CONSTS = {
-  searchType: 'makers',
+  searchCategory: 'makers',
   slugPrefix: '/makers',
   searchInputPlaceholder: 'Search Makers',
 };
 
 export const SEARCH_EVENTS_CONSTS = {
-  searchType: 'events',
+  searchCategory: 'events',
   slugPrefix: '/events',
   searchInputPlaceholder: 'Search Events',
 };

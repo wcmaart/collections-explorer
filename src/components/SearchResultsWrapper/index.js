@@ -34,37 +34,27 @@ class SearchResultsWrapper extends Component {
     const props = this.props;
 
     const {
-      objects,
+      searchResultItems,
       thisPageIdx,
-      objectType,
+      searchCategory,
       slugPrefix,
     } = props;
 
-    if (objects.length < 1) {
-      return (
-        <div>No results</div>
-      )
-    }
-
-    if (objects.length === 1) {
-      return (
-        <ArtObjectCard {...objects[0]} />
-      )
-    }
+    const hasPageIdx = thisPageIdx || thisPageIdx === 0;
 
     return (
       <div>
-        { objects.length &&
+        { searchResultItems.length &&
           <div>
             <div className={`${styles.searchResultsHeader} row`}>
-              { objectType &&
+              { searchCategory &&
                 <div className="col s12">
                   <span className="left">
-                    XXX Total Results for {objectType}
+                    XXX Total Results for {searchCategory}
                   </span>
                 </div>
               }
-              { !objectType &&
+              { !searchCategory &&
                 <div className="col s12">
                   <span className="left">
                     XXX Total Results
@@ -100,7 +90,7 @@ class SearchResultsWrapper extends Component {
         }
         {
           // todo: figure out this proper logic
-          thisPageIdx &&
+          hasPageIdx &&
           this.state.searchTab === 'topResults' &&
           <SearchPagination {...props} />
         }

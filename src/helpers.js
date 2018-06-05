@@ -23,3 +23,14 @@ export const getGlobalAppData = () => {
     GRAPHQL_TOKEN: process.env.GRAPHQL_TOKEN,
   };
 };
+
+export const parseObjectProps = (props) => {
+  if (!props.remote) {
+    return props;
+  }
+
+  const imgData = props.remote || {};
+  const imageUrl = `http://res.cloudinary.com/wcma/image/upload/v${imgData.version}/${imgData.public_id}.${imgData.format}`;
+
+  return Object.assign({}, props, {imageUrl});
+};
