@@ -3,7 +3,6 @@ import styles from './styles.scss';
 import { ApolloProvider, Query } from "react-apollo";
 import GraphqlClient from '../../GraphqlClient';
 import QuerySearchResults from '../QuerySearchResults';
-import { withRouter } from 'react-router';
 import { Link, Route } from 'react-router-dom';
 
 class SearchGeneric extends Component {
@@ -21,7 +20,7 @@ class SearchGeneric extends Component {
     // clear the input first
     e.target[0].value = '';
 
-    this.props.history.push(`/objects/${inputVal}`);
+    this.props.history.push(`${this.props.slugPrefix}/${inputVal}`);
   }
 
   render() {
@@ -57,4 +56,4 @@ class SearchGeneric extends Component {
   }
 }
 
-export default withRouter(SearchGeneric);
+export default SearchGeneric;

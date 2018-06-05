@@ -1,12 +1,18 @@
 import React, { PropTypes } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Home from '../components/Home';
-import SearchGenericWrap from '../components/SearchGenericWrap';
+import withSearchRouteHelper from '../components/withSearchRouteHelper';
 import SearchObjects from '../components/SearchObjects';
-import SingleObject from '../components/SingleObject';
 import SearchMakers from '../components/SearchMakers';
 import SearchEvents from '../components/SearchEvents';
+import SearchSingleObject from '../components/SearchSingleObject';
+import SearchSingleMaker from '../components/SearchSingleMaker';
 import GenericPage from '../components/GenericPage';
+
+const WrapSearchObjects = withSearchRouteHelper(SearchObjects);
+const WrapSearchMakers = withSearchRouteHelper(SearchMakers);
+const WrapSearchSingleObject = withSearchRouteHelper(SearchSingleObject);
+const WrapSearchSingleMaker = withSearchRouteHelper(SearchSingleMaker);
 
 // with guidance from https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/guides/server-rendering.md
 const Status = ({ code, children }) =>
@@ -45,30 +51,19 @@ function Routes() {
       <Route exact path="/" component={Home} />
 
       {/* Objects */}
-      <Route exact path="/objects" component={
-        ()=> <SearchGenericWrap category="objects"/>
-      } />
-      <Route path="/objects/page/:page" component={
-        ()=> <SearchGenericWrap category="objects"/>
-      } />
-      <Route path="/objects/type/:type" component={
-        ()=> <SearchGenericWrap category="objects"/>
-      } />
-      <Route path="/objects/type/:type/page/:page" component={
-        ()=> <SearchGenericWrap category="objects"/>
-      } />
-      <Route path="/objects/:id" component={SingleObject} />
+      <Route exact path="/objects" component={WrapSearchObjects} />
+      <Route path="/objects/page/:page" component={WrapSearchObjects} />
+      <Route path="/objects/type/:type" component={WrapSearchObjects} />
+      <Route path="/objects/type/:type/page/:page" component={WrapSearchObjects} />
+      <Route path="/objects/:id" component={WrapSearchSingleObject} />
 
-      {/* Makers */}
-      <Route exact path="/makers" component={
-        ()=> <SearchGenericWrap category="makers"/>
-      } />
-      <Route path="/makers/page/:page" component={
-        ()=> <SearchGenericWrap category="makers"/>
-      } />
-      <Route path="/makers/:id" component={
-        ()=> <SearchGenericWrap category="makers"/>
-      } />
+        {/* Makers */}
+      <Route exact path="/makers" component={WrapSearchMakers} />
+      <Route path="/makers/page/:page" component={WrapSearchMakers} />
+      <Route path="/makers/type/:type" component={WrapSearchMakers} />
+      <Route path="/makers/type/:type/page/:page" component={WrapSearchMakers} />
+      <Route path="/makers/:id" component={WrapSearchSingleMaker} />
+
 
       {/* The rest */}
       <Route path="/periods" component={
@@ -89,7 +84,7 @@ function Routes() {
 
       <Route exact path="/events" component={SearchEvents} />
       <Route path="/events/page/:page" component={SearchEvents} />
-      <Route path="/events/:id" component={SingleObject} />
+      <Route path="/events/:id" component={SearchSingleObject} />
 
       <Route component={NotFound} />
     </Switch>

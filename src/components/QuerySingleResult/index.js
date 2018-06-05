@@ -40,7 +40,6 @@ class QuerySingleResult extends Component {
           );
         }
 
-        debugger;
         if (!data) {
           return <p className="red-text">Oops! 😱 It looks like you need to setup your api</p>;
         }

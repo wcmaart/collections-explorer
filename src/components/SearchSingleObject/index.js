@@ -2,13 +2,20 @@ import React, { Component } from 'react';
 import styles from './styles.scss';
 import Header from '../Header';
 import ArtObjectCard from '../ArtObjectCard';
-import SingleGeneric from '../SingleGeneric';
+import SearchSingleGeneric from '../SearchSingleGeneric';
 import gqlQueries from '../../gqlQueries/objects';
 import { SEARCH_OBJECTS_CONSTS as searchParams } from '../../constants';
 
-class SingleObject extends Component {
+class SearchSingleObject extends Component {
   render() {
-    const gqlQuery = gqlQueries.byId;
+
+    const mergedProps = Object.assign({
+        gqlQuery: gqlQueries.byId,
+      },
+      this.props,
+      {gqlQueries},
+      searchParams,
+    );
 
     return (
       <div>
@@ -16,13 +23,10 @@ class SingleObject extends Component {
         <span>
         </span>
         <div className="container">
-          <SingleGeneric
-            {...searchParams}
-            gqlQuery={gqlQuery}
+          <SearchSingleGeneric
+            {...mergedProps}
             getResultWrapper={(params) => {
-              const mergedParams = Object.assign({}, params.result, searchParams);
-
-              return <ArtObjectCard {...mergedParams} />
+              return <ArtObjectCard {...params.result} />
             }}
           />
         </div>
@@ -31,4 +35,4 @@ class SingleObject extends Component {
   }
 }
 
-export default SingleObject;
+export default SearchSingleObject;
