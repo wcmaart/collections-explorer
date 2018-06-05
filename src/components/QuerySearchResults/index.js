@@ -33,6 +33,16 @@ class QuerySearchResults extends Component {
       {({ loading, error, data }) => {
         let searchResultItems = [];
 
+        const {
+         object,
+         objects,
+         maker,
+         makers,
+        } = data;
+
+        const singleResult = object || maker;
+        const manyResults = objects || makers;
+
         if (loading) {
           return (
             <div className="row">
@@ -43,14 +53,14 @@ class QuerySearchResults extends Component {
           );
         }
 
-        if (!data) {
-          return <p className="red-text">Oops! 😱 It looks like you need to setup your api</p>;
-        }
+        debugger;
 
-        if (data.object) {
-          searchResultItems = [data.object];
+        if (singleResult) {
+          searchResultItems = [singleResult];
+        } else if (manyResults) {
+          searchResultItems = manyResults;
         } else {
-          searchResultItems = data.objects || [];
+          return <p className="red-text">Oops! 😱 It looks like you need to setup your api</p>;
         }
 
         if (!searchResultItems.length) {
