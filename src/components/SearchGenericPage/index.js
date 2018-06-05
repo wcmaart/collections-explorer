@@ -4,7 +4,7 @@ import Header from '../Header';
 import SearchResultsWrapper from '../SearchResultsWrapper';
 import SearchGeneric from '../SearchGeneric';
 
-class SearchGenericWrap extends Component {
+class SearchGenericPage extends Component {
   render() {
     return (
       <div>
@@ -23,4 +23,4 @@ class SearchGenericWrap extends Component {
   }
 }
 
-export default SearchGenericWrap;
+export default SearchGenericPage;

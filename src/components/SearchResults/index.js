@@ -8,7 +8,7 @@ class SearchResults extends Component {
   render() {
     const {
       searchResultItems,
-      searchType,
+      searchCategory,
     } = this.props
 
     return (
@@ -16,15 +16,15 @@ class SearchResults extends Component {
         { searchResultItems.map(item => (
             <div key={item.id} className={`col s12 l4`}>
               {
-                searchType === 'objects' &&
+                searchCategory === 'objects' &&
                 <ArtObjectCard {...item} />
               }
               {
-                searchType === 'makers' &&
+                searchCategory === 'makers' &&
                 <MakerCard {...item} />
               }
               {
-                searchType === 'events' &&
+                searchCategory === 'events' &&
                 <EventCard {...item} />
               }
             </div>

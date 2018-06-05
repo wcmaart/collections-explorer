@@ -53,8 +53,6 @@ class QuerySearchResults extends Component {
           );
         }
 
-        debugger;
-
         if (singleResult) {
           searchResultItems = [singleResult];
         } else if (manyResults) {
