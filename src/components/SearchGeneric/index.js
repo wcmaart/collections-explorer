@@ -10,23 +10,7 @@ class SearchGeneric extends Component {
   constructor() {
     super();
 
-    this.state = {
-      thingId: null,
-      pageIdx: null,
-      objectType: null,
-    };
-
     this.onSubmitSearch = this.onSubmitSearch.bind(this);
-  }
-
-  // check the route state both on mount and update
-  componentDidMount() {
-    this.getRouteState(this.props);
-  }
-
-  // check the route state both on mount and update
-  componentWillReceiveProps(nextProps) {
-    this.getRouteState(nextProps);
   }
 
   onSubmitSearch(e) {
@@ -40,57 +24,14 @@ class SearchGeneric extends Component {
     this.props.history.push(`/objects/${inputVal}`);
   }
 
-  getRouteState(props) {
-    // get values from the router
-    const { match: { params } } = props;
-    const thingId = params.id ? parseInt(params.id, 10) : null;
-    const pageIdx = params.page ? parseInt(params.page, 10) : null;
-    const objectType = params.type || null;
-
-    // protect against a bogus id
-    if (isNaN(thingId)) {
-      this.setState({
-        routeError: 404
-      });
-
-      return;
-    }
-
-    this.setState({
-      thingId,
-      pageIdx,
-      objectType,
-    });
-  }
-
   render() {
-    const {
-      routeError,
-    } = this.state;
-
     const {
       searchInputPlaceholder,
     } = this.props;
 
-    // catch any errors that might have been set in getRouteState
-    if (routeError) {
-      // todo: make a helper for this and move this logic
-      return <Route
-        render={({ staticContext }) => {
-          // there is no `staticContext` on the client, so
-          // we need to guard against that here
-          if (staticContext) {
-            staticContext.status = routeError;
-          }
-
-          return <div>{routeError}</div>;
-          }
-        }
-      />;
-    }
-
     const client = GraphqlClient();
 
+    // todo: simplify syntax of props below
     return (
       <div>
         <form onSubmit={this.onSubmitSearch}>
@@ -105,9 +46,8 @@ class SearchGeneric extends Component {
 
         <ApolloProvider client={client}>
           <QuerySearchResults
-            thingId={this.state.thingId}
-            pageIdx={this.state.pageIdx}
-            objectType={this.state.objectType}
+            thingId={this.props.thingId}
+            pageIdx={this.props.pageIdx}
             gqlQueries={this.props.gqlQueries}
             getResultsWrapper={this.props.getResultsWrapper}
           />

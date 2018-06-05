@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Home from '../components/Home';
+import SearchGenericWrap from '../components/SearchGenericWrap';
 import SearchObjects from '../components/SearchObjects';
 import SingleObject from '../components/SingleObject';
 import SearchMakers from '../components/SearchMakers';
@@ -42,22 +43,49 @@ function Routes() {
       <Redirect from='/makers/page/0' to='/makers' />
 
       <Route exact path="/" component={Home} />
-      <Route exact path="/objects" component={SearchObjects} />
-      <Route path="/objects/page/:page" component={SearchObjects} />
 
-      <Route path="/objects/type/:type" component={SearchObjects} />
-      <Route path="/objects/type/:type/page/:page" component={SearchObjects} />
+      {/* Objects */}
+      <Route exact path="/objects" component={
+        ()=> <SearchGenericWrap category="objects"/>
+      } />
+      <Route path="/objects/page/:page" component={
+        ()=> <SearchGenericWrap category="objects"/>
+      } />
+      <Route path="/objects/type/:type" component={
+        ()=> <SearchGenericWrap category="objects"/>
+      } />
+      <Route path="/objects/type/:type/page/:page" component={
+        ()=> <SearchGenericWrap category="objects"/>
+      } />
       <Route path="/objects/:id" component={SingleObject} />
 
-      <Route exact path="/makers" component={SearchMakers} />
-      <Route path="/makers/page/:page" component={SearchMakers} />
-      <Route path="/makers/:id" component={SingleObject} />
+      {/* Makers */}
+      <Route exact path="/makers" component={
+        ()=> <SearchGenericWrap category="makers"/>
+      } />
+      <Route path="/makers/page/:page" component={
+        ()=> <SearchGenericWrap category="makers"/>
+      } />
+      <Route path="/makers/:id" component={
+        ()=> <SearchGenericWrap category="makers"/>
+      } />
 
-      <Route path="/periods" component={()=> <GenericPage title="Periods"/> } />
-      <Route path="/places" component={()=> <GenericPage title="Places"/> } />
-      <Route path="/materials" component={()=> <GenericPage title="Materials"/> } />
-      <Route path="/techniques" component={()=> <GenericPage title="Techniques"/> } />
-      <Route path="/colors" component={()=> <GenericPage title="Colors"/> } />
+      {/* The rest */}
+      <Route path="/periods" component={
+        ()=> <GenericPage title="Periods"/>
+      } />
+      <Route path="/places" component={
+        ()=> <GenericPage title="Places"/>
+      } />
+      <Route path="/materials" component={
+        ()=> <GenericPage title="Materials"/>
+      } />
+      <Route path="/techniques" component={
+        ()=> <GenericPage title="Techniques"/>
+      } />
+      <Route path="/colors" component={
+        ()=> <GenericPage title="Colors"/>
+      } />
 
       <Route exact path="/events" component={SearchEvents} />
       <Route path="/events/page/:page" component={SearchEvents} />

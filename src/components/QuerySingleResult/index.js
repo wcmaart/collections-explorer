@@ -9,7 +9,6 @@ class QuerySingleResult extends Component {
   render() {
     const {
       thingId,
-      objectType,
       gqlQuery,
       getResultWrapper,
     } = this.props;
@@ -21,7 +20,7 @@ class QuerySingleResult extends Component {
       return null;
     }
 
-    // todo: filter by objectType
+    // todo: filter by searchCategory
     return <Query
       query={gqlQuery}
       variables={{ id }}
@@ -41,13 +40,13 @@ class QuerySingleResult extends Component {
           );
         }
 
+        debugger;
         if (!data) {
           return <p className="red-text">Oops! 😱 It looks like you need to setup your api</p>;
         }
 
         return getResultWrapper({
           result: data.object,
-          objectType: objectType,
         });
       }}
     </Query>

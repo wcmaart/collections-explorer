@@ -10,7 +10,6 @@ class QuerySearchResults extends Component {
     const {
       thingId,
       pageIdx,
-      objectType,
       gqlQueries,
       getResultsWrapper,
     } = this.props;
@@ -24,7 +23,7 @@ class QuerySearchResults extends Component {
     // get the correct gqlQuery
     const gqlQuery = gqlQueries[gqlQueryKey];
 
-    // todo: filter by objectType
+    // todo: filter by searchCategory
     return <Query
       query={gqlQuery}
       variables={{ id, page }}
@@ -61,7 +60,6 @@ class QuerySearchResults extends Component {
         return getResultsWrapper({
           searchResultItems,
           thisPageIdx: page,
-          objectType: objectType,
         });
       }}
     </Query>

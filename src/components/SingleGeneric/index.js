@@ -12,7 +12,7 @@ class SingleGeneric extends Component {
 
     this.state = {
       thingId: null,
-      objectType: null,
+      searchCategory: null,
     };
   }
 
@@ -30,8 +30,8 @@ class SingleGeneric extends Component {
     // get values from the router
     const { match: { params } } = props;
     const thingId = params.id ? parseInt(params.id, 10) : null;
-    // todo: this should be searchType not objectType
-    const objectType = params.type || null;
+    // todo: this should be searchType not searchCategory
+    const searchCategory = params.type || null;
 
     // protect against a bogus id
     if (isNaN(thingId)) {
@@ -44,7 +44,7 @@ class SingleGeneric extends Component {
 
     this.setState({
       thingId,
-      objectType,
+      searchCategory,
     });
   }
 
@@ -80,7 +80,7 @@ class SingleGeneric extends Component {
       <ApolloProvider client={client}>
         <QuerySingleResult
           thingId={this.state.thingId}
-          objectType={this.state.objectType}
+          searchCategory={this.state.searchCategory}
           gqlQuery={this.props.gqlQuery}
           getResultWrapper={this.props.getResultWrapper}
         />
