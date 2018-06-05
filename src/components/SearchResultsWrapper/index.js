@@ -36,7 +36,7 @@ class SearchResultsWrapper extends Component {
     const {
       searchResultItems,
       thisPageIdx,
-      objectType,
+      searchCategory,
       slugPrefix,
     } = props;
 
@@ -47,14 +47,14 @@ class SearchResultsWrapper extends Component {
         { searchResultItems.length &&
           <div>
             <div className={`${styles.searchResultsHeader} row`}>
-              { objectType &&
+              { searchCategory &&
                 <div className="col s12">
                   <span className="left">
-                    XXX Total Results for {objectType}
+                    XXX Total Results for {searchCategory}
                   </span>
                 </div>
               }
-              { !objectType &&
+              { !searchCategory &&
                 <div className="col s12">
                   <span className="left">
                     XXX Total Results

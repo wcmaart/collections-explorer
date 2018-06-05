@@ -23,7 +23,7 @@ const ObjectProps = gql `
 
 const gqlQueries = {
   byId: gql`
-    query object($id: String!) {
+    query object($id: Int!) {
       object(id: $id) {
         ...ObjectProps
       }
