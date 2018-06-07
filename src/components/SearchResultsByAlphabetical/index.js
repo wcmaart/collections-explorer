@@ -10,8 +10,6 @@ class SearchResultsByAlphabetical extends Component {
     const thisPageIdx = this.props.thisPageIdx;
     const dummyCounter = 16;
 
-    debugger;
-
     return (
        <div className={`${styles.artObjects} row`}>
         { ALPHABET.map(letter => (
