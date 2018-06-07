@@ -2,8 +2,12 @@
 @import '../../shared-styles/mixins';
 
 .quickPagination {
-  margin-top: 2rem;
+  margin: 2rem 0;
   font-size: 2rem;
   width: 100%;
   text-align: center;
+}
+
+.paginationTitle {
+  font-size: 1rem;
 }

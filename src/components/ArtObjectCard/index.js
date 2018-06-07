@@ -68,10 +68,10 @@ class ArtObjectCard extends Component {
     );
 
     return (
-      <div key={props.id} className={`${styles.card} card`}>
+      <div key={props.id} className={`${styles.card} ${isSingleCard ? styles.cardSingle : ''} card`}>
         {
           isSingleCard &&
-          <div className={styles.cardSingle}>
+          <div>
             {cardContent}
             {cardImage}
           </div>

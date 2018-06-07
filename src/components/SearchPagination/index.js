@@ -11,7 +11,7 @@ const SearchPagination = ({thisPageIdx, slugPrefix}) => {
 
   return (
     <div className={styles.quickPagination}>
-      <span>
+      <span className={styles.paginationTitle}>
         Pagination
       </span>
       <ul className="pagination">

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import styles from './styles.scss';
 import { ApolloProvider, Query } from "react-apollo";
 import GraphqlClient from '../../GraphqlClient';
@@ -56,4 +57,4 @@ class SearchGeneric extends Component {
   }
 }
 
-export default SearchGeneric;
+export default withRouter(SearchGeneric);
