@@ -27,7 +27,7 @@ class SearchSingleMaker extends Component {
           <SearchSingleGeneric
             {...mergedProps}
             getResultWrapper={(params) => {
-              return <ArtObjectCard {...params.result} />
+              return <ArtObjectCard {...params.result} isSingleCard={true} />
             }}
           />
         </div>
