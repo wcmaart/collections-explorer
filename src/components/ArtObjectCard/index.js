@@ -11,7 +11,8 @@ class ArtObjectCard extends Component {
       isSingleCard,
     } = props;
 
-    const testImg = props.imageUrl || `https://picsum.photos/500/500?random&${props.id}`;
+    // const testImg = props.imageUrl || `https://picsum.photos/500/500?random&${props.id}`;
+    const testImg = this.props.imageUrl || '/no-image-placeholder-big.png';
     const statListItems = [
       {
         label: 'Medium',

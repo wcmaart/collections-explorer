@@ -2,12 +2,38 @@
 @import '../../shared-styles/materialize/index.scss';
 
 .card {
-  // undo materialize style. Todo: remove this class later
-  box-shadow: none !important;
+  margin: 0;
+  box-shadow: $materialize-shadow;
 }
 
-.cardTitle {
-  font-size: $font-size-20;
-  display: inline-block;
-  margin: $padding-sm 0;
+.cardContent {
+  padding: $masonry-item-padding;
+}
+
+@media #{$large-and-up} {
+  .cardSingle {
+    .cardTitle {
+      font-size: $font-size-md-lg;
+    }
+  }
+  .cardTitle {
+    font-size: $font-size-20;
+    line-height: 1.25em;
+    display: inline-block;
+    margin: $padding-md 0;
+  }
+
+  .statLabel {
+    font-weight: $font-weight-bold;
+    line-height: 1.5em;
+    display: block;
+  }
+
+  .statValue {
+    font-size: $font-size-base;
+  }
+
+  .colon {
+    display: none;
+  }
 }
