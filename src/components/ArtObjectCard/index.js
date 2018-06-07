@@ -42,7 +42,7 @@ class ArtObjectCard extends Component {
           <div className="card-image">
             <img src={testImg} />
           </div>
-          <div className={styles.cardContent}>
+          <div className={`${styles.cardContent} cardContent`}>
             <div className={styles.cardTitle}>
               {props.title}
             </div>

@@ -2,12 +2,49 @@
 @import '../../shared-styles/mixins';
 @import '../../shared-styles/materialize/index.scss';
 
-.artObjects {
-  display: flex;
-  flex-flow: row wrap;
+.searchResultItemGrid {
+  margin-bottom: $padding-lg;
+
+  li.masonryGridItem {
+    padding: $masonry-item-margin;
+  }
 }
 
-.col {
-  display: flex;
-  align-items: stretch;
+
+:global {
+  @media #{$large-and-up} {
+    .searchResultItemGrid {
+      .component-masonry-grid {
+        // make it perfectly flush with the ends
+        margin-left: -$masonry-item-margin;
+        margin-right: -$masonry-item-margin;
+      }
+
+      .card {
+        margin: 0;
+
+        &:hover {
+          .cardContent {
+            display: block;
+          }
+        }
+      }
+
+      .cardContent {
+        background: $color-white;
+        position: absolute;
+        display: none;
+        z-index: 2;
+        top: 100%;
+        left: 0;
+        right: 0;
+        margin: -$masonry-item-padding;
+        margin-top: 0;
+
+        li {
+          margin-bottom: $padding-sm;
+        }
+      }
+    }
+  }
 }

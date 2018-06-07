@@ -3,33 +3,44 @@ import styles from './styles.scss';
 import ArtObjectCard from '../ArtObjectCard';
 import MakerCard from '../MakerCard';
 import EventCard from '../EventCard';
+import MasonryGrid from '../MasonryGrid';
 
 class SearchResults extends Component {
-  render() {
+  getMasonryElements(elements) {
     const {
-      searchResultItems,
       searchCategory,
     } = this.props
 
+    return elements.map(function(item) {
+      return (
+        <li key={item.id} className={`${styles.masonryGridItem} col s12 l3`}>
+          {
+            searchCategory === 'objects' &&
+            <ArtObjectCard {...item} />
+          }
+          {
+            searchCategory === 'makers' &&
+            <MakerCard {...item} />
+          }
+          {
+            searchCategory === 'events' &&
+            <EventCard {...item} />
+          }
+        </li>
+      );
+    });
+  }
+
+  render() {
+    const {
+      searchResultItems,
+    } = this.props
+
     return (
-      <div className={`${styles.searchResultItems} row`}>
-        { searchResultItems.map(item => (
-            <div key={item.id} className={`col s12 l4`}>
-              {
-                searchCategory === 'objects' &&
-                <ArtObjectCard {...item} />
-              }
-              {
-                searchCategory === 'makers' &&
-                <MakerCard {...item} />
-              }
-              {
-                searchCategory === 'events' &&
-                <EventCard {...item} />
-              }
-            </div>
-          ))
-        }
+      <div className="row">
+        <div className={`${styles.searchResultItemGrid} searchResultItemGrid col s12`}>
+          <MasonryGrid masonryElements={this.getMasonryElements(searchResultItems)} />
+        </div>
       </div>
     );
   }

@@ -3,20 +3,18 @@
 @import '../../shared-styles/searchResultCard';
 
 .card {
+  margin: 0;
   box-shadow: $materialize-shadow;
 }
 
 .cardContent {
-  padding: $padding-sm;
-
-  li {
-    margin-bottom: $padding-sm;
-  }
+  padding: $masonry-item-padding;
 }
 
 @media #{$large-and-up} {
   .cardTitle {
     font-size: $font-size-20;
+    line-height: 1.25em;
     display: inline-block;
     margin: $padding-md 0;
   }
