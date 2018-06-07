@@ -69,9 +69,6 @@ function Routes() {
       <Route path="/periods" component={
         ()=> <GenericPage title="Periods"/>
       } />
-      <Route path="/places" component={
-        ()=> <GenericPage title="Places"/>
-      } />
       <Route path="/materials" component={
         ()=> <GenericPage title="Materials"/>
       } />

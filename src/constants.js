@@ -26,10 +26,6 @@ export const NAV_LINKS = [
     url: '/periods',
   },
   {
-    content: 'Places',
-    url: '/places',
-  },
-  {
     content: 'Materials',
     url: '/materials',
   },
