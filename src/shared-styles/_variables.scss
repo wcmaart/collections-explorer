@@ -15,6 +15,7 @@ $font-size-base: 16px;
 $font-size-20: 1.25rem;
 $font-size-sm: .85rem;
 $font-size-md: 1.5rem;
+$font-size-md-lg: 2rem;
 $font-size-lg: 3rem;
 $font-weight-bold: 600;
 $border: 1px solid $color-black;
@@ -22,3 +23,6 @@ $border-light: 1px solid $color-grey-border;
 $materialize-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
   0 3px 1px -2px rgba(0,0,0,0.12),
   0 1px 5px 0 rgba(0,0,0,0.2);
+
+$masonry-item-margin: .25rem;
+$masonry-item-padding: $padding-md;

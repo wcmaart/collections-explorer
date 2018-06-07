@@ -45,47 +45,45 @@ class SearchResultsWrapper extends Component {
     return (
       <div>
         { searchResultItems.length &&
-          <div>
-            <div className={`${styles.searchResultsHeader} row`}>
+          <div className="row">
+            <div className={`${styles.searchResultsHeader} col s12`}>
               { searchCategory &&
-                <div className="col s12">
-                  <span className="left">
-                    XXX Total Results for {searchCategory}
-                  </span>
-                </div>
+                <span className="left">
+                  XXX Total Results for {searchCategory}
+                </span>
               }
               { !searchCategory &&
-                <div className="col s12">
-                  <span className="left">
-                    XXX Total Results
-                  </span>
-                  <ul className="tabs left">
-                    {
-                      SEARCH_TABS.map((tab) => (
-                        <li
-                          className={`${styles.tab} tab left ${this.getActiveClass(tab.key)}`}
-                          key={tab.key}
-                        >
-                          <a href="#" onClick={this.onTabClick.bind(this)} data-key={tab.key}>{tab.content}</a>
-                        </li>
-                      ))
-                    }
-                  </ul>
-                </div>
+                <span className="left">
+                  XXX Total Results
+                </span>
+              }
+              <ul className="tabs left">
+                {
+                  SEARCH_TABS.map((tab) => (
+                    <li
+                      className={`${styles.tab} tab left ${this.getActiveClass(tab.key)}`}
+                      key={tab.key}
+                    >
+                      <a href="#" onClick={this.onTabClick.bind(this)} data-key={tab.key}>{tab.content}</a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+            <div className="col s12">
+              {
+                this.state.searchTab === 'topResults' &&
+                <SearchResults {...props} />
+              }
+              {
+                this.state.searchTab === 'byMedium' &&
+                <SearchResultsByMedium {...props} />
+              }
+              {
+                this.state.searchTab === 'byAlphabetical' &&
+                <SearchResultsByAlphabetical {...props} />
               }
             </div>
-            {
-              this.state.searchTab === 'topResults' &&
-              <SearchResults {...props} />
-            }
-            {
-              this.state.searchTab === 'byMedium' &&
-              <SearchResultsByMedium {...props} />
-            }
-            {
-              this.state.searchTab === 'byAlphabetical' &&
-              <SearchResultsByAlphabetical {...props} />
-            }
           </div>
         }
         {
