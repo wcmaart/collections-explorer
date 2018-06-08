@@ -45,12 +45,7 @@ class SearchGeneric extends Component {
         </form>
 
         <ApolloProvider client={client}>
-          <QuerySearchResults
-            thingId={this.props.thingId}
-            pageIdx={this.props.pageIdx}
-            gqlQueries={this.props.gqlQueries}
-            getResultsWrapper={this.props.getResultsWrapper}
-          />
+          <QuerySearchResults {...this.props} />
         </ApolloProvider>
       </div>
     );
