@@ -1,5 +1,9 @@
 import { META_TAGS, META_TAGS_DEFAULT, CANONICAL_DOMAIN } from './constants';
 
+const parseImage = (imgData) => {
+  return `http://res.cloudinary.com/wcma/image/upload/v${imgData.version}/${imgData.public_id}.${imgData.format}`;
+};
+
 export const getMetaTags = path => {
   const tags = META_TAGS[path] || META_TAGS_DEFAULT;
 
@@ -25,12 +29,25 @@ export const getGlobalAppData = () => {
 };
 
 export const parseObjectProps = (props) => {
-  if (!props.remote) {
+  const imgData = props.remote;
+
+  if (!imgData) {
     return props;
   }
 
-  const imgData = props.remote || {};
-  const imageUrl = `http://res.cloudinary.com/wcma/image/upload/v${imgData.version}/${imgData.public_id}.${imgData.format}`;
+  return Object.assign({}, props, {
+    imageUrl: parseImage(imgData),
+  });
+};
 
-  return Object.assign({}, props, {imageUrl});
+export const parseMakerProps = (props) => {
+  const imgData = props.keyImage;
+
+  if (!imgData) {
+    return props;
+  }
+
+  return Object.assign({}, props, {
+    imageUrl: parseImage(imgData),
+  });
 };

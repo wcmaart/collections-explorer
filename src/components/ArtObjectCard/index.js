@@ -42,22 +42,24 @@ class ArtObjectCard extends Component {
 
     const cardContent = (
       <div className={`${styles.cardContent} cardContent`}>
-        <div className={styles.cardTitle}>
-          {props.title}
+        <div className={`${styles.cardContentInner} cardContentInner`}>
+          <div className={styles.cardTitle}>
+            {props.title}
+          </div>
+          <ul>
+            {
+              statListItems.map(statListItem => {
+                return statListItem.value && (
+                  <li className={styles.statListItem} key={statListItem.label}>
+                    <span className={styles.statLabel}>{statListItem.label}</span>
+                    <span className={styles.colon}>: </span>
+                    <span className={styles.statValue}>{statListItem.value}</span>
+                  </li>
+                );
+              })
+            }
+          </ul>
         </div>
-        <ul>
-          {
-            statListItems.map(statListItem => {
-              return statListItem.value && (
-                <li className={styles.statListItem} key={statListItem.label}>
-                  <span className={styles.statLabel}>{statListItem.label}</span>
-                  <span className={styles.colon}>: </span>
-                  <span className={styles.statValue}>{statListItem.value}</span>
-                </li>
-              );
-            })
-          }
-        </ul>
       </div>
     );
 

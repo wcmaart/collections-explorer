@@ -46,6 +46,7 @@ const gqlQueries = {
       }
     }
   `,
+  // Note this sort_field on "title" is a temp way to get decent data with images
   byPageIdx: gql`
     query objects($page: Int) {
       objects(page: $page, per_page: 40, sort_field: "title", sort: "asc") {

@@ -1,18 +1,23 @@
 import React, { Component } from 'react'
 import styles from './styles.scss';
 import { Link } from 'react-router-dom';
+import { parseMakerProps } from '../../helpers';
 
 class MakerCard extends Component {
   render() {
-    // const testImg = this.props.imageUrl || `https://picsum.photos/500/500?random&${this.props.id}`;
-    const testImg = this.props.imageUrl || '/no-image-placeholder-big.png';
+    const props = parseMakerProps(this.props);
+
+    // const testImg = props.imageUrl || `https://picsum.photos/500/500?random&${props.id}`;
+    const testImg = props.imageUrl || '/no-image-placeholder-big.png';
 
     const cardContent = (
       <div className={`${styles.cardContent} cardContent`}>
-        <div className={styles.cardTitle}>
-          <span>
-            {this.props.title}
-          </span>
+        <div className={`${styles.cardContentInner} cardContentInner`}>
+          <div className={styles.cardTitle}>
+            <span>
+              {props.title}
+            </span>
+          </div>
         </div>
       </div>
     );
@@ -23,8 +28,8 @@ class MakerCard extends Component {
       </div>
     );
     return (
-      <div key={this.props.id} className={`${styles.card} card`}>
-        <Link to={`/makers/${this.props.id}`}>
+      <div key={props.id} className={`${styles.card} card`}>
+        <Link to={`/makers/${props.id}`}>
           {cardImage}
           {cardContent}
         </Link>
