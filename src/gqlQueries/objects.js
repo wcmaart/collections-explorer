@@ -21,18 +21,34 @@ const ObjectProps = gql `
   }
 `;
 
+// Todo, can we fix the api so that we can re-use the fragment instead like we could before?
+// I think this should be (plural) objects($id: Int!)
 const gqlQueries = {
   byId: gql`
     query object($id: Int!) {
       object(id: $id) {
-        ...ObjectProps
+        id
+        title
+        maker
+        period
+        object_name
+        medium
+        remote {
+          status
+          original_image_id
+          public_id
+          version
+          signature
+          width
+          height
+          format
+        }
       }
     }
-    ${ObjectProps}
   `,
   byPageIdx: gql`
     query objects($page: Int) {
-      objects(page: $page, per_page: 40) {
+      objects(page: $page, per_page: 40, sort_field: "title", sort: "asc") {
         ...ObjectProps
       }
     }
