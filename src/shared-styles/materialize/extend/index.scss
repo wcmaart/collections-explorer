@@ -1,2 +1,19 @@
+// Note, this is being imported as :global in src/components/App/styles.scss
+
 // import variables from outside materialize
 @import './forms/_input-fields.scss';
+
+.btn-flat {
+  text-transform: none;
+}
+
+.paragraph {
+  padding: $padding-sm 0;
+  line-height: $line-height-std;
+}
+
+.section {
+  margin-bottom: $padding-md-lg;
+  padding-bottom: $padding-md-lg;
+  border-bottom: 2px solid $color-grey-border-light;
+}

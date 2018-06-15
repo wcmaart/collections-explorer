@@ -28,8 +28,6 @@ class QuerySingleResult extends Component {
       errorPolicy="all"
     >
       {({ loading, error, data }) => {
-        let searchResultItems = [];
-
         if (loading) {
           return (
             <div className="row">
@@ -44,8 +42,16 @@ class QuerySingleResult extends Component {
           return <p className="red-text">Oops! 😱 It looks like you need to setup your api</p>;
         }
 
+        // todo: improve this #apiMakerId
+        // work around for maker
+        const result = data.object || {
+          // The maker doesn't have an single maker endpoint.
+          // Instead it gets a list of objects filtered by maker
+          objects: data.objects,
+        };
+
         return getResultWrapper({
-          result: data.object,
+          result,
         });
       }}
     </Query>

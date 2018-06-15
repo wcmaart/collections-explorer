@@ -1,4 +1,5 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
+import { ObjectProps } from './objects';
 
 const MakerProps = gql `
   fragment MakerProps on Maker {
@@ -28,14 +29,17 @@ const MakerProps = gql `
   }
 `;
 
+// todo: improve this #apiMakerId
+// Todo, can we fix the api so that we can re-use the fragment instead like we could before?
+// I think this should be (plural) makers($id: Int!)
 const gqlQueries = {
   byId: gql`
-    query maker($id: Int!) {
-      maker(id: $id) {
-        ...MakerProps
+    query objects($id: String) {
+      objects(maker: $id) {
+        ...ObjectProps
       }
     }
-    ${MakerProps}
+    ${ObjectProps}
   `,
   // Note this sort_field on "id" is a temp way to get decent data with images
   byPageIdx: gql`

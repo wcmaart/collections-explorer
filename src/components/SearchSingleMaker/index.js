@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import styles from './styles.scss';
 import Header from '../Header';
-// todo -- use maker instead
-import ArtObjectCard from '../ArtObjectCard';
+import SingleMakerView from '../SingleMakerView';
 import SearchSingleGeneric from '../SearchSingleGeneric';
 import gqlQueries from '../../gqlQueries/makers';
 import { SEARCH_MAKERS_CONSTS as searchParams } from '../../constants';
 
 class SearchSingleMaker extends Component {
   render() {
-
     const mergedProps = Object.assign({
         gqlQuery: gqlQueries.byId,
       },
@@ -21,13 +19,17 @@ class SearchSingleMaker extends Component {
     return (
       <div>
         <Header />
-        <span>
-        </span>
         <div className="container">
           <SearchSingleGeneric
             {...mergedProps}
             getResultWrapper={(params) => {
-              return <ArtObjectCard {...params.result} isSingleCard={true} />
+              // todo: improve this #apiMakerId
+              const newMergedProps = Object.assign({}, params.result, {
+                thingId: mergedProps.thingId,
+                title: mergedProps.thingId,
+              });
+
+              return <SingleMakerView {...newMergedProps} />
             }}
           />
         </div>

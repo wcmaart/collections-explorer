@@ -1,0 +1,51 @@
+@import '../../shared-styles/variables';
+@import '../../shared-styles/mixins';
+
+.searchResultItemGrid {
+  margin-bottom: $padding-lg;
+
+  li.masonryGridItem {
+    padding: $masonry-item-margin;
+  }
+}
+
+:global {
+  @media #{$large-and-up} {
+    .searchResultItemGrid {
+      .component-masonry-grid {
+        // make it perfectly flush with the ends
+        margin-left: -$masonry-item-margin;
+        margin-right: -$masonry-item-margin;
+      }
+
+      .card {
+        margin: 0;
+
+        &:hover {
+          .cardContent {
+            display: block;
+            z-index: 2;
+          }
+        }
+      }
+
+      .cardContent,
+      .cardContentInner {
+        position: absolute;
+        left: -$masonry-item-padding;
+        right: -$masonry-item-padding;
+        border: $masonry-item-padding solid $color-white;
+      }
+
+      .cardContent {
+        display: none;
+        top: -$masonry-item-padding;
+        bottom: -$masonry-item-padding;
+
+        li {
+          margin-bottom: $padding-sm;
+        }
+      }
+    }
+  }
+}

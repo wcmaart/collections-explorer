@@ -27,6 +27,7 @@ class MakerCard extends Component {
         <img src={testImg} />
       </div>
     );
+
     return (
       <div key={props.id} className={`${styles.card} card`}>
         <Link to={`/makers/${props.id}`}>

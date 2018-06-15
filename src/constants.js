@@ -30,10 +30,6 @@ export const NAV_LINKS = [
     url: '/materials',
   },
   {
-    content: 'Techniques',
-    url: '/techniques',
-  },
-  {
     content: 'Colors',
     url: '/colors',
   },
@@ -105,3 +101,8 @@ export const SEARCH_EVENTS_CONSTS = {
   slugPrefix: '/events',
   searchInputPlaceholder: 'Search Events',
 };
+
+export const FAKE_MAKER_BIO = `
+This is a temporary placeholder bio for makers...\n
+Pablo Picasso (October 25, 1881 to April 8, 1973) was a Spanish expatriate painter, sculptor, printmaker, ceramicist and stage designer considered one of the greatest and most influential artists of the 20th century and the co-creator, along with Georges Braque, of Cubism. Considered radical in his work, Picasso continues to garner reverence for his technical mastery, visionary creativity and profound empathy. Together, these qualities have distinguished the "disquieting" Spaniard with the "sombrepiercing" eyes as a revolutionary artist. For nearly 80 of his 91 years, Picasso devoted himself to an artistic production that he superstitiously believed would keep him alive, contributing significantly to — and paralleling the entire development of — modern art in the 20th century.
+`;

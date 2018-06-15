@@ -1,6 +1,10 @@
 import { META_TAGS, META_TAGS_DEFAULT, CANONICAL_DOMAIN } from './constants';
 
 const parseImage = (imgData) => {
+  if (!imgData) {
+    return null;
+  }
+
   return `http://res.cloudinary.com/wcma/image/upload/v${imgData.version}/${imgData.public_id}.${imgData.format}`;
 };
 
@@ -41,13 +45,10 @@ export const parseObjectProps = (props) => {
 };
 
 export const parseMakerProps = (props) => {
-  const imgData = props.keyImage;
-
-  if (!imgData) {
-    return props;
-  }
+  const imgData = props.keyImage || null;
 
   return Object.assign({}, props, {
     imageUrl: parseImage(imgData),
+    id: props.title,
   });
 };
