@@ -1,29 +1,21 @@
 import React, { Component } from 'react';
 import styles from './styles.scss';
-import Header from '../Header';
-import SearchResultsWrapper from '../SearchResultsWrapper';
-import SearchGeneric from '../SearchGeneric';
+import SearchGenericPage from '../SearchGenericPage';
 import gqlQueries from '../../gqlQueries/events';
 import { SEARCH_EVENTS_CONSTS as searchParams } from '../../constants';
 
 class SearchEvents extends Component {
   render() {
-    return (
-      <div>
-        <Header />
-        <div className="container">
-          <SearchGeneric
-            {...searchParams}
-            gqlQueries={gqlQueries}
-            getResultsWrapper={(params) => {
-              const mergedParams = Object.assign({}, params, searchParams);
-
-              return <SearchResultsWrapper {...mergedParams} />
-            }}
-          />
-        </div>
-      </div>
+    const mergedProps = Object.assign(
+      {
+        searchCategory: 'events',
+      },
+      this.props,
+      {gqlQueries},
+      searchParams,
     );
+
+    return <SearchGenericPage {...mergedProps} />
   }
 }
 

@@ -31,17 +31,19 @@ function withSearchRouteHelper(WrappedComponent) {
         category,
       } = props;
 
-      const thingId = params.id ? parseInt(params.id, 10) : null;
+      // const thingId = params.id ? parseInt(params.id, 10) : null;
+      // todo: improve this #apiMakerId
+      const thingId = params.id;
       const pageIdx = params.page ? parseInt(params.page, 10) : null;
 
-      // protect against a bogus id
-      if (isNaN(thingId)) {
-        this.setState({
-          routeError: 404
-        });
+      // // protect against a bogus id
+      // if (isNaN(thingId)) {
+      //   this.setState({
+      //     routeError: 404
+      //   });
 
-        return;
-      }
+      //   return;
+      // }
 
       this.setState({
         thingId,

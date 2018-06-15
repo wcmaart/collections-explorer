@@ -10,13 +10,7 @@ class SearchGenericPage extends Component {
       <div>
         <Header />
         <div className="container">
-          <SearchGeneric
-            {...this.props}
-            getResultsWrapper={(params) => {
-              const mergedParams = Object.assign({}, this.props, params);
-              return <SearchResultsWrapper {...mergedParams} />
-            }}
-          />
+          <SearchGeneric {...this.props} />
         </div>
       </div>
     );

@@ -72,9 +72,6 @@ function Routes() {
       <Route path="/materials" component={
         ()=> <GenericPage title="Materials"/>
       } />
-      <Route path="/techniques" component={
-        ()=> <GenericPage title="Techniques"/>
-      } />
       <Route path="/colors" component={
         ()=> <GenericPage title="Colors"/>
       } />

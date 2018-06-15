@@ -4,6 +4,7 @@ import { ApolloProvider, Query } from "react-apollo";
 import GraphqlClient from '../../GraphqlClient';
 import { withRouter } from 'react-router';
 import { Link, Route } from 'react-router-dom';
+import SearchResultsWrapper from '../SearchResultsWrapper';
 
 class QuerySearchResults extends Component {
   render() {
@@ -11,7 +12,6 @@ class QuerySearchResults extends Component {
       thingId,
       pageIdx,
       gqlQueries,
-      getResultsWrapper,
     } = this.props;
 
     // normalize mixed data
@@ -65,10 +65,12 @@ class QuerySearchResults extends Component {
           return <p className="red-text">Sorry, no results</p>;
         }
 
-        return getResultsWrapper({
+        const mergedParams = Object.assign({}, this.props, {
           searchResultItems,
           thisPageIdx: page,
         });
+
+        return <SearchResultsWrapper {...mergedParams} />
       }}
     </Query>
   }
