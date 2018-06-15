@@ -20,18 +20,22 @@ class SearchSingleMaker extends Component {
       <div>
         <Header />
         <div className="container">
-          <SearchSingleGeneric
-            {...mergedProps}
-            getResultWrapper={(params) => {
-              // todo: improve this #apiMakerId
-              const newMergedProps = Object.assign({}, params.result, {
-                thingId: mergedProps.thingId,
-                title: mergedProps.thingId,
-              });
+          <div className="row">
+            <div className="col s12">
+              <SearchSingleGeneric
+                {...mergedProps}
+                getResultWrapper={(params) => {
+                  // todo: improve this #apiMakerId
+                  const newMergedProps = Object.assign({}, params.result, {
+                    thingId: mergedProps.thingId,
+                    title: mergedProps.thingId,
+                  });
 
-              return <SingleMakerView {...newMergedProps} />
-            }}
-          />
+                  return <SingleMakerView {...newMergedProps} />
+                }}
+              />
+            </div>
+          </div>
         </div>
       </div>
     );

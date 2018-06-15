@@ -1,21 +1,22 @@
 @import '../../shared-styles/variables';
 @import '../../shared-styles/mixins';
+@import '../../shared-styles/materialize/index.scss';
 
-.searchResultItemGrid {
+.masonryGrid {
   margin-bottom: $padding-lg;
-
-  li.masonryGridItem {
-    padding: $masonry-item-margin;
-  }
 }
 
 :global {
   @media #{$large-and-up} {
-    .searchResultItemGrid {
+    .masonryGrid {
       .component-masonry-grid {
         // make it perfectly flush with the ends
         margin-left: -$masonry-item-margin;
         margin-right: -$masonry-item-margin;
+      }
+
+      li.masonryGridItem {
+        padding: $masonry-item-margin;
       }
 
       .card {

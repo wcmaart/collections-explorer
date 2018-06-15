@@ -1,6 +1,5 @@
 @import '../../shared-styles/variables';
 @import '../../shared-styles/materialize/index.scss';
-@import '../../shared-styles/searchResultItemGrid';
 
 .makerBio {
   column-count: 2;
@@ -10,4 +9,10 @@
 .h2 {
   margin: 0 0 1rem 0;
   font-size: $font-size-20;
+}
+
+.goBack {
+  @extend .btn-flat;
+
+  padding-left: 0;
 }

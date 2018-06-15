@@ -16,7 +16,7 @@ class SingleMakerView extends Component {
   getMasonryElements(elements) {
     return elements.map(function(item) {
       return (
-        <li key={item.id} className={`${styles.masonryGridItem} col s12 l3`}>
+        <li key={item.id} className="masonryGridItem col s12 l3">
           <ArtObjectCard {...item} />
         </li>
       );
@@ -30,7 +30,7 @@ class SingleMakerView extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.goBack.bind(this)} className="btn-flat">
+        <button onClick={this.goBack.bind(this)} className={styles.goBack}>
           Go Back
         </button>
 
@@ -49,11 +49,7 @@ class SingleMakerView extends Component {
           Most Popular
           </h2>
 
-          <div className="row">
-            <div className={`${styles.searchResultItemGrid} searchResultItemGrid col s12`}>
-              <MasonryGrid masonryElements={this.getMasonryElements(this.props.objects)} />
-            </div>
-          </div>
+          <MasonryGrid masonryElements={this.getMasonryElements(this.props.objects)} />
         </section>
       </div>
     );

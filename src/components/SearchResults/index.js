@@ -13,7 +13,7 @@ class SearchResults extends Component {
 
     return elements.map(function(item) {
       return (
-        <li key={item.id} className={`${styles.masonryGridItem} col s12 l3`}>
+        <li key={item.id} className="masonryGridItem col s12 l3">
           {
             searchCategory === 'objects' &&
             <ArtObjectCard {...item} />
@@ -37,11 +37,7 @@ class SearchResults extends Component {
     } = this.props
 
     return (
-      <div className="row">
-        <div className={`${styles.searchResultItemGrid} searchResultItemGrid col s12`}>
-          <MasonryGrid masonryElements={this.getMasonryElements(searchResultItems)} />
-        </div>
-      </div>
+      <MasonryGrid masonryElements={this.getMasonryElements(searchResultItems)} />
     );
   }
 }
