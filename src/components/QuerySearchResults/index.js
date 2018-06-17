@@ -17,7 +17,6 @@ class QuerySearchResults extends Component {
     // normalize mixed data
     const id = thingId || null;
     const page = pageIdx || 0;
-
     // determine which gqlQuery to use
     const gqlQueryKey = id ? 'byId' : 'byPageIdx';
     // get the correct gqlQuery

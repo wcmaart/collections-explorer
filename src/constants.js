@@ -44,15 +44,15 @@ export const NAV_LINKS = [
 export const SEARCH_TABS = [
   {
     content: 'Top Results',
-    key: 'topResults',
+    key: '',
   },
   {
     content: 'By Medium',
-    key: 'byMedium',
+    key: 'medium',
   },
   {
     content: 'A-Z',
-    key: 'byAlphabetical',
+    key: 'alphabetical',
   },
 ];
 

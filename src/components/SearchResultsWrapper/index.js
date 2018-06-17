@@ -10,24 +10,20 @@ import { SEARCH_TABS } from '../../constants';
 class SearchResultsWrapper extends Component {
   constructor() {
     super();
-
-    this.state = {
-      searchTab: 'topResults',
-    };
   }
 
-  getActiveClass(key) {
-    const searchTab = this.state.searchTab;
+  getActiveType() {
+    const {
+      mediumType,
+    } = this.props || {};
+
+    return mediumType || '';
+  }
+
+  checkIfIsActive(key) {
+    const searchTab = this.getActiveType();
 
     return key === searchTab ? styles.active : '';
-  }
-
-  onTabClick(e) {
-    const key = e.currentTarget.getAttribute('data-key');
-
-    e.preventDefault();
-
-    this.setState({searchTab: key})
   }
 
   render() {
@@ -39,7 +35,7 @@ class SearchResultsWrapper extends Component {
       searchCategory,
       slugPrefix,
     } = props;
-
+    const searchTab = this.getActiveType();
     const hasPageIdx = thisPageIdx || thisPageIdx === 0;
 
     return (
@@ -61,10 +57,10 @@ class SearchResultsWrapper extends Component {
                 {
                   SEARCH_TABS.map((tab) => (
                     <li
-                      className={`${styles.tab} tab left ${this.getActiveClass(tab.key)}`}
+                      className={`${styles.tab} tab left ${this.checkIfIsActive(tab.key)}`}
                       key={tab.key}
                     >
-                      <a href="#" onClick={this.onTabClick.bind(this)} data-key={tab.key}>{tab.content}</a>
+                      <a href={tab.key ? `/${searchCategory}/type/${tab.key}` : `/${searchCategory}`} data-key={tab.key}>{tab.content}</a>
                     </li>
                   ))
                 }
@@ -72,15 +68,15 @@ class SearchResultsWrapper extends Component {
             </div>
             <div className="col s12">
               {
-                this.state.searchTab === 'topResults' &&
+                searchTab === '' &&
                 <SearchResults {...props} />
               }
               {
-                this.state.searchTab === 'byMedium' &&
+                searchTab === 'medium' &&
                 <SearchResultsByMedium {...props} />
               }
               {
-                this.state.searchTab === 'byAlphabetical' &&
+                searchTab === 'alphabetical' &&
                 <SearchResultsByAlphabetical {...props} />
               }
             </div>
@@ -89,7 +85,7 @@ class SearchResultsWrapper extends Component {
         {
           // todo: figure out this proper logic
           hasPageIdx &&
-          this.state.searchTab === 'topResults' &&
+          searchTab === '' &&
           <SearchPagination {...props} />
         }
       </div>

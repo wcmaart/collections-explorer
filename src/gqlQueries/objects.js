@@ -57,6 +57,14 @@ const gqlQueries = {
     }
     ${ObjectProps}
   `,
+  byMedium: gql`
+    query objects($medium: String) {
+      objects(medium: $medium) {
+        ...ObjectProps
+      }
+    }
+    ${ObjectProps}
+  `,
 };
 
 export default gqlQueries;
