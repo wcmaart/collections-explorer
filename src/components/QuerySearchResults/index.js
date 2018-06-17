@@ -32,16 +32,18 @@ class QuerySearchResults extends Component {
     >
       {({ loading, error, data }) => {
         let searchResultItems = [];
-
         const {
          object,
          objects,
          maker,
          makers,
+         event,
+         events,
         } = data;
 
-        const singleResult = object || maker;
-        const manyResults = objects || makers;
+        const singleResult = object || maker || event;
+        const manyResults = objects || makers || events;
+
 
         if (loading) {
           return (

@@ -37,21 +37,19 @@ class QuerySingleResult extends Component {
             </div>
           );
         }
-
         if (!data) {
           return <p className="red-text">Oops! 😱 It looks like you need to setup your api</p>;
         }
 
+        // work around for different api formats
         // todo: improve this #apiMakerId
-        // work around for maker
-        const result = data.object || {
-          // The maker doesn't have an single maker endpoint.
-          // Instead it gets a list of objects filtered by maker
+        // todo: improve this #apiEventId
+        const normalizedData = data.object || data.event || {
           objects: data.objects,
         };
 
         return getResultWrapper({
-          result,
+          result: normalizedData,
         });
       }}
     </Query>

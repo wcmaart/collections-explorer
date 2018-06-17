@@ -7,12 +7,15 @@ import SearchMakers from '../components/SearchMakers';
 import SearchEvents from '../components/SearchEvents';
 import SearchSingleObject from '../components/SearchSingleObject';
 import SearchSingleMaker from '../components/SearchSingleMaker';
+import SearchSingleEvent from '../components/SearchSingleEvent';
 import GenericPage from '../components/GenericPage';
 
 const WrapSearchObjects = withSearchRouteHelper(SearchObjects);
 const WrapSearchMakers = withSearchRouteHelper(SearchMakers);
+const WrapSearchEvents = withSearchRouteHelper(SearchEvents);
 const WrapSearchSingleObject = withSearchRouteHelper(SearchSingleObject);
 const WrapSearchSingleMaker = withSearchRouteHelper(SearchSingleMaker);
+const WrapSearchSingleEvent = withSearchRouteHelper(SearchSingleEvent);
 
 // with guidance from https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/guides/server-rendering.md
 const Status = ({ code, children }) =>
@@ -64,6 +67,12 @@ function Routes() {
       <Route path="/makers/type/:type/page/:page" component={WrapSearchMakers} />
       <Route path="/makers/:id" component={WrapSearchSingleMaker} />
 
+        {/* Events */}
+      <Route exact path="/events" component={WrapSearchEvents} />
+      <Route path="/events/page/:page" component={WrapSearchEvents} />
+      <Route path="/events/type/:type" component={WrapSearchEvents} />
+      <Route path="/events/type/:type/page/:page" component={WrapSearchEvents} />
+      <Route path="/events/:id" component={WrapSearchSingleEvent} />
 
       {/* The rest */}
       <Route path="/periods" component={
@@ -75,10 +84,6 @@ function Routes() {
       <Route path="/colors" component={
         ()=> <GenericPage title="Colors"/>
       } />
-
-      <Route exact path="/events" component={SearchEvents} />
-      <Route path="/events/page/:page" component={SearchEvents} />
-      <Route path="/events/:id" component={SearchSingleObject} />
 
       <Route component={NotFound} />
     </Switch>

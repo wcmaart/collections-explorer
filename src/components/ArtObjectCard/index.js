@@ -11,8 +11,8 @@ class ArtObjectCard extends Component {
       isSingleCard,
     } = props;
 
-    // const testImg = props.imageUrl || `https://picsum.photos/500/500?random&${props.id}`;
-    const testImg = props.imageUrl || '/no-image-placeholder-big.png';
+    // const imgUrl = props.imageUrl || `https://picsum.photos/500/500?random&${props.id}`;
+    const imgUrl = props.imageUrl || '/no-image-placeholder-big.png';
     const statListItems = [
       {
         label: 'Medium',
@@ -65,7 +65,7 @@ class ArtObjectCard extends Component {
 
     const cardImage = (
       <div className="card-image">
-        <img src={testImg} />
+        <img src={imgUrl} />
       </div>
     );
 
