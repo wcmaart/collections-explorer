@@ -11,7 +11,7 @@ function withSearchRouteHelper(WrappedComponent) {
         thingId: null,
         pageIdx: null,
         searchCategory: null,
-        mediumType: null,
+        searchType: null,
       };
     }
 
@@ -35,7 +35,7 @@ function withSearchRouteHelper(WrappedComponent) {
       // const thingId = params.id ? parseInt(params.id, 10) : null;
       // todo: improve this #apiMakerId
       const thingId = params.id;
-      const mediumType = params.type;
+      const searchType = params.searchType;
       const pageIdx = params.page ? parseInt(params.page, 10) : null;
 
       // // protect against a bogus id
@@ -50,7 +50,7 @@ function withSearchRouteHelper(WrappedComponent) {
       this.setState({
         thingId,
         pageIdx,
-        mediumType,
+        searchType,
         searchCategory: category,
       });
     }

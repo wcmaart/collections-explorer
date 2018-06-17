@@ -8,20 +8,16 @@ import SearchResultsByAlphabetical from '../SearchResultsByAlphabetical';
 import { SEARCH_TABS } from '../../constants';
 
 class SearchResultsWrapper extends Component {
-  constructor() {
-    super();
-  }
-
-  getActiveType() {
+  getActiveSearchType() {
     const {
-      mediumType,
+      searchType,
     } = this.props || {};
 
-    return mediumType || '';
+    return searchType || '';
   }
 
   checkIfIsActive(key) {
-    const searchTab = this.getActiveType();
+    const searchTab = this.getActiveSearchType();
 
     return key === searchTab ? styles.active : '';
   }
@@ -35,7 +31,7 @@ class SearchResultsWrapper extends Component {
       searchCategory,
       slugPrefix,
     } = props;
-    const searchTab = this.getActiveType();
+    const searchTab = this.getActiveSearchType();
     const hasPageIdx = thisPageIdx || thisPageIdx === 0;
 
     return (
@@ -60,7 +56,7 @@ class SearchResultsWrapper extends Component {
                       className={`${styles.tab} tab left ${this.checkIfIsActive(tab.key)}`}
                       key={tab.key}
                     >
-                      <a href={tab.key ? `/${searchCategory}/type/${tab.key}` : `/${searchCategory}`} data-key={tab.key}>{tab.content}</a>
+                      <a href={tab.key ? `/${searchCategory}/search-type/${tab.key}` : `/${searchCategory}`} data-key={tab.key}>{tab.content}</a>
                     </li>
                   ))
                 }
