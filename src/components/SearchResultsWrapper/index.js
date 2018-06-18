@@ -3,23 +3,18 @@ import styles from './styles.scss';
 import SearchPagination from '../SearchPagination';
 import SearchResults from '../SearchResults';
 import ArtObjectCard from '../ArtObjectCard';
-import SearchResultsByMedium from '../SearchResultsByMedium';
+import SearchResultsHeader from '../SearchResultsHeader';
 import SearchResultsByAlphabetical from '../SearchResultsByAlphabetical';
 import { SEARCH_TABS } from '../../constants';
 
 class SearchResultsWrapper extends Component {
+  // todo: dedup #dedupGetActiveSearchType
   getActiveSearchType() {
     const {
       searchType,
     } = this.props || {};
 
     return searchType || '';
-  }
-
-  checkIfIsActive(key) {
-    const searchTab = this.getActiveSearchType();
-
-    return key === searchTab ? styles.active : '';
   }
 
   render() {
@@ -31,6 +26,7 @@ class SearchResultsWrapper extends Component {
       searchCategory,
       slugPrefix,
     } = props;
+
     const searchTab = this.getActiveSearchType();
     const hasPageIdx = thisPageIdx || thisPageIdx === 0;
 
@@ -38,38 +34,16 @@ class SearchResultsWrapper extends Component {
       <div>
         { searchResultItems.length &&
           <div className="row">
-            <div className={`${styles.searchResultsHeader} col s12`}>
-              { searchCategory &&
-                <span className="left">
-                  XXX Total Results for {searchCategory}
-                </span>
-              }
-              { !searchCategory &&
-                <span className="left">
-                  XXX Total Results
-                </span>
-              }
-              <ul className="tabs left">
-                {
-                  SEARCH_TABS.map((tab) => (
-                    <li
-                      className={`${styles.tab} tab left ${this.checkIfIsActive(tab.key)}`}
-                      key={tab.key}
-                    >
-                      <a href={tab.key ? `/${searchCategory}/search-type/${tab.key}` : `/${searchCategory}`} data-key={tab.key}>{tab.content}</a>
-                    </li>
-                  ))
-                }
-              </ul>
+            <div className="col s12">
+              <SearchResultsHeader
+                searchCategory={searchCategory}
+                activeSearchType={this.getActiveSearchType()}
+              />
             </div>
             <div className="col s12">
               {
                 searchTab === '' &&
                 <SearchResults {...props} />
-              }
-              {
-                searchTab === 'medium' &&
-                <SearchResultsByMedium {...props} />
               }
               {
                 searchTab === 'alphabetical' &&

@@ -1,37 +1,52 @@
 import React, { Component } from 'react';
 import styles from './styles.scss';
-import { OBJECT_MEDIUMS } from '../../constants';
+import { parseObjectProps } from '../../helpers';
 import { Link } from 'react-router-dom';
 
 class SearchResultsByMedium extends Component {
   render() {
-    const testImg = this.props.imageUrl || `https://picsum.photos/500/500?random&${this.props.id}`;
-    const objects = this.props.objects;
-    const thisPageIdx = this.props.thisPageIdx;
+    const {
+      searchResultItems
+    } = this.props;
 
     return (
        <div className={`${styles.artObjects} row`}>
-        { OBJECT_MEDIUMS.map(type => (
-            <div key={type.key} className={`${styles.section} col s12`}>
+        { searchResultItems.map(item => (
+            <div key={item.key} className={`${styles.section} col s12`}>
               <div className={styles.sectionInner}>
                 <div className={styles.sectionInnerHeader}>
                   <h3 className={`${styles.h3} left`}>
-                    {type.content}
+                    {item.content}
                   </h3>
                   <div className={`${styles.sectionHeaderRight} right`}>
-                    <Link className={styles.viewAllLink} to={`/objects/search-type/${type.key}`} >View all</Link>
+                    <Link className={styles.viewAllLink} to={`/objects/search-type/${item.key}`} >View all</Link>
                     (xxxxx)
                   </div>
                   <div className={styles.clearfix}></div>
                 </div>
                 <div className="row">
-                  { [1,2,3,4].map(idx => (
-                      <div key={idx} className={`col s6 m3`}>
-                        <div className={styles.imageWrap}>
-                          <img src={testImg} />
+                  {
+                    item.objects
+                    .map(object => {
+                      return parseObjectProps(object);
+                    })
+                    .filter(object => {
+                      return object.imageUrl;
+                    })
+                    .slice(0,4)
+                    .map(object => {
+                      return (
+                        <div key={object.id} className={`col s6 m3`}>
+                          <div className={styles.imageWrap}>
+                            {/*
+                            <span>{object.title}</span>
+                            <span>{object.id}</span>
+                            */}
+                            <img src={object.imageUrl} />
+                          </div>
                         </div>
-                      </div>
-                    ))
+                      );
+                    })
                   }
                 </div>
               </div>

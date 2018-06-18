@@ -1,45 +1,108 @@
 import React, { Component } from 'react';
 import styles from './styles.scss';
-import { ApolloProvider, Query } from "react-apollo";
 import GraphqlClient from '../../GraphqlClient';
+import SearchResultsHeader from '../SearchResultsHeader';
+import SearchResultsByMedium from '../SearchResultsByMedium';
 import { withRouter } from 'react-router';
 import { Link, Route } from 'react-router-dom';
-import SearchResultsWrapper from '../SearchResultsWrapper';
+import { OBJECT_MEDIUMS } from '../../constants';
 
 class QuerySearchResultsByType extends Component {
-  render() {
+  constructor(props) {
+    super(props);
+
     const client = GraphqlClient();
 
     const {
-      thingId,
-      pageIdx,
+      searchType,
       gqlQueries,
     } = this.props;
 
-    // normalize mixed data
-    const id = thingId || null;
-    const page = pageIdx || 0;
-    // determine which gqlQuery to use
-    const gqlQueryKey = id ? 'byId' : 'byPageIdx';
+    this.state = {
+      searchResultItems: null,
+    };
+
+    // quick test for now.
+    const gqlQueryKey = searchType === 'medium' ? 'byMedium' : null;
+
+    if (!gqlQueryKey) {
+      return null;
+    }
+
     // get the correct gqlQuery
     const gqlQuery = gqlQueries[gqlQueryKey];
+    const searchResultItems = [];
 
-    client
-      .query({
-        query: gqlQuery,
-      })
-      .then(({ data }) => console.log({ data }));
+    OBJECT_MEDIUMS.map(type => {
+
+      client
+        .query({
+          query: gqlQuery,
+          variables: {
+            medium: type.key,
+          }
+        })
+        .then(response => {
+          const {
+            data
+          } = response;
+
+          searchResultItems.push({
+            key: type.key,
+            content: type.content,
+            objects: data.objects,
+          });
+
+          this.setState({searchResultItems: searchResultItems});
+        });
+    });
+  }
+
+  // todo: dedup #dedupGetActiveSearchType
+  getActiveSearchType() {
+    const {
+      searchType,
+    } = this.props || {};
+
+    return searchType || '';
+  }
+
+  render() {
+    const props = this.props;
+
+    const {
+      searchResultItems,
+    } = this.state;
+
+    const {
+      searchCategory,
+    } = props;
+
+    const searchTab = this.getActiveSearchType();
+
+    if (!searchResultItems) {
+      return null;
+    }
+
+    const mergedParams = Object.assign({}, props, {
+      searchResultItems,
+    });
 
     return (
       <div>
-        <h1>test</h1>
-        <ApolloProvider client={client}>
-          {
-            <h1>{this.props.id}</h1>
-          }
-        </ApolloProvider>
+        <div className="row">
+          <div className="col s12">
+            <SearchResultsHeader
+              searchCategory={searchCategory}
+              activeSearchType={this.getActiveSearchType()}
+            />
+          </div>
+          <div className="col s12">
+            <SearchResultsByMedium {...mergedParams} />
+          </div>
+        </div>
       </div>
-    );
+    )
   }
 }
 
