@@ -5,7 +5,6 @@ import SearchResults from '../SearchResults';
 import ArtObjectCard from '../ArtObjectCard';
 import SearchResultsHeader from '../SearchResultsHeader';
 import SearchResultsByAlphabetical from '../SearchResultsByAlphabetical';
-import { SEARCH_TABS } from '../../constants';
 
 class SearchResultsWrapper extends Component {
   // todo: dedup #dedupGetActiveSearchType
@@ -35,10 +34,13 @@ class SearchResultsWrapper extends Component {
         { searchResultItems.length &&
           <div className="row">
             <div className="col s12">
-              <SearchResultsHeader
-                searchCategory={searchCategory}
-                activeSearchType={this.getActiveSearchType()}
-              />
+              {/* for now, only show for objects */}
+              {searchCategory === 'objects' &&
+                <SearchResultsHeader
+                  searchCategory={searchCategory}
+                  activeSearchType={this.getActiveSearchType()}
+                />
+              }
             </div>
             <div className="col s12">
               {

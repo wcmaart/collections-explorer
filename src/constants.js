@@ -23,18 +23,18 @@ export const NAV_LINKS = [
     content: 'Makers',
     url: '/makers',
   },
-  {
-    content: 'Periods',
-    url: '/periods',
-  },
-  {
-    content: 'Materials',
-    url: '/materials',
-  },
-  {
-    content: 'Colors',
-    url: '/colors',
-  },
+  // {
+  //   content: 'Periods',
+  //   url: '/periods',
+  // },
+  // {
+  //   content: 'Materials',
+  //   url: '/materials',
+  // },
+  // {
+  //   content: 'Colors',
+  //   url: '/colors',
+  // },
   {
     content: 'Events',
     url: '/events',
@@ -50,10 +50,10 @@ export const SEARCH_TABS = [
     content: 'By Medium',
     key: 'medium',
   },
-  {
-    content: 'A-Z',
-    key: 'alphabetical',
-  },
+  // {
+  //   content: 'A-Z',
+  //   key: 'alphabetical',
+  // },
 ];
 
 export const OBJECT_MEDIUMS = [
