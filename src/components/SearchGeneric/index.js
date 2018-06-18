@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import styles from './styles.scss';
-import { ApolloProvider, Query } from "react-apollo";
-import GraphqlClient from '../../GraphqlClient';
 import QuerySearchResults from '../QuerySearchResults';
+import QuerySearchResultsByType from '../QuerySearchResultsByType';
 import { Link, Route } from 'react-router-dom';
 
 class SearchGeneric extends Component {
@@ -27,9 +26,8 @@ class SearchGeneric extends Component {
   render() {
     const {
       searchInputPlaceholder,
+      searchType,
     } = this.props;
-
-    const client = GraphqlClient();
 
     // todo: simplify syntax of props below
     return (
@@ -44,9 +42,10 @@ class SearchGeneric extends Component {
           </div>
         </form>
 
-        <ApolloProvider client={client}>
+        { searchType ?
+          <QuerySearchResultsByType {...this.props} /> :
           <QuerySearchResults {...this.props} />
-        </ApolloProvider>
+        }
       </div>
     );
   }

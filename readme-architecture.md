@@ -24,12 +24,11 @@ Work in progress...
         ```
         - SearchGeneric
           ```
-          Basic search with a search input, an ApolloProvider to power the search
-          and a QuerySearchResults component to run the search and display the results
+          Basic search with a search input, and a set of results deteminted by the search type.
           ```
           - QuerySearchResults
             ```
-            Runs the search with the react-apollo Query component
+            Runs the search with an ApolloProvider and a react-apollo Query component
             The Query component returns a child via a function
             with params: ({ loading, error, data }).
             That function returns the SearchResultsWrapper
