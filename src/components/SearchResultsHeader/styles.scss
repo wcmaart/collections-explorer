@@ -1,0 +1,19 @@
+@import '../../shared-styles/variables';
+@import '../../shared-styles/mixins';
+@import '../../shared-styles/materialize/index.scss';
+
+.tab {
+  margin-left: 1.5rem;
+
+  &.active {
+    text-decoration: underline;
+  }
+}
+
+.searchResultsHeader {
+  @include clearfix();
+
+  padding-bottom: $padding-md;
+  margin-bottom: $padding-md;
+  border-bottom: $border-light;
+}

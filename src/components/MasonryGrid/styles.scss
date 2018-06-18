@@ -10,9 +10,9 @@
   @media #{$large-and-up} {
     .masonryGrid {
       .component-masonry-grid {
-        // make it perfectly flush with the ends
-        margin-left: -$masonry-item-margin;
-        margin-right: -$masonry-item-margin;
+        // quick fix to make it perfectly flush with the ends
+        margin-left: -$masonry-item-margin / 2;
+        margin-right: -$masonry-item-margin / 2;
       }
 
       li.masonryGridItem {

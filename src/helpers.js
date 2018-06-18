@@ -52,3 +52,13 @@ export const parseMakerProps = (props) => {
     id: props.title,
   });
 };
+
+export const parseEventProps = (props) => {
+  // todo: improve this #apiEventId
+  // we're not getting any image data yet for the events (plural) search
+  const imgData = props.keyImage || props.objects && props.objects[0] && props.objects[0].remote || null;
+
+  return Object.assign({}, props, {
+    imageUrl: parseImage(imgData),
+  });
+};

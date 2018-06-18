@@ -3,31 +3,17 @@ import styles from './styles.scss';
 import SearchPagination from '../SearchPagination';
 import SearchResults from '../SearchResults';
 import ArtObjectCard from '../ArtObjectCard';
-import SearchResultsByMedium from '../SearchResultsByMedium';
+import SearchResultsHeader from '../SearchResultsHeader';
 import SearchResultsByAlphabetical from '../SearchResultsByAlphabetical';
-import { SEARCH_TABS } from '../../constants';
 
 class SearchResultsWrapper extends Component {
-  constructor() {
-    super();
+  // todo: dedup #dedupGetActiveSearchType
+  getActiveSearchType() {
+    const {
+      searchType,
+    } = this.props || {};
 
-    this.state = {
-      searchTab: 'topResults',
-    };
-  }
-
-  getActiveClass(key) {
-    const searchTab = this.state.searchTab;
-
-    return key === searchTab ? styles.active : '';
-  }
-
-  onTabClick(e) {
-    const key = e.currentTarget.getAttribute('data-key');
-
-    e.preventDefault();
-
-    this.setState({searchTab: key})
+    return searchType || '';
   }
 
   render() {
@@ -40,47 +26,26 @@ class SearchResultsWrapper extends Component {
       slugPrefix,
     } = props;
 
+    const searchTab = this.getActiveSearchType();
     const hasPageIdx = thisPageIdx || thisPageIdx === 0;
 
     return (
       <div>
         { searchResultItems.length &&
           <div className="row">
-            <div className={`${styles.searchResultsHeader} col s12`}>
-              { searchCategory &&
-                <span className="left">
-                  XXX Total Results for {searchCategory}
-                </span>
-              }
-              { !searchCategory &&
-                <span className="left">
-                  XXX Total Results
-                </span>
-              }
-              <ul className="tabs left">
-                {
-                  SEARCH_TABS.map((tab) => (
-                    <li
-                      className={`${styles.tab} tab left ${this.getActiveClass(tab.key)}`}
-                      key={tab.key}
-                    >
-                      <a href="#" onClick={this.onTabClick.bind(this)} data-key={tab.key}>{tab.content}</a>
-                    </li>
-                  ))
-                }
-              </ul>
+            <div className="col s12">
+              <SearchResultsHeader
+                searchCategory={searchCategory}
+                activeSearchType={this.getActiveSearchType()}
+              />
             </div>
             <div className="col s12">
               {
-                this.state.searchTab === 'topResults' &&
+                searchTab === '' &&
                 <SearchResults {...props} />
               }
               {
-                this.state.searchTab === 'byMedium' &&
-                <SearchResultsByMedium {...props} />
-              }
-              {
-                this.state.searchTab === 'byAlphabetical' &&
+                searchTab === 'alphabetical' &&
                 <SearchResultsByAlphabetical {...props} />
               }
             </div>
@@ -89,7 +54,7 @@ class SearchResultsWrapper extends Component {
         {
           // todo: figure out this proper logic
           hasPageIdx &&
-          this.state.searchTab === 'topResults' &&
+          searchTab === '' &&
           <SearchPagination {...props} />
         }
       </div>
