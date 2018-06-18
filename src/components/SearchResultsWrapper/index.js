@@ -34,13 +34,10 @@ class SearchResultsWrapper extends Component {
         { searchResultItems.length &&
           <div className="row">
             <div className="col s12">
-              {/* for now, only show for objects */}
-              {searchCategory === 'objects' &&
-                <SearchResultsHeader
-                  searchCategory={searchCategory}
-                  activeSearchType={this.getActiveSearchType()}
-                />
-              }
+              <SearchResultsHeader
+                searchCategory={searchCategory}
+                activeSearchType={this.getActiveSearchType()}
+              />
             </div>
             <div className="col s12">
               {

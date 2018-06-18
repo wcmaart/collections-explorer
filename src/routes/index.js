@@ -63,33 +63,30 @@ function Routes() {
       <Route exact path="/objects" component={WrapSearchObjects} />
       <Route path="/objects/page/:page" component={WrapSearchObjects} />
       <Route path="/objects/search-type/:searchType" component={WrapSearchObjects} />
-      <Route path="/objects/search-type/:searchType/page/:page" component={WrapSearchObjects} />
       <Route path="/objects/:id" component={WrapSearchSingleObject} />
 
         {/* Makers */}
       <Route exact path="/makers" component={WrapSearchMakers} />
       <Route path="/makers/page/:page" component={WrapSearchMakers} />
-      <Route path="/makers/search-type/:searchType" component={WrapSearchMakers} />
-      <Route path="/makers/search-type/:searchType/page/:page" component={WrapSearchMakers} />
       <Route path="/makers/:id" component={WrapSearchSingleMaker} />
 
         {/* Events */}
       <Route exact path="/events" component={WrapSearchEvents} />
       <Route path="/events/page/:page" component={WrapSearchEvents} />
-      <Route path="/events/search-type/:searchType" component={WrapSearchEvents} />
-      <Route path="/events/search-type/:searchType/page/:page" component={WrapSearchEvents} />
       <Route path="/events/:id" component={WrapSearchSingleEvent} />
 
       {/* The rest */}
-      <Route path="/periods" component={
-        ()=> <GenericPage title="Periods"/>
-      } />
-      <Route path="/materials" component={
-        ()=> <GenericPage title="Materials"/>
-      } />
-      <Route path="/colors" component={
-        ()=> <GenericPage title="Colors"/>
-      } />
+      {/*
+        <Route path="/periods" component={
+          ()=> <GenericPage title="Periods"/>
+        } />
+        <Route path="/materials" component={
+          ()=> <GenericPage title="Materials"/>
+        } />
+        <Route path="/colors" component={
+          ()=> <GenericPage title="Colors"/>
+        } />
+      */}
 
       <Route component={NotFound} />
     </Switch>

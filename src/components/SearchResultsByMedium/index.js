@@ -13,14 +13,18 @@ class SearchResultsByMedium extends Component {
        <div className={`${styles.artObjects} row`}>
         { searchResultItems.map(item => (
             <div key={item.key} className={`${styles.section} col s12`}>
-              <div className={styles.sectionInner}>
+              <div >
                 <div className={styles.sectionInnerHeader}>
                   <h3 className={`${styles.h3} left`}>
                     {item.content}
                   </h3>
                   <div className={`${styles.sectionHeaderRight} right`}>
-                    <Link className={styles.viewAllLink} to={`/objects/search-type/${item.key}`} >View all</Link>
-                    (xxxxx)
+                    {/*
+                      todo: get this working
+                    */}
+                    {/*
+                      <Link className={styles.viewAllLink} to={`/objects/search-type/medium/`}>View all</Link>
+                    */}
                   </div>
                   <div className={styles.clearfix}></div>
                 </div>

@@ -13,5 +13,7 @@
 .searchResultsHeader {
   @include clearfix();
 
+  padding-bottom: $padding-md;
   margin-bottom: $padding-md;
+  border-bottom: $border-light;
 }
