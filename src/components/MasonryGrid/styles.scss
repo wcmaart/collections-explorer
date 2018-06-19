@@ -9,14 +9,13 @@
 :global {
   @media #{$large-and-up} {
     .masonryGrid {
-      .component-masonry-grid {
-        // quick fix to make it perfectly flush with the ends
-        margin-left: -$masonry-item-margin / 2;
-        margin-right: -$masonry-item-margin / 2;
-      }
+      // make it perfectly flush with the ends
+      margin-left: $masonry-item-margin * 2;
+      margin-right: $masonry-item-margin * 2;
 
       li.masonryGridItem {
         padding: $masonry-item-margin;
+        float: left;
       }
 
       .card {
