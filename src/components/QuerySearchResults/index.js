@@ -45,7 +45,6 @@ class QuerySearchResults extends Component {
           const singleResult = object || maker || event;
           const manyResults = objects || makers || events;
 
-
           if (loading) {
             return (
               <div className="row">

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styles from './styles.scss';
 import GraphqlClient from '../../GraphqlClient';
-import SearchResultsHeader from '../SearchResultsHeader';
 import SearchResultsByMedium from '../SearchResultsByMedium';
 import { withRouter } from 'react-router';
 import { Link, Route } from 'react-router-dom';
@@ -58,27 +57,12 @@ class QuerySearchResultsByType extends Component {
     });
   }
 
-  // todo: dedup #dedupGetActiveSearchType
-  getActiveSearchType() {
-    const {
-      searchType,
-    } = this.props || {};
-
-    return searchType || '';
-  }
-
   render() {
     const props = this.props;
 
     const {
       searchResultItems,
     } = this.state;
-
-    const {
-      searchCategory,
-    } = props;
-
-    const searchTab = this.getActiveSearchType();
 
     if (!searchResultItems) {
       return null;
@@ -90,17 +74,7 @@ class QuerySearchResultsByType extends Component {
 
     return (
       <div>
-        <div className="row">
-          <div className="col s12">
-            <SearchResultsHeader
-              searchCategory={searchCategory}
-              activeSearchType={this.getActiveSearchType()}
-            />
-          </div>
-          <div className="col s12">
-            <SearchResultsByMedium {...mergedParams} />
-          </div>
-        </div>
+        <SearchResultsByMedium {...mergedParams} />
       </div>
     )
   }
