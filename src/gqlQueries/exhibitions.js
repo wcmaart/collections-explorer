@@ -7,8 +7,8 @@ import {SEARCH_ITEMS_PER_PAGE} from '../constants';
 // I think this should be (plural) objects($id: Int!)
 const gqlQueries = {
   byId: gql`
-    query event($id: Int!) {
-      event(id: $id, sort_field: "title", sort: "asc") {
+    query exhibition($id: Int!) {
+      exhibition(id: $id, sort_field: "title", sort: "asc") {
         id
         title
         planningNotes
@@ -50,8 +50,8 @@ const gqlQueries = {
     }
   `,
   byPageIdx: gql`
-    query events($page: Int) {
-      events(page:$page, per_page:40, sort_field: "beginISODate", sort: "asc") {
+    query exhibitions($page: Int) {
+      exhibitions(page:$page, per_page:40, sort_field: "beginISODate", sort: "asc") {
         id
         title
         planningNotes
@@ -76,8 +76,8 @@ const gqlQueries = {
     }
   `,
   byAlphabetical: gql`
-    query events {
-      events(per_page: 1000, sort_field: "title", sort: "asc") {
+    query exhibitions {
+      exhibitions(per_page: 1000, sort_field: "title", sort: "asc") {
         id
         title
       }

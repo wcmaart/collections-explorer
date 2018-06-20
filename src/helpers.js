@@ -53,9 +53,9 @@ export const parseMakerProps = (props) => {
   });
 };
 
-export const parseEventProps = (props) => {
-  // todo: improve this #apiEventId
-  // we're not getting any image data yet for the events (plural) search
+export const parseExhibitionProps = (props) => {
+  // todo: improve this #apiExhibitionId
+  // we're not getting any image data yet for the exhibitions (plural) search
   const imgData = props.keyImage || props.objects && props.objects[0] && props.objects[0].remote || null;
 
   return Object.assign({}, props, {
@@ -70,12 +70,12 @@ export const getNormalizedDataResponse = (data) => {
    objects,
    maker,
    makers,
-   event,
-   events,
+   exhibition,
+   exhibitions,
   } = data;
 
-  const singleResult = object || maker || event;
-  const manyResults = objects || makers || events;
+  const singleResult = object || maker || exhibition;
+  const manyResults = objects || makers || exhibitions;
 
   if (singleResult) {
     return [singleResult];

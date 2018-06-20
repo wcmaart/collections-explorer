@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import styles from './styles.scss';
 import SearchGenericPage from '../SearchGenericPage';
-import gqlQueries from '../../gqlQueries/events';
-import { SEARCH_EVENTS_CONSTS as searchParams } from '../../constants';
+import gqlQueries from '../../gqlQueries/exhibitions';
+import { SEARCH_EXHIBITIONS_CONSTS as searchParams } from '../../constants';
 
-class SearchEvents extends Component {
+class SearchExhibitions extends Component {
   render() {
     const mergedProps = Object.assign(
       {
-        searchCategory: 'events',
+        searchCategory: 'exhibitions',
       },
       this.props,
       {gqlQueries},
@@ -19,4 +19,4 @@ class SearchEvents extends Component {
   }
 }
 
-export default SearchEvents;
+export default SearchExhibitions;
