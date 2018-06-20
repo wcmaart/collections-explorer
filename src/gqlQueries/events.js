@@ -75,6 +75,14 @@ const gqlQueries = {
       }
     }
   `,
+  byAlphabetical: gql`
+    query events {
+      events(per_page: 1000, sort_field: "title", sort: "asc") {
+        id
+        title
+      }
+    }
+  `,
 };
 
 export default gqlQueries;

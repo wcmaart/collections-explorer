@@ -74,6 +74,7 @@ function Routes() {
         {/* Events */}
       <Route exact path="/events" component={WrapSearchEvents} />
       <Route path="/events/page/:page" component={WrapSearchEvents} />
+      <Route path="/events/search-type/:searchType" component={WrapSearchEvents} />
       <Route path="/events/:id" component={WrapSearchSingleEvent} />
 
       {/* The rest */}

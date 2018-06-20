@@ -32,14 +32,21 @@ class SearchResultsHeader extends Component {
         {
           <ul className="tabs left">
             {
-              SEARCH_TABS.map((tab) => (
-                <li
-                  className={`${styles.tab} tab left ${this.checkIfIsActive(tab.key)}`}
-                  key={tab.key}
-                >
-                  <a href={tab.key ? `/${searchCategory}/search-type/${tab.key}` : `/${searchCategory}`} data-key={tab.key}>{tab.content}</a>
-                </li>
-              ))
+              SEARCH_TABS.map((tab) => {
+                // for now, only show medium for objects
+                if (tab.key === 'medium' && searchCategory !== 'objects') {
+                  return null;
+                }
+
+                return (
+                  <li
+                    className={`${styles.tab} tab left ${this.checkIfIsActive(tab.key)}`}
+                    key={tab.key}
+                  >
+                    <a href={tab.key ? `/${searchCategory}/search-type/${tab.key}` : `/${searchCategory}`} data-key={tab.key}>{tab.content}</a>
+                  </li>
+                );
+              })
             }
           </ul>
         }
