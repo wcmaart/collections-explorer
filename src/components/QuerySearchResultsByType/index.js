@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import styles from './styles.scss';
 import GraphqlClient from '../../GraphqlClient';
-import SearchResultsHeader from '../SearchResultsHeader';
 import SearchResultsByMedium from '../SearchResultsByMedium';
+import SearchResultsByAlphabetical from '../SearchResultsByAlphabetical';
 import { withRouter } from 'react-router';
 import { Link, Route } from 'react-router-dom';
-import { OBJECT_MEDIUMS } from '../../constants';
+import { OBJECT_MEDIUMS, ALPHABET } from '../../constants';
+import { getNormalizedDataResponse } from '../../helpers';
+import { parseMakerProps } from '../../helpers';
 
 class QuerySearchResultsByType extends Component {
   constructor(props) {
@@ -16,6 +18,7 @@ class QuerySearchResultsByType extends Component {
     const {
       searchType,
       gqlQueries,
+      searchCategory,
     } = this.props;
 
     this.state = {
@@ -23,7 +26,11 @@ class QuerySearchResultsByType extends Component {
     };
 
     // quick test for now.
-    const gqlQueryKey = searchType === 'medium' ? 'byMedium' : null;
+    const gqlQueryKey = searchType === 'medium' ?
+      'byMedium' :
+      searchType === 'alphabetical' ?
+      'byAlphabetical' :
+       null;
 
     if (!gqlQueryKey) {
       return null;
@@ -33,38 +40,68 @@ class QuerySearchResultsByType extends Component {
     const gqlQuery = gqlQueries[gqlQueryKey];
     const searchResultItems = [];
 
-    OBJECT_MEDIUMS.map(type => {
+    if(searchType === 'medium' ) {
+      OBJECT_MEDIUMS.map(type => {
 
+        client
+          .query({
+            query: gqlQuery,
+            variables: {
+              medium: type.key,
+            }
+          })
+          .then(response => {
+            const {
+              data
+            } = response;
+
+            searchResultItems.push({
+              key: type.key,
+              content: type.content,
+              objects: data.objects,
+            });
+
+            this.setState({searchResultItems: searchResultItems});
+          });
+      });
+    }
+
+    if(searchType === 'alphabetical' ) {
       client
         .query({
           query: gqlQuery,
-          variables: {
-            medium: type.key,
-          }
         })
         .then(response => {
           const {
             data
           } = response;
 
-          searchResultItems.push({
-            key: type.key,
-            content: type.content,
-            objects: data.objects,
+          let results = getNormalizedDataResponse(data);
+
+          // temp fix for api
+          if (searchCategory === 'makers') {
+             results = results.map(parseMakerProps);
+          }
+
+          if (!results) {
+            return;
+          }
+
+          ALPHABET.map(letter => {
+            const titlesByThisLetter = results.filter(
+              obj => (obj.title.toLocaleUpperCase().startsWith(letter))
+            );
+
+            searchResultItems.push({
+              key: letter.toLocaleLowerCase(),
+              content: letter,
+              objects: titlesByThisLetter,
+            });
           });
 
           this.setState({searchResultItems: searchResultItems});
         });
-    });
-  }
-
-  // todo: dedup #dedupGetActiveSearchType
-  getActiveSearchType() {
-    const {
-      searchType,
-    } = this.props || {};
-
-    return searchType || '';
+    }
   }
 
   render() {
@@ -73,12 +110,6 @@ class QuerySearchResultsByType extends Component {
     const {
       searchResultItems,
     } = this.state;
-
-    const {
-      searchCategory,
-    } = props;
-
-    const searchTab = this.getActiveSearchType();
 
     if (!searchResultItems) {
       return null;
@@ -90,17 +121,12 @@ class QuerySearchResultsByType extends Component {
 
     return (
       <div>
-        <div className="row">
-          <div className="col s12">
-            <SearchResultsHeader
-              searchCategory={searchCategory}
-              activeSearchType={this.getActiveSearchType()}
-            />
-          </div>
-          <div className="col s12">
-            <SearchResultsByMedium {...mergedParams} />
-          </div>
-        </div>
+        { this.props.searchType === 'medium' &&
+          <SearchResultsByMedium {...mergedParams} />
+        }
+        { this.props.searchType === 'alphabetical' &&
+          <SearchResultsByAlphabetical {...mergedParams} />
+        }
       </div>
     )
   }

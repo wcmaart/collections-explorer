@@ -68,11 +68,13 @@ function Routes() {
         {/* Makers */}
       <Route exact path="/makers" component={WrapSearchMakers} />
       <Route path="/makers/page/:page" component={WrapSearchMakers} />
+      <Route path="/makers/search-type/:searchType" component={WrapSearchMakers} />
       <Route path="/makers/:id" component={WrapSearchSingleMaker} />
 
         {/* Events */}
       <Route exact path="/events" component={WrapSearchEvents} />
       <Route path="/events/page/:page" component={WrapSearchEvents} />
+      <Route path="/events/search-type/:searchType" component={WrapSearchEvents} />
       <Route path="/events/:id" component={WrapSearchSingleEvent} />
 
       {/* The rest */}

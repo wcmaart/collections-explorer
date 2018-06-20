@@ -3,8 +3,6 @@ import styles from './styles.scss';
 import SearchPagination from '../SearchPagination';
 import SearchResults from '../SearchResults';
 import ArtObjectCard from '../ArtObjectCard';
-import SearchResultsHeader from '../SearchResultsHeader';
-import SearchResultsByAlphabetical from '../SearchResultsByAlphabetical';
 
 class SearchResultsWrapper extends Component {
   // todo: dedup #dedupGetActiveSearchType
@@ -31,26 +29,7 @@ class SearchResultsWrapper extends Component {
 
     return (
       <div>
-        { searchResultItems.length &&
-          <div className="row">
-            <div className="col s12">
-              <SearchResultsHeader
-                searchCategory={searchCategory}
-                activeSearchType={this.getActiveSearchType()}
-              />
-            </div>
-            <div className="col s12">
-              {
-                searchTab === '' &&
-                <SearchResults {...props} />
-              }
-              {
-                searchTab === 'alphabetical' &&
-                <SearchResultsByAlphabetical {...props} />
-              }
-            </div>
-          </div>
-        }
+        <SearchResults {...props} />
         {
           // todo: figure out this proper logic
           hasPageIdx &&

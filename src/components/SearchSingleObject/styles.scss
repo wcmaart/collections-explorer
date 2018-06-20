@@ -1,8 +1,9 @@
-// @import '../../shared-styles/variables';
-// @import '../../shared-styles/mixins';
-// @import '../../shared-styles/materialize/index.scss';
+@import '../../shared-styles/variables';
+@import '../../shared-styles/mixins';
+@import '../../shared-styles/materialize/index.scss';
 
-// .searchWrapper {
-//   position: relative;
-//   margin: $padding-md 0;
-// }
+.goBack {
+  @extend .btn-flat;
+
+  padding-left: 0;
+}

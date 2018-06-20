@@ -62,3 +62,26 @@ export const parseEventProps = (props) => {
     imageUrl: parseImage(imgData),
   });
 };
+
+export const getNormalizedDataResponse = (data) => {
+  // todo: see if we can change the API to make these uniform so we don't need this.
+  const {
+   object,
+   objects,
+   maker,
+   makers,
+   event,
+   events,
+  } = data;
+
+  const singleResult = object || maker || event;
+  const manyResults = objects || makers || events;
+
+  if (singleResult) {
+    return [singleResult];
+  } else if (manyResults) {
+    return manyResults;
+  } else {
+    return [];
+  }
+};

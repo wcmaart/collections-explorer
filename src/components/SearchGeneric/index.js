@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import styles from './styles.scss';
+import SearchResultsHeader from '../SearchResultsHeader';
 import QuerySearchResults from '../QuerySearchResults';
 import QuerySearchResultsByType from '../QuerySearchResultsByType';
 import { Link, Route } from 'react-router-dom';
@@ -10,6 +11,15 @@ class SearchGeneric extends Component {
     super();
 
     this.onSubmitSearch = this.onSubmitSearch.bind(this);
+  }
+
+  // todo: dedup #dedupGetActiveSearchType
+  getActiveSearchType() {
+    const {
+      searchType,
+    } = this.props || {};
+
+    return searchType || '';
   }
 
   onSubmitSearch(e) {
@@ -26,8 +36,10 @@ class SearchGeneric extends Component {
   render() {
     const {
       searchInputPlaceholder,
-      searchType,
+      searchCategory,
     } = this.props;
+
+    const searchType = this.getActiveSearchType();
 
     // todo: simplify syntax of props below
     return (
@@ -42,10 +54,20 @@ class SearchGeneric extends Component {
           </div>
         </form>
 
-        { searchType ?
-          <QuerySearchResultsByType {...this.props} /> :
-          <QuerySearchResults {...this.props} />
-        }
+        <div className="row">
+          <div className="col s12">
+            <SearchResultsHeader
+              searchCategory={searchCategory}
+              activeSearchType={searchType}
+            />
+          </div>
+          <div className="col s12">
+            { searchType ?
+              <QuerySearchResultsByType {...this.props} /> :
+              <QuerySearchResults {...this.props} />
+            }
+          </div>
+        </div>
       </div>
     );
   }

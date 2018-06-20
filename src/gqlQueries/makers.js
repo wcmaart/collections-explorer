@@ -50,6 +50,14 @@ const gqlQueries = {
     }
     ${MakerProps}
   `,
+  byAlphabetical: gql`
+    query makers {
+      makers(per_page: 1000, sort_field: "title", sort: "asc") {
+        id
+        title
+      }
+    }
+  `,
 };
 
 export default gqlQueries;

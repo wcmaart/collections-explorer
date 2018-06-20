@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import styles from './styles.scss';
 import Header from '../Header';
 import ArtObjectCard from '../ArtObjectCard';
@@ -7,6 +8,17 @@ import gqlQueries from '../../gqlQueries/objects';
 import { SEARCH_OBJECTS_CONSTS as searchParams } from '../../constants';
 
 class SearchSingleObject extends Component {
+  constructor() {
+    super(...arguments);
+
+    this.goBack = this.goBack.bind(this);
+  }
+
+  // Todo #consolidateGoback functions and style
+  goBack (props) {
+    this.props.history.goBack();
+  }
+
   render() {
 
     const mergedProps = Object.assign({
@@ -23,6 +35,10 @@ class SearchSingleObject extends Component {
         <span>
         </span>
         <div className="container">
+          <button onClick={this.goBack.bind(this)} className={styles.goBack}>
+            Go Back
+          </button>
+
           <SearchSingleGeneric
             {...mergedProps}
             getResultWrapper={(params) => {
@@ -35,4 +51,4 @@ class SearchSingleObject extends Component {
   }
 }
 
-export default SearchSingleObject;
+export default withRouter(SearchSingleObject);

@@ -23,6 +23,7 @@ class SingleMakerView extends Component {
     });
   }
 
+  // Todo #consolidateGoback functions and style
   goBack (props) {
     this.props.history.goBack();
   }

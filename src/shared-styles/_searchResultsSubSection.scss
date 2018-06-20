@@ -2,14 +2,6 @@
 @import './mixins';
 @import './materialize/index.scss';
 
-.section {
-  &:first-child {
-    .sectionInner {
-      border-top: $border-light;
-    }
-  }
-}
-
 .sectionInner {
   padding: $padding-md 0;
 }
@@ -24,6 +16,14 @@
 
 .alphabeticalListings {
   line-height: 1.5em;
+}
+
+.alphabeticalListing {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .h3 {
