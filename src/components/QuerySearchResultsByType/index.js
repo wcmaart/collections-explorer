@@ -6,6 +6,8 @@ import SearchResultsByAlphabetical from '../SearchResultsByAlphabetical';
 import { withRouter } from 'react-router';
 import { Link, Route } from 'react-router-dom';
 import { OBJECT_MEDIUMS, ALPHABET } from '../../constants';
+import { getNormalizedDataResponse } from '../../helpers';
+import { parseMakerProps } from '../../helpers';
 
 class QuerySearchResultsByType extends Component {
   constructor(props) {
@@ -16,6 +18,7 @@ class QuerySearchResultsByType extends Component {
     const {
       searchType,
       gqlQueries,
+      searchCategory,
     } = this.props;
 
     this.state = {
@@ -73,12 +76,19 @@ class QuerySearchResultsByType extends Component {
             data
           } = response;
 
-          if (!data.objects) {
+          let results = getNormalizedDataResponse(data);
+
+          // temp fix for api
+          if (searchCategory === 'makers') {
+             results = results.map(parseMakerProps);
+          }
+
+          if (!results) {
             return;
           }
 
           ALPHABET.map(letter => {
-            const titlesByThisLetter = data.objects.filter(
+            const titlesByThisLetter = results.filter(
               obj => (obj.title.toLocaleUpperCase().startsWith(letter))
             );
 

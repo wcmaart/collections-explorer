@@ -29,9 +29,7 @@ class SearchResultsHeader extends Component {
             Results
           </span>
         }
-        {/* for now, only show for objects */}
         {
-          searchCategory === 'objects' &&
           <ul className="tabs left">
             {
               SEARCH_TABS.map((tab) => (

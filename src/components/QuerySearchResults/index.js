@@ -5,6 +5,7 @@ import GraphqlClient from '../../GraphqlClient';
 import { withRouter } from 'react-router';
 import { Link, Route } from 'react-router-dom';
 import SearchResultsWrapper from '../SearchResultsWrapper';
+import { getNormalizedDataResponse } from '../../helpers';
 
 class QuerySearchResults extends Component {
   render() {
@@ -32,19 +33,6 @@ class QuerySearchResults extends Component {
         errorPolicy="all"
       >
         {({ loading, error, data }) => {
-          let searchResultItems = [];
-          const {
-           object,
-           objects,
-           maker,
-           makers,
-           event,
-           events,
-          } = data;
-
-          const singleResult = object || maker || event;
-          const manyResults = objects || makers || events;
-
           if (loading) {
             return (
               <div className="row">
@@ -55,13 +43,7 @@ class QuerySearchResults extends Component {
             );
           }
 
-          if (singleResult) {
-            searchResultItems = [singleResult];
-          } else if (manyResults) {
-            searchResultItems = manyResults;
-          } else {
-            return <p className="red-text">Oops! 😱 It looks like you need to setup your api</p>;
-          }
+          const searchResultItems = getNormalizedDataResponse(data);
 
           if (!searchResultItems.length) {
             return <p className="red-text">Sorry, no results</p>;

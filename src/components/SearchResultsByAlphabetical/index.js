@@ -9,15 +9,13 @@ class SearchResultsByAlphabetical extends Component {
       id,
       imageUrl,
       objects,
+      searchCategory,
       thisPageIdx,
       searchResultItems,
     }  = this.props;
 
-    const testImg = imageUrl || `https://picsum.photos/500/500?random&${id}`;
-    const dummyCounter = 16;
-
     return (
-       <div className={`${styles.artObjects} row testjhhjkg`}>
+       <div className={`${styles.artObjects} row`}>
         { searchResultItems.map(letterData => (
             <div key={letterData.key} className={`${styles.section} col s12`}>
               <div className={styles.sectionInner}>
@@ -28,13 +26,13 @@ class SearchResultsByAlphabetical extends Component {
                   <div className={styles.clearfix}></div>
                 </div>
                 <div className={`${styles.alphabeticalListings} row`}>
-                  { letterData.objects.map((obj, idx) => (
-                      <div key={idx} className={`col s6 m3`}>
-                        <Link to={`/objects/${obj.id}`} className={`${styles.alphabeticalListing}`}>
+                  { letterData.objects.map((obj, idx) => {
+                      return <div key={idx} className={`col s6 m3`}>
+                        <Link to={`/${searchCategory}/${obj.id}`} className={`${styles.alphabeticalListing}`}>
                           {obj.title}
                         </Link>
                       </div>
-                    ))
+                    })
                   }
                 </div>
               </div>
