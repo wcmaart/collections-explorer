@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import moment from 'moment';
 import styles from './styles.scss';
 import { Link } from 'react-router-dom';
-import { parseEventProps } from '../../helpers';
+import { parseExhibitionProps } from '../../helpers';
 
-class EventCard extends Component {
+class ExhibitionCard extends Component {
   getDateValue() {
     const {
       beginISODate,
@@ -24,7 +24,7 @@ class EventCard extends Component {
   }
 
   render() {
-    const props = parseEventProps(this.props);
+    const props = parseExhibitionProps(this.props);
 
     const statListItems = [
       {
@@ -69,7 +69,7 @@ class EventCard extends Component {
 
     return (
       <div key={props.id} className={`${styles.card} card`}>
-        <Link to={`/events/${props.id}`}>
+        <Link to={`/exhibitions/${props.id}`}>
           {cardImage}
           {cardContent}
         </Link>
@@ -78,4 +78,4 @@ class EventCard extends Component {
   }
 }
 
-export default EventCard;
+export default ExhibitionCard;

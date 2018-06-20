@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './styles.scss';
 import ArtObjectCard from '../ArtObjectCard';
 import MakerCard from '../MakerCard';
-import EventCard from '../EventCard';
+import ExhibitionCard from '../ExhibitionCard';
 import MasonryGrid from '../MasonryGrid';
 
 class SearchResults extends Component {
@@ -23,8 +23,8 @@ class SearchResults extends Component {
             <MakerCard {...item} />
           }
           {
-            searchCategory === 'events' &&
-            <EventCard {...item} />
+            searchCategory === 'exhibitions' &&
+            <ExhibitionCard {...item} />
           }
         </li>
       );

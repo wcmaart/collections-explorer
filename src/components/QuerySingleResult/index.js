@@ -43,8 +43,8 @@ class QuerySingleResult extends Component {
 
         // work around for different api formats
         // todo: improve this #apiMakerId
-        // todo: improve this #apiEventId
-        const normalizedData = data.object || data.event || {
+        // todo: improve this #apiExhibitionId
+        const normalizedData = data.object || data.exhibition || {
           objects: data.objects,
         };
 

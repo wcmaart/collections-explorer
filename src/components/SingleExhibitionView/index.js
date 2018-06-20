@@ -4,7 +4,7 @@ import styles from './styles.scss';
 import { Link } from 'react-router-dom';
 import ArtObjectCard from '../ArtObjectCard';
 import MasonryGrid from '../MasonryGrid';
-import { FAKE_EVENT_DETAILS } from '../../constants';
+import { FAKE_EXHIBITION_DETAILS } from '../../constants';
 
 class SingleMakerView extends Component {
   constructor() {
@@ -45,7 +45,7 @@ class SingleMakerView extends Component {
 
         <section className="section">
           <p className={`${styles.makerBio} paragraph`}>
-          {FAKE_EVENT_DETAILS}
+          {FAKE_EXHIBITION_DETAILS}
           </p>
         </section>
 

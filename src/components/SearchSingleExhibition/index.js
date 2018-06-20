@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import styles from './styles.scss';
 import Header from '../Header';
-import SingleEventView from '../SingleEventView';
+import SingleExhibitionView from '../SingleExhibitionView';
 import SearchSingleGeneric from '../SearchSingleGeneric';
-import gqlQueries from '../../gqlQueries/events';
-import { SEARCH_EVENTS_CONSTS as searchParams } from '../../constants';
+import gqlQueries from '../../gqlQueries/exhibitions';
+import { SEARCH_EXHIBITIONS_CONSTS as searchParams } from '../../constants';
 
-class SearchSingleEvent extends Component {
+class SearchSingleExhibition extends Component {
   render() {
     const mergedProps = Object.assign({
         gqlQuery: gqlQueries.byId,
@@ -26,7 +26,7 @@ class SearchSingleEvent extends Component {
               <SearchSingleGeneric
                 {...mergedProps}
                 getResultWrapper={(params) => {
-                  return <SingleEventView {...params.result} />
+                  return <SingleExhibitionView {...params.result} />
                 }}
               />
             </div>
@@ -37,4 +37,4 @@ class SearchSingleEvent extends Component {
   }
 }
 
-export default SearchSingleEvent;
+export default SearchSingleExhibition;
