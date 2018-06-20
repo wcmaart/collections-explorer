@@ -46,7 +46,9 @@ class SearchResultsByMedium extends Component {
                             <span>{object.title}</span>
                             <span>{object.id}</span>
                             */}
-                            <img src={object.imageUrl} />
+                            <Link to={`/objects/${object.id}`}>
+                              <img src={object.imageUrl} />
+                            </Link>
                           </div>
                         </div>
                       );

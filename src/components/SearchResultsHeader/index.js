@@ -3,8 +3,6 @@ import styles from './styles.scss';
 import SearchPagination from '../SearchPagination';
 import SearchResults from '../SearchResults';
 import ArtObjectCard from '../ArtObjectCard';
-import SearchResultsByMedium from '../SearchResultsByMedium';
-import SearchResultsByAlphabetical from '../SearchResultsByAlphabetical';
 import { SEARCH_TABS } from '../../constants';
 
 class SearchResultsHeader extends Component {

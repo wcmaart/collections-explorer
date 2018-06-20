@@ -65,6 +65,14 @@ const gqlQueries = {
     }
     ${ObjectProps}
   `,
+  byAlphabetical: gql`
+    query objects {
+      objects(per_page: 1000, sort_field: "title", sort: "asc") {
+        id
+        title
+      }
+    }
+  `,
 };
 
 export default gqlQueries;

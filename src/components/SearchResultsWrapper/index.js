@@ -3,7 +3,6 @@ import styles from './styles.scss';
 import SearchPagination from '../SearchPagination';
 import SearchResults from '../SearchResults';
 import ArtObjectCard from '../ArtObjectCard';
-import SearchResultsByAlphabetical from '../SearchResultsByAlphabetical';
 
 class SearchResultsWrapper extends Component {
   // todo: dedup #dedupGetActiveSearchType
@@ -30,14 +29,7 @@ class SearchResultsWrapper extends Component {
 
     return (
       <div>
-        {
-          searchTab === '' &&
-          <SearchResults {...props} />
-        }
-        {
-          searchTab === 'alphabetical' &&
-          <SearchResultsByAlphabetical {...props} />
-        }
+        <SearchResults {...props} />
         {
           // todo: figure out this proper logic
           hasPageIdx &&

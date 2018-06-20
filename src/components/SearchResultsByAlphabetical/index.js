@@ -5,26 +5,34 @@ import { Link } from 'react-router-dom';
 
 class SearchResultsByAlphabetical extends Component {
   render() {
-    const testImg = this.props.imageUrl || `https://picsum.photos/500/500?random&${this.props.id}`;
-    const objects = this.props.objects;
-    const thisPageIdx = this.props.thisPageIdx;
+    const {
+      id,
+      imageUrl,
+      objects,
+      thisPageIdx,
+      searchResultItems,
+    }  = this.props;
+
+    const testImg = imageUrl || `https://picsum.photos/500/500?random&${id}`;
     const dummyCounter = 16;
 
     return (
-       <div className={`${styles.artObjects} row`}>
-        { ALPHABET.map(letter => (
-            <div key={letter} className={`${styles.section} col s12`}>
+       <div className={`${styles.artObjects} row testjhhjkg`}>
+        { searchResultItems.map(letterData => (
+            <div key={letterData.key} className={`${styles.section} col s12`}>
               <div className={styles.sectionInner}>
                 <div className={styles.sectionInnerHeader}>
                   <h3 className={`${styles.h3} left`}>
-                    {letter}
+                    {letterData.content}
                   </h3>
                   <div className={styles.clearfix}></div>
                 </div>
                 <div className={`${styles.alphabeticalListings} row`}>
-                  { Array(dummyCounter).fill(null).map((val, idx) => (
+                  { letterData.objects.map((obj, idx) => (
                       <div key={idx} className={`col s6 m3`}>
-                        {letter} Dummy Name
+                        <Link to={`/objects/${obj.id}`} className={`${styles.alphabeticalListing}`}>
+                          {obj.title}
+                        </Link>
                       </div>
                     ))
                   }
