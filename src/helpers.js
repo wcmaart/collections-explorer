@@ -70,12 +70,14 @@ export const getNormalizedDataResponse = (data) => {
    objects,
    maker,
    makers,
+   medium,
+   mediums,
    exhibition,
    exhibitions,
   } = data;
 
-  const singleResult = object || maker || exhibition;
-  const manyResults = objects || makers || exhibitions;
+  const singleResult = object || maker || medium || exhibition;
+  const manyResults = objects || makers || mediums || exhibitions;
 
   if (singleResult) {
     return [singleResult];

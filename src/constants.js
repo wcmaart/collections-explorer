@@ -50,10 +50,10 @@ export const SEARCH_TABS = [
     content: 'By Medium',
     key: 'medium',
   },
-  {
-    content: 'A-Z',
-    key: 'alphabetical',
-  },
+  // {
+  //   content: 'A-Z',
+  //   key: 'alphabetical',
+  // },
 ];
 
 export const OBJECT_MEDIUMS = [
@@ -96,6 +96,12 @@ export const SEARCH_MAKERS_CONSTS = {
   searchCategory: 'makers',
   slugPrefix: '/makers',
   searchInputPlaceholder: 'Search Makers',
+};
+
+export const SEARCH_MEDIUMS_CONSTS = {
+  searchCategory: 'mediums',
+  slugPrefix: '/mediums',
+  searchInputPlaceholder: 'Search Mediums',
 };
 
 export const SEARCH_EXHIBITIONS_CONSTS = {
