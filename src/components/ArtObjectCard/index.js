@@ -3,6 +3,7 @@ import styles from './styles.scss';
 import { Link } from 'react-router-dom';
 import { parseObjectProps } from '../../helpers';
 
+// todo: #consolidateCards ?
 class ArtObjectCard extends Component {
   render() {
     const props = parseObjectProps(this.props);
