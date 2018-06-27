@@ -1,7 +1,7 @@
 import { META_TAGS, META_TAGS_DEFAULT, CANONICAL_DOMAIN } from './constants';
 
 const parseImage = (imgData) => {
-  if (!imgData) {
+  if (!imgData || !imgData.version) {
     return null;
   }
 

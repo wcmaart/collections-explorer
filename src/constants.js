@@ -59,19 +59,19 @@ export const SEARCH_TABS = [
 export const OBJECT_MEDIUMS = [
   {
     content: 'Prints',
-    key: 'prints',
+    key: 'print',
   },
   {
     content: 'Photographs',
-    key: 'photographs',
+    key: 'photograph',
   },
   {
     content: 'Drawings',
-    key: 'drawings',
+    key: 'drawing',
   },
   {
     content: 'Paintings',
-    key: 'paintings',
+    key: 'painting',
   },
 ];
 
