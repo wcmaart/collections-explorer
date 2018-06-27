@@ -19,12 +19,7 @@ class SearchResultsByMedium extends Component {
                     {item.content}
                   </h3>
                   <div className={`${styles.sectionHeaderRight} right`}>
-                    {/*
-                      todo: get this working
-                    */}
-                    {/*
-                      <Link className={styles.viewAllLink} to={`/objects/search-type/medium/`}>View all</Link>
-                    */}
+                    <Link className={styles.viewAllLink} to={`/mediums/${item.key}`}>View all</Link>
                   </div>
                   <div className={styles.clearfix}></div>
                 </div>

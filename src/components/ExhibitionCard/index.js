@@ -4,6 +4,7 @@ import styles from './styles.scss';
 import { Link } from 'react-router-dom';
 import { parseExhibitionProps } from '../../helpers';
 
+// todo: #consolidateCards ?
 class ExhibitionCard extends Component {
   getDateValue() {
     const {
@@ -26,6 +27,10 @@ class ExhibitionCard extends Component {
   render() {
     const props = parseExhibitionProps(this.props);
 
+    const {
+      isSingleCard,
+    } = props;
+
     const statListItems = [
       {
         label: 'Date',
@@ -40,7 +45,15 @@ class ExhibitionCard extends Component {
     const imgUrl = props.imageUrl || '/no-image-placeholder-big.png';
     const cardImage = (
       <div className="card-image">
-        <img src={imgUrl} />
+        {
+          isSingleCard && <img src={imgUrl} />
+        }
+        {
+          !isSingleCard &&
+          <Link to={`/exhibitions/${props.id}`}>
+            <img src={imgUrl} />
+          </Link>
+        }
       </div>
     );
 
@@ -48,7 +61,15 @@ class ExhibitionCard extends Component {
       <div className={`${styles.cardContent} cardContent`}>
         <div className={`${styles.cardContentInner} cardContentInner`}>
           <div className={styles.cardTitle}>
-            {props.title}
+            {
+              isSingleCard && props.title
+            }
+            {
+              !isSingleCard &&
+              <Link to={`/exhibitions/${props.id}`}>
+                {props.title}
+              </Link>
+            }
           </div>
           <ul>
             {
@@ -69,10 +90,8 @@ class ExhibitionCard extends Component {
 
     return (
       <div key={props.id} className={`${styles.card} card`}>
-        <Link to={`/exhibitions/${props.id}`}>
-          {cardImage}
-          {cardContent}
-        </Link>
+        {cardImage}
+        {cardContent}
       </div>
     );
   }

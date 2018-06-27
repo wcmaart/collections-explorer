@@ -22,9 +22,15 @@
         margin: 0;
 
         &:hover {
+          z-index: 2;
+
+          .card-image {
+            position: relative;
+            z-index: 1;
+          }
+
           .cardContent {
             display: block;
-            z-index: 2;
           }
         }
       }

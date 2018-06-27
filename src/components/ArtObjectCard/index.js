@@ -3,12 +3,15 @@ import styles from './styles.scss';
 import { Link } from 'react-router-dom';
 import { parseObjectProps } from '../../helpers';
 
+// todo: #consolidateCards ?
 class ArtObjectCard extends Component {
   render() {
     const props = parseObjectProps(this.props);
 
     const {
       isSingleCard,
+      maker,
+      medium,
     } = props;
 
     // const imgUrl = props.imageUrl || `https://picsum.photos/500/500?random&${props.id}`;
@@ -16,13 +19,15 @@ class ArtObjectCard extends Component {
     const statListItems = [
       {
         label: 'Medium',
-        value: props.medium,
-
+        value: <Link to={`/mediums/${medium}`}>
+          {medium}
+        </Link>,
       },
       {
         label: 'Maker',
-        value: props.maker,
-
+        value: <Link to={`/makers/${maker}`}>
+          {maker}
+        </Link>,
       },
       {
         label: 'Dimensions',
@@ -44,7 +49,15 @@ class ArtObjectCard extends Component {
       <div className={`${styles.cardContent} cardContent`}>
         <div className={`${styles.cardContentInner} cardContentInner`}>
           <div className={styles.cardTitle}>
-            {props.title}
+            {
+              isSingleCard && props.title
+            }
+            {
+              !isSingleCard &&
+              <Link to={`/objects/${props.id}`}>
+                {props.title}
+              </Link>
+            }
           </div>
           <ul>
             {
@@ -65,7 +78,15 @@ class ArtObjectCard extends Component {
 
     const cardImage = (
       <div className="card-image">
-        <img src={imgUrl} />
+        {
+          isSingleCard && <img src={imgUrl} />
+        }
+        {
+          !isSingleCard &&
+          <Link to={`/objects/${props.id}`}>
+            <img src={imgUrl} />
+          </Link>
+        }
       </div>
     );
 
@@ -80,10 +101,10 @@ class ArtObjectCard extends Component {
         }
         {
           !isSingleCard &&
-          <Link to={`/objects/${props.id}`}>
+          <div>
             {cardImage}
             {cardContent}
-          </Link>
+          </div>
         }
       </div>
     );
