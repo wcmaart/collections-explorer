@@ -6,11 +6,11 @@
   box-shadow: none !important;
 }
 
-@media #{$medium-and-down} {
-  li {
-    margin-bottom: $padding-md;
-  }
+li {
+  margin-bottom: $padding-md;
+}
 
+@media #{$medium-and-down} {
   .cardTitle {
     margin: $padding-md 0;
   }
