@@ -2,24 +2,28 @@
 
 Work in progress...
 
-### Search Component Hierachy Architecture
+This outlines the hierarchy of nested react components used for the search pages.
+We will use the "/objects" set of routes for this example. Other search routes use a similar architecture.
+
+### Search Component Architecture
+
 - routes/index
   ```
-  Where it all begins...
+  The router kicks things off matching a route like "/objects/".
   Before passing a component to the route, we wrap it
   in a HOC (higher order component) called withSearchRouteHelper.
   ```
   - withSearchRouteHelper
     ```
-    This checks route parameters to see if the search url has an id or a pagination index
+    This checks route parameters to parse information such as whether the search url has an id or a pagination index
     ```
     - SearchObjects
       ```
-      This mixes in props specific to this category before delegating to the SearchGenericPage
+      This mixes in props and the gqlQueries specific to this category before delegating to the SearchGenericPage
       ```
       - SearchGenericPage
         ```
-        Adds a page header
+        Templates the basic html page structure including a page header.
         Implements the SearchGeneric component
         ```
         - SearchGeneric
@@ -29,16 +33,13 @@ Work in progress...
           - QuerySearchResults
             ```
             Runs the search with an ApolloProvider and a react-apollo Query component
-            The Query component returns a child via a function
-            with params: ({ loading, error, data }).
-            That function returns the SearchResultsWrapper
+            The Query component returns a child which is a closure function
+            passing the following params: ({ loading, error, data }).
+            This function returns the SearchResultsWrapper.
             ```
             - SearchResultsWrapper
               ```
-                Renders search result related components like search filters
-                and pagination. Depending on the filter state,
-                renders various search views.
-                Let's focus on the SearchResults view
+                Adds the pagination UI as appropriate, and renders the SearchResults View.
               ```
               - SearchResults
                 ```
