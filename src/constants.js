@@ -39,6 +39,10 @@ export const NAV_LINKS = [
     content: 'Exhibitions',
     url: '/exhibitions',
   },
+  {
+    content: 'Events',
+    url: '/events',
+  },
 ];
 
 export const SEARCH_TABS = [
@@ -108,6 +112,12 @@ export const SEARCH_EXHIBITIONS_CONSTS = {
   searchCategory: 'exhibitions',
   slugPrefix: '/exhibitions',
   searchInputPlaceholder: 'Search Exhibitions',
+};
+
+export const SEARCH_EVENTS_CONSTS = {
+  searchCategory: 'events',
+  slugPrefix: '/events',
+  searchInputPlaceholder: 'Search Events',
 };
 
 export const FAKE_MAKER_BIO = `

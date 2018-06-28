@@ -6,7 +6,7 @@ import ArtObjectCard from '../ArtObjectCard';
 import MasonryGrid from '../MasonryGrid';
 import { FAKE_EXHIBITION_DETAILS } from '../../constants';
 
-class SingleMakerView extends Component {
+class SingleMediumView extends Component {
   constructor() {
     super(...arguments);
 
@@ -63,4 +63,4 @@ class SingleMakerView extends Component {
   }
 }
 
-export default withRouter(SingleMakerView);
+export default withRouter(SingleMediumView);
