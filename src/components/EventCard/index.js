@@ -2,45 +2,50 @@ import React, { Component } from 'react'
 import moment from 'moment';
 import styles from './styles.scss';
 import { Link } from 'react-router-dom';
-import { parseExhibitionProps } from '../../helpers';
+import { parseEventProps } from '../../helpers';
 
 // todo: #consolidateCards ?
-class ExhibitionCard extends Component {
+class EventCard extends Component {
   getDateValue() {
     // todo: #normalizeDateFormats?
     const {
-      beginISODate,
-      endISODate,
+      startDate,
     } = this.props;
 
-    const start = beginISODate && moment(beginISODate).format('l');
-    const end = endISODate && moment(endISODate).format('l');
+    const start = startDate && moment(startDate).format('l');
 
-    // const start = beginISODate;
-    // const end = endISODate;
-    if (!end || (end === start)) {
-      return start;
-    }
-
-    return `${start} - ${end}`;
+    return start;
   }
 
   render() {
-    const props = parseExhibitionProps(this.props);
+    const props = parseEventProps(this.props);
 
     const {
       isSingleCard,
     } = props;
 
+    // todo: #dedupEventStatListItems
     const statListItems = [
       {
         label: 'Date',
         value: this.getDateValue(),
       },
       {
-        label: 'Is In House',
-        value: props.isInHouse ? 'yes' : 'no',
-      }
+        label: 'Faculty Member',
+        value: props.facultyMember,
+      },
+      {
+        label: 'Subject And Course',
+        value: props.subjectAndCourse,
+      },
+      {
+        label: 'Subject',
+        value: props.subject,
+      },
+      {
+        label: 'Institution',
+        value: props.institution,
+      },
     ];
 
     const imgUrl = props.imageUrl || '/no-image-placeholder-big.png';
@@ -51,7 +56,7 @@ class ExhibitionCard extends Component {
         }
         {
           !isSingleCard &&
-          <Link to={`/exhibitions/${props.id}`}>
+          <Link to={`/events/${props.id}`}>
             <img src={imgUrl} />
           </Link>
         }
@@ -67,7 +72,7 @@ class ExhibitionCard extends Component {
             }
             {
               !isSingleCard &&
-              <Link to={`/exhibitions/${props.id}`}>
+              <Link to={`/events/${props.id}`}>
                 {props.title}
               </Link>
             }
@@ -98,4 +103,4 @@ class ExhibitionCard extends Component {
   }
 }
 
-export default ExhibitionCard;
+export default EventCard;

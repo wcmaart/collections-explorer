@@ -3,6 +3,7 @@ import styles from './styles.scss';
 import ArtObjectCard from '../ArtObjectCard';
 import MakerCard from '../MakerCard';
 import ExhibitionCard from '../ExhibitionCard';
+import EventCard from '../EventCard';
 import MasonryGrid from '../MasonryGrid';
 
 class SearchResults extends Component {
@@ -12,8 +13,12 @@ class SearchResults extends Component {
     } = this.props
 
     return elements.map(function(item) {
+      // todo: improve this #apiEventId
+      // quick fix for now
+      const id = item.id || item.eventId;
+
       return (
-        <li key={item.id} className="masonryGridItem col s12 l3">
+        <li key={id} className="masonryGridItem col s12 l3">
           {
             searchCategory === 'objects' &&
             <ArtObjectCard {...item} />
@@ -25,6 +30,10 @@ class SearchResults extends Component {
           {
             searchCategory === 'exhibitions' &&
             <ExhibitionCard {...item} />
+          }
+          {
+            searchCategory === 'events' &&
+            <EventCard {...item} />
           }
         </li>
       );

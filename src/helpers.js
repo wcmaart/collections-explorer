@@ -63,6 +63,17 @@ export const parseExhibitionProps = (props) => {
   });
 };
 
+export const parseEventProps = (props) => {
+  // todo: improve this #apiEventId
+  const imgData = props.keyImage
+
+  return Object.assign({}, props, {
+    imageUrl: parseImage(imgData),
+    title: props.eventName,
+    id: props.eventId,
+  });
+};
+
 export const getNormalizedDataResponse = (data) => {
   // todo: see if we can change the API to make these uniform so we don't need this.
   const {
@@ -74,10 +85,12 @@ export const getNormalizedDataResponse = (data) => {
    mediums,
    exhibition,
    exhibitions,
+   event,
+   events,
   } = data;
 
-  const singleResult = object || maker || medium || exhibition;
-  const manyResults = objects || makers || mediums || exhibitions;
+  const singleResult = object || maker || medium || exhibition || event;
+  const manyResults = objects || makers || mediums || exhibitions || events;
 
   if (singleResult) {
     return [singleResult];

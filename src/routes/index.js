@@ -6,20 +6,24 @@ import SearchObjects from '../components/SearchObjects';
 import SearchMakers from '../components/SearchMakers';
 import SearchMediums from '../components/SearchMediums';
 import SearchExhibitions from '../components/SearchExhibitions';
+import SearchEvents from '../components/SearchEvents';
 import SearchSingleObject from '../components/SearchSingleObject';
 import SearchSingleMaker from '../components/SearchSingleMaker';
 import SearchSingleMedium from '../components/SearchSingleMedium';
 import SearchSingleExhibition from '../components/SearchSingleExhibition';
+import SearchSingleEvent from '../components/SearchSingleEvent';
 import GenericPage from '../components/GenericPage';
 
 const WrapSearchObjects = withSearchRouteHelper(SearchObjects);
 const WrapSearchMakers = withSearchRouteHelper(SearchMakers);
 const WrapSearchMediums = withSearchRouteHelper(SearchMediums);
 const WrapSearchExhibitions = withSearchRouteHelper(SearchExhibitions);
+const WrapSearchEvents = withSearchRouteHelper(SearchEvents);
 const WrapSearchSingleObject = withSearchRouteHelper(SearchSingleObject);
 const WrapSearchSingleMaker = withSearchRouteHelper(SearchSingleMaker);
 const WrapSearchSingleMedium = withSearchRouteHelper(SearchSingleMedium);
 const WrapSearchSingleExhibition = withSearchRouteHelper(SearchSingleExhibition);
+const WrapSearchSingleEvent = withSearchRouteHelper(SearchSingleEvent);
 
 // with guidance from https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/guides/server-rendering.md
 const Status = ({ code, children }) =>
@@ -81,6 +85,12 @@ function Routes() {
       <Route path="/exhibitions/page/:page" component={WrapSearchExhibitions} />
       <Route path="/exhibitions/search-type/:searchType" component={WrapSearchExhibitions} />
       <Route path="/exhibitions/:id" component={WrapSearchSingleExhibition} />
+
+      {/* Events */}
+      <Route exact path="/events" component={WrapSearchEvents} />
+      <Route path="/events/page/:page" component={WrapSearchEvents} />
+      <Route path="/events/search-type/:searchType" component={WrapSearchEvents} />
+      <Route path="/events/:id" component={WrapSearchSingleEvent} />
 
       {/* Mediums */}
       <Route exact path="/mediums" component={WrapSearchMediums} />
