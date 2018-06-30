@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './styles.scss';
 import GraphqlClient from '../../GraphqlClient';
+import SearchResultsWrapper from '../SearchResultsWrapper';
 import SearchResultsByMedium from '../SearchResultsByMedium';
 import SearchResultsByAlphabetical from '../SearchResultsByAlphabetical';
 import { withRouter } from 'react-router';
@@ -13,21 +14,29 @@ class QuerySearchResultsByType extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      searchResultItems: null,
+    };
+  }
+
+  initQuery(nextProps) {
+    const props = nextProps || this.props;
+
     const client = GraphqlClient();
+    let searchResultItems = [];
 
     const {
       searchType,
       gqlQueries,
       searchCategory,
-    } = this.props;
-
-    this.state = {
-      searchResultItems: null,
-    };
+      thingId,
+    } = props;
 
     // quick test for now.
     const gqlQueryKey = searchType === 'medium' ?
       'byMedium' :
+      searchType === 'title' ?
+      'byTitle' :
       searchType === 'alphabetical' ?
       'byAlphabetical' :
        null;
@@ -38,7 +47,25 @@ class QuerySearchResultsByType extends Component {
 
     // get the correct gqlQuery
     const gqlQuery = gqlQueries[gqlQueryKey];
-    const searchResultItems = [];
+
+    if(searchType === 'title') {
+      client
+        .query({
+          query: gqlQuery,
+          variables: {
+            title: thingId,
+          }
+        })
+        .then(response => {
+          const {
+            data
+          } = response;
+
+          searchResultItems = getNormalizedDataResponse(data);
+
+          this.setState({searchResultItems: searchResultItems});
+        });
+    }
 
     if(searchType === 'medium' ) {
       OBJECT_MEDIUMS.map(type => {
@@ -104,6 +131,14 @@ class QuerySearchResultsByType extends Component {
     }
   }
 
+  componentDidMount() {
+    this.initQuery();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.initQuery(nextProps);
+  }
+
   render() {
     const props = this.props;
 
@@ -121,6 +156,9 @@ class QuerySearchResultsByType extends Component {
 
     return (
       <div>
+        { this.props.searchType === 'title' &&
+          <SearchResultsWrapper {...mergedParams} />
+        }
         { this.props.searchType === 'medium' &&
           <SearchResultsByMedium {...mergedParams} />
         }

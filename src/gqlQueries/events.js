@@ -82,6 +82,14 @@ const gqlQueries = {
       }
     }
   `,
+  byTitle: gql`
+    query events($title: String) {
+      events(eventName: $title) {
+        ...EventProps
+      }
+    }
+    ${EventProps}
+  `,
   byPageIdx: gql`
     query events {
       events {

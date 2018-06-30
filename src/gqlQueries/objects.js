@@ -65,6 +65,14 @@ const gqlQueries = {
     }
     ${ObjectProps}
   `,
+  byTitle: gql`
+    query objects($title: String) {
+      objects(title: $title) {
+        ...ObjectProps
+      }
+    }
+    ${ObjectProps}
+  `,
   byAlphabetical: gql`
     query objects {
       objects(per_page: 1000, sort_field: "title", sort: "asc") {

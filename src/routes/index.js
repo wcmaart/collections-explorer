@@ -70,7 +70,8 @@ function Routes() {
       {/* Objects */}
       <Route exact path="/objects" component={WrapSearchObjects} />
       <Route path="/objects/page/:page" component={WrapSearchObjects} />
-      <Route path="/objects/search-type/:searchType" component={WrapSearchObjects} />
+      <Route exact path="/objects/search-type/:searchType" component={WrapSearchObjects} />
+      <Route exact path="/objects/search-type/:searchType/:id" component={WrapSearchObjects} />
       <Route path="/objects/:id" component={WrapSearchSingleObject} />
 
 
@@ -89,7 +90,8 @@ function Routes() {
       {/* Events */}
       <Route exact path="/events" component={WrapSearchEvents} />
       <Route path="/events/page/:page" component={WrapSearchEvents} />
-      <Route path="/events/search-type/:searchType" component={WrapSearchEvents} />
+      <Route exact path="/events/search-type/:searchType" component={WrapSearchEvents} />
+      <Route exact path="/events/search-type/:searchType/:id" component={WrapSearchEvents} />
       <Route path="/events/:id" component={WrapSearchSingleEvent} />
 
       {/* Mediums */}

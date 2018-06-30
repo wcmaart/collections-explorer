@@ -13,9 +13,13 @@ class SearchResults extends Component {
     } = this.props
 
     return elements.map(function(item) {
+      let id = item.id;
+
       // todo: improve this #apiEventId
       // quick fix for now
-      const id = item.id || item.eventId;
+      if (typeof id === 'undefined') {
+        id = item.eventId;
+      }
 
       return (
         <li key={id} className="masonryGridItem col s12 l3">
