@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styles from './styles.scss';
 import { Link } from 'react-router-dom';
 import { parseObjectProps } from '../../helpers';
+import MasonryCardImage from '../MasonryCardImage';
 
 // todo: #consolidateCards ?
 class ArtObjectCard extends Component {
@@ -14,8 +15,9 @@ class ArtObjectCard extends Component {
       medium,
     } = props;
 
-    // const imgUrl = props.imageUrl || `https://picsum.photos/500/500?random&${props.id}`;
-    const imgUrl = props.imageUrl || '/no-image-placeholder-big.png';
+    // todo: consolidate
+    const imgUrl = props.imageData && props.imageData.url || '/no-image-placeholder-big.png';
+
     const statListItems = [
       {
         label: 'Medium',
@@ -84,7 +86,7 @@ class ArtObjectCard extends Component {
         {
           !isSingleCard &&
           <Link to={`/objects/${props.id}`}>
-            <img src={imgUrl} />
+            <MasonryCardImage imageData={props.imageData} />
           </Link>
         }
       </div>

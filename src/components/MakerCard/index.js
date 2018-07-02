@@ -2,14 +2,11 @@ import React, { Component } from 'react'
 import styles from './styles.scss';
 import { Link } from 'react-router-dom';
 import { parseMakerProps } from '../../helpers';
+import MasonryCardImage from '../MasonryCardImage';
 
 class MakerCard extends Component {
   render() {
     const props = parseMakerProps(this.props);
-
-    // const testImg = props.imageUrl || `https://picsum.photos/500/500?random&${props.id}`;
-    const testImg = props.imageUrl || '/no-image-placeholder-big.png';
-
     const cardContent = (
       <div className={`${styles.cardContent} cardContent`}>
         <div className={`${styles.cardContentInner} cardContentInner`}>
@@ -24,7 +21,7 @@ class MakerCard extends Component {
 
     const cardImage = (
       <div className="card-image">
-        <img src={testImg} />
+        <MasonryCardImage imageData={props.imageData} />
       </div>
     );
 
