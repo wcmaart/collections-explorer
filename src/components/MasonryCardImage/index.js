@@ -11,7 +11,7 @@ class MasonryCardImage extends Component {
     } = this.props.imageData || {};
 
     return <div className={styles.cardImgWrap}>
-      <img className={styles.cardImg} src={url}  />
+      <img className={styles.cardImg} src={url} style={{padding: `${100 / (width / height)}% 0 0 0`}} />
     </div>
   }
 }
