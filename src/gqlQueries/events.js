@@ -82,9 +82,9 @@ const gqlQueries = {
       }
     }
   `,
-  byTitle: gql`
-    query events($title: String) {
-      events(eventName: $title) {
+  byKeyword: gql`
+    query events($keyword: String) {
+      events(eventName: $keyword) {
         ...EventProps
       }
     }

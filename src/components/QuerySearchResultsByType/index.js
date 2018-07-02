@@ -35,8 +35,8 @@ class QuerySearchResultsByType extends Component {
     // quick test for now.
     const gqlQueryKey = searchType === 'medium' ?
       'byMedium' :
-      searchType === 'title' ?
-      'byTitle' :
+      searchType === 'keyword' ?
+      'byKeyword' :
       searchType === 'alphabetical' ?
       'byAlphabetical' :
        null;
@@ -48,12 +48,12 @@ class QuerySearchResultsByType extends Component {
     // get the correct gqlQuery
     const gqlQuery = gqlQueries[gqlQueryKey];
 
-    if(searchType === 'title') {
+    if(searchType === 'keyword') {
       client
         .query({
           query: gqlQuery,
           variables: {
-            title: thingId,
+            keyword: thingId,
           }
         })
         .then(response => {
@@ -156,7 +156,7 @@ class QuerySearchResultsByType extends Component {
 
     return (
       <div>
-        { this.props.searchType === 'title' &&
+        { this.props.searchType === 'keyword' &&
           <SearchResultsWrapper {...mergedParams} />
         }
         { this.props.searchType === 'medium' &&

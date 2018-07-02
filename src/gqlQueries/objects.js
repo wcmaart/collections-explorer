@@ -65,9 +65,9 @@ const gqlQueries = {
     }
     ${ObjectProps}
   `,
-  byTitle: gql`
-    query objects($title: String) {
-      objects(title: $title) {
+  byKeyword: gql`
+    query objects($keyword: String) {
+      objects(keyword: $keyword) {
         ...ObjectProps
       }
     }

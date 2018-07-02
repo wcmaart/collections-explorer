@@ -3,6 +3,31 @@ import {SEARCH_ITEMS_PER_PAGE} from '../constants';
 // todo: can we use this fragment?
 // import { ObjectProps } from './objects';
 
+export const ExhibitionProps = gql `
+  fragment ExhibitionProps on Exhibition {
+    id
+    title
+    planningNotes
+    beginISODate
+    beginDate
+    isInHouse
+    objects
+    curNotes
+    endISODate
+    endDate
+    keyImage {
+      status
+      original_image_id
+      public_id
+      version
+      signature
+      width
+      height
+      format
+    }
+  }
+`;
+
 // Todo, can we fix the api so that we can re-use the fragment instead like we could before?
 // I think this should be (plural) objects($id: Int!)
 const gqlQueries = {
@@ -52,28 +77,18 @@ const gqlQueries = {
   byPageIdx: gql`
     query exhibitions($page: Int) {
       exhibitions(page:$page, per_page:40, sort_field: "beginISODate", sort: "asc") {
-        id
-        title
-        planningNotes
-        beginISODate
-        beginDate
-        isInHouse
-        objects
-        curNotes
-        endISODate
-        endDate
-        keyImage {
-          status
-          original_image_id
-          public_id
-          version
-          signature
-          width
-          height
-          format
-        }
+        ...ExhibitionProps
       }
     }
+    ${ExhibitionProps}
+  `,
+  byKeyword: gql`
+    query exhibitions($keyword: String) {
+      exhibitions(keyword: $keyword) {
+        ...ExhibitionProps
+      }
+    }
+    ${ExhibitionProps}
   `,
   byAlphabetical: gql`
     query exhibitions {
