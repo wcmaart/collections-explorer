@@ -30,7 +30,7 @@ class SearchResultsByMedium extends Component {
                       return parseObjectProps(object);
                     })
                     .filter(object => {
-                      return object.imageUrl;
+                      return object.imageData
                     })
                     .slice(0,4)
                     .map(object => {
@@ -42,7 +42,7 @@ class SearchResultsByMedium extends Component {
                             <span>{object.id}</span>
                             */}
                             <Link to={`/objects/${object.id}`}>
-                              <img src={object.imageUrl} />
+                              <img src={object.imageData.url} />
                             </Link>
                           </div>
                         </div>

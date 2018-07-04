@@ -71,6 +71,8 @@ class SearchGeneric extends Component {
         <div className="row">
           <div className="col s12">
             <SearchResultsHeader
+              keyword={searchType === 'keyword' && this.props.thingId}
+              searchType={searchType}
               searchCategory={searchCategory}
               activeSearchType={searchType}
             />

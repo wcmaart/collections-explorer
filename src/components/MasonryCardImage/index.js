@@ -10,8 +10,10 @@ class MasonryCardImage extends Component {
       width,
     } = this.props.imageData || {};
 
-    return <div className={styles.cardImgWrap}>
-      <img className={styles.cardImg} src={url} style={{padding: `${100 / (width / height)}% 0 0 0`}} />
+    return <div className={styles.cardImgWrap} style={{paddingTop: `${100 / (width / height)}%`}}>
+      <span className={styles.cardImg} >
+        <img src={url} />
+      </span>
     </div>
   }
 }
