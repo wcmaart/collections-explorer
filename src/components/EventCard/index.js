@@ -3,6 +3,7 @@ import moment from 'moment';
 import styles from './styles.scss';
 import { Link } from 'react-router-dom';
 import { parseEventProps } from '../../helpers';
+import MasonryCardImage from '../MasonryCardImage';
 
 // todo: #consolidateCards ?
 class EventCard extends Component {
@@ -48,7 +49,7 @@ class EventCard extends Component {
       },
     ];
 
-    const imgUrl = props.imageUrl || '/no-image-placeholder-big.png';
+    const imgUrl = props.imageData && props.imageData.url || '/no-image-placeholder-big.png';
     const cardImage = (
       <div className="card-image">
         {
@@ -57,7 +58,7 @@ class EventCard extends Component {
         {
           !isSingleCard &&
           <Link to={`/events/${props.id}`}>
-            <img src={imgUrl} />
+            <MasonryCardImage imageData={props.imageData} />
           </Link>
         }
       </div>

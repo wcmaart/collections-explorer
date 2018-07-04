@@ -1,11 +1,23 @@
 import { META_TAGS, META_TAGS_DEFAULT, CANONICAL_DOMAIN } from './constants';
 
 const parseImage = (imgData) => {
+  // use version as a test to ensure there is image data
   if (!imgData || !imgData.version) {
-    return null;
+    return {
+      url: '/no-image-placeholder-big.png',
+    };
   }
 
-  return `http://res.cloudinary.com/wcma/image/upload/v${imgData.version}/${imgData.public_id}.${imgData.format}`;
+  const {
+    height,
+    width,
+  } = imgData;
+
+  return {
+    url: `http://res.cloudinary.com/wcma/image/upload/v${imgData.version}/${imgData.public_id}.${imgData.format}`,
+    height,
+    width,
+  };
 };
 
 export const getMetaTags = path => {
@@ -40,7 +52,7 @@ export const parseObjectProps = (props) => {
   }
 
   return Object.assign({}, props, {
-    imageUrl: parseImage(imgData),
+    imageData: parseImage(imgData),
   });
 };
 
@@ -48,7 +60,7 @@ export const parseMakerProps = (props) => {
   const imgData = props.keyImage || null;
 
   return Object.assign({}, props, {
-    imageUrl: parseImage(imgData),
+    imageData: parseImage(imgData),
     id: props.title,
   });
 };
@@ -59,7 +71,7 @@ export const parseExhibitionProps = (props) => {
   const imgData = props.keyImage || props.objects && props.objects[0] && props.objects[0].remote || null;
 
   return Object.assign({}, props, {
-    imageUrl: parseImage(imgData),
+    imageData: parseImage(imgData),
   });
 };
 
@@ -68,7 +80,7 @@ export const parseEventProps = (props) => {
   const imgData = props.keyImage
 
   return Object.assign({}, props, {
-    imageUrl: parseImage(imgData),
+    imageData: parseImage(imgData),
     title: props.eventName,
     id: props.eventId,
   });

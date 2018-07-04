@@ -7,7 +7,6 @@ class SearchResultsByAlphabetical extends Component {
   render() {
     const {
       id,
-      imageUrl,
       objects,
       searchCategory,
       thisPageIdx,

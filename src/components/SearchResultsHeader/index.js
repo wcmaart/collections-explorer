@@ -3,6 +3,7 @@ import styles from './styles.scss';
 import SearchPagination from '../SearchPagination';
 import SearchResults from '../SearchResults';
 import ArtObjectCard from '../ArtObjectCard';
+import { Link } from 'react-router-dom';
 import { SEARCH_TABS } from '../../constants';
 
 class SearchResultsHeader extends Component {
@@ -15,6 +16,8 @@ class SearchResultsHeader extends Component {
   render() {
     const {
       searchCategory,
+      searchType,
+      keyword,
     } = this.props;
 
     return (
@@ -30,6 +33,20 @@ class SearchResultsHeader extends Component {
           </span>
         }
         {
+          searchType && keyword &&
+          <div>
+            <div className="left">
+              &nbsp;with the keyword: <b>{keyword}</b>
+            </div>
+            <div className="right">
+              <Link className={styles.btnClearSearch} to={`/${searchCategory}`}>
+                Clear Search
+              </Link>
+            </div>
+          </div>
+        }
+        {
+          !searchType &&
           <ul className="tabs left">
             {
               SEARCH_TABS.map((tab) => {

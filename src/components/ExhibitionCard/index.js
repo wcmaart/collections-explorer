@@ -43,7 +43,7 @@ class ExhibitionCard extends Component {
       }
     ];
 
-    const imgUrl = props.imageUrl || '/no-image-placeholder-big.png';
+    const imgUrl = props.imageData && props.imageData.url || '/no-image-placeholder-big.png';
     const cardImage = (
       <div className="card-image">
         {
@@ -52,7 +52,9 @@ class ExhibitionCard extends Component {
         {
           !isSingleCard &&
           <Link to={`/exhibitions/${props.id}`}>
-            <img src={imgUrl} />
+            <div className={styles.cardImgWrap} >
+              <img className={styles.cardImg} src={imgUrl} padding={`${100 / (props.imageData.width / props.imageData.height)}% 0 0 0`} />
+            </div>
           </Link>
         }
       </div>
