@@ -49,9 +49,11 @@ class SearchResults extends Component {
       searchResultItems,
     } = this.props
 
-    return (
-      <MasonryGrid masonryElements={this.getMasonryElements(searchResultItems)} />
-    );
+    if (searchResultItems.length) {
+      return <MasonryGrid masonryElements={this.getMasonryElements(searchResultItems)} />
+    }
+
+    return <div>Sorry, no Results.</div>
   }
 }
 
