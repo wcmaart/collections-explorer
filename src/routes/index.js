@@ -108,7 +108,6 @@ function Routes() {
           ()=> <GenericPage title="Colors"/>
         } />
       */}
-
       <Route component={NotFound} />
     </Switch>
   );
