@@ -1,0 +1,17 @@
+// used to reference and override materialize specific variables
+
+// Note: If our code needs to override or reference materialize variables,
+// It's important to import this file that includes only variables.
+// If we instead import files that include materialize selector rules,
+// it will lead to poor perfomance because it will duplicate those rules.
+
+// first import our variables so we can use them here.
+@import '../variables';
+
+// now import any materialize variables we need to override or reference
+@import '../../../node_modules/materialize-css/sass/components/color-variables';
+@import '../../../node_modules/materialize-css/sass/components/variables';
+
+// override some values
+$primary-color: $color-brand;
+$navbar-font-color: $color-black;
