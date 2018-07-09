@@ -1,5 +1,5 @@
 @import '../../shared-styles/variables';
-@import '../../shared-styles/materialize/index.scss';
+@import '../../shared-styles/materialize/materialize-variables.scss';
 
 .makerBio {
   column-count: 2;
@@ -12,7 +12,5 @@
 }
 
 .goBack {
-  @extend .btn-flat;
-
   padding-left: 0;
 }
