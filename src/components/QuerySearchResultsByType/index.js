@@ -43,22 +43,20 @@ class QuerySearchResultsByType extends Component {
     // get the correct gqlQuery
     const gqlQuery = gqlQueries[gqlQueryKey];
 
-    if(searchType === 'keyword') {
+    if (searchType === 'keyword') {
       client
         .query({
           query: gqlQuery,
           variables: {
             keyword: thingId,
-          }
+          },
         })
         .then(response => {
-          const {
-            data
-          } = response;
+          const { data } = response;
 
           searchResultItems = getNormalizedDataResponse(data);
 
-          this.setState({searchResultItems: searchResultItems});
+          this.setState({ searchResultItems });
         });
     }
 
@@ -144,15 +142,10 @@ class QuerySearchResultsByType extends Component {
 
     return (
       <div>
-        { this.props.searchType === 'keyword' &&
-          <SearchResultsWrapper {...mergedParams} />
-        }
-        { this.props.searchType === 'medium' &&
-          <SearchResultsByMedium {...mergedParams} />
-        }
-        { this.props.searchType === 'alphabetical' &&
-          <SearchResultsByAlphabetical {...mergedParams} />
-        }
+        {this.props.searchType === 'keyword' && <SearchResultsWrapper {...mergedParams} />}
+        {this.props.searchType === 'medium' && <SearchResultsByMedium {...mergedParams} />}
+        {this.props.searchType === 'alphabetical' &&
+          <SearchResultsByAlphabetical {...mergedParams} />}
       </div>
     );
   }

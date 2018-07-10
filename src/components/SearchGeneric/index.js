@@ -26,18 +26,17 @@ class SearchGeneric extends Component {
 
     const inputVal = e.target[0].value;
 
-    const {
-      searchCategory,
-    } = this.props;
+    const { searchCategory } = this.props;
 
     // todo: unify urls once we unify the apis. e.g. see todo #apiMakerId
-    const shouldSearchByKeyword = searchCategory === 'objects' ||
-    searchCategory === 'events' ||
-    searchCategory === 'exhibitions';
+    const shouldSearchByKeyword =
+      searchCategory === 'objects' ||
+      searchCategory === 'events' ||
+      searchCategory === 'exhibitions';
 
-    const newSlug = shouldSearchByKeyword ?
-      `${this.props.slugPrefix}/search-type/keyword/${inputVal}` :
-      `${this.props.slugPrefix}/${inputVal}`;
+    const newSlug = shouldSearchByKeyword
+      ? `${this.props.slugPrefix}/search-type/keyword/${inputVal}`
+      : `${this.props.slugPrefix}/${inputVal}`;
 
     // clear the input first
     e.target[0].value = '';

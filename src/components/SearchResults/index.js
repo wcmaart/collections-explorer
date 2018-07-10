@@ -9,7 +9,7 @@ class SearchResults extends Component {
   getMasonryElements(elements) {
     const { searchCategory } = this.props;
 
-    return elements.map(function(item) {
+    return elements.map(item => {
       let id = item.id;
       // todo: improve this #apiEventId
       // quick fix for now
@@ -31,10 +31,10 @@ class SearchResults extends Component {
   render() {
     const { searchResultItems } = this.props;
     if (searchResultItems.length) {
-      return <MasonryGrid masonryElements={this.getMasonryElements(searchResultItems)} />
+      return <MasonryGrid masonryElements={this.getMasonryElements(searchResultItems)} />;
     }
 
-    return <div>Sorry, no Results.</div>
+    return <div>Sorry, no Results.</div>;
   }
 }
 

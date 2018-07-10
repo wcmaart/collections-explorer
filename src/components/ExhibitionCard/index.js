@@ -38,17 +38,20 @@ class ExhibitionCard extends Component {
       },
     ];
 
-    const imgUrl = props.imageData && props.imageData.url || '/no-image-placeholder-big.png';
+    const imgUrl = (props.imageData && props.imageData.url) || '/no-image-placeholder-big.png';
     const cardImage = (
       <div className="card-image">
         {isSingleCard && <img src={imgUrl} />}
         {!isSingleCard &&
           <Link to={`/exhibitions/${props.id}`}>
-            <div className={styles.cardImgWrap} >
-              <img className={styles.cardImg} src={imgUrl} padding={`${100 / (props.imageData.width / props.imageData.height)}% 0 0 0`} />
+            <div className={styles.cardImgWrap}>
+              <img
+                className={styles.cardImg}
+                src={imgUrl}
+                padding={`${100 / (props.imageData.width / props.imageData.height)}% 0 0 0`}
+              />
             </div>
-          </Link>
-        }
+          </Link>}
       </div>
     );
 

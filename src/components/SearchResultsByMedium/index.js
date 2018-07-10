@@ -22,36 +22,27 @@ class SearchResultsByMedium extends Component {
                   </Link>
                 </div>
                 <div className="row">
-                  {
-                    item.objects
-                    .map(object => {
-                      return parseObjectProps(object);
-                    })
-                    .filter(object => {
-                      return object.imageData
-                    })
-                    .slice(0,4)
-                    .map(object => {
-                      return (
-                        <div key={object.id} className={`col s6 m3`}>
-                          <div className={styles.imageWrap}>
-                            {/*
+                  {item.objects
+                    .map(object => parseObjectProps(object))
+                    .filter(object => object.imageData)
+                    .slice(0, 4)
+                    .map(object =>
+                      <div key={object.id} className={`col s6 m3`}>
+                        <div className={styles.imageWrap}>
+                          {/*
                             <span>{object.title}</span>
                             <span>{object.id}</span>
                             */}
-                            <Link to={`/objects/${object.id}`}>
-                              <img src={object.imageData.url} />
-                            </Link>
-                          </div>
+                          <Link to={`/objects/${object.id}`}>
+                            <img src={object.imageData.url} />
+                          </Link>
                         </div>
-                      );
-                    })
-                  }
+                      </div>
+                    )}
                 </div>
               </div>
               <div>
-                <h3 className={styles.h3}>
-                </h3>
+                <h3 className={styles.h3} />
               </div>
             </div>
             <div>

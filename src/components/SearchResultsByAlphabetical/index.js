@@ -5,13 +5,7 @@ import { Link } from 'react-router-dom';
 
 class SearchResultsByAlphabetical extends Component {
   render() {
-    const {
-      id,
-      objects,
-      searchCategory,
-      thisPageIdx,
-      searchResultItems,
-    }  = this.props;
+    const { id, objects, searchCategory, thisPageIdx, searchResultItems } = this.props;
 
     return (
       <div className={`${styles.artObjects} row`}>

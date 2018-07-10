@@ -83,7 +83,11 @@ function Routes() {
       <Route exact path="/exhibitions" component={WrapSearchExhibitions} />
       <Route path="/exhibitions/page/:page" component={WrapSearchExhibitions} />
       <Route exact path="/exhibitions/search-type/:searchType" component={WrapSearchExhibitions} />
-      <Route exact path="/exhibitions/search-type/:searchType/:id" component={WrapSearchExhibitions} />
+      <Route
+        exact
+        path="/exhibitions/search-type/:searchType/:id"
+        component={WrapSearchExhibitions}
+      />
       <Route path="/exhibitions/:id" component={WrapSearchSingleExhibition} />
 
       {/* Events */}

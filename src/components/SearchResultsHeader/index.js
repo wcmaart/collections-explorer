@@ -14,11 +14,7 @@ class SearchResultsHeader extends Component {
   }
 
   render() {
-    const {
-      searchCategory,
-      searchType,
-      keyword,
-    } = this.props;
+    const { searchCategory, searchType, keyword } = this.props;
 
     return (
       <div className={styles.searchResultsHeader}>
@@ -27,8 +23,8 @@ class SearchResultsHeader extends Component {
             Results for {searchCategory}
           </span>}
         {!searchCategory && <span className="left">Results</span>}
-        {
-          searchType && keyword &&
+        {searchType &&
+          keyword &&
           <div>
             <div className="left">
               &nbsp;with the keyword: <b>{keyword}</b>
@@ -38,10 +34,8 @@ class SearchResultsHeader extends Component {
                 Clear Search
               </Link>
             </div>
-          </div>
-        }
-        {
-          !searchType &&
+          </div>}
+        {!searchType &&
           <ul className="tabs left">
             {SEARCH_TABS.map(tab => {
               // for now, only show medium for objects
@@ -65,8 +59,7 @@ class SearchResultsHeader extends Component {
                 </li>
               );
             })}
-          </ul>
-        }
+          </ul>}
       </div>
     );
   }

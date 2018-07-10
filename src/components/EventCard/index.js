@@ -45,15 +45,14 @@ class EventCard extends Component {
       },
     ];
 
-    const imgUrl = props.imageData && props.imageData.url || '/no-image-placeholder-big.png';
+    const imgUrl = (props.imageData && props.imageData.url) || '/no-image-placeholder-big.png';
     const cardImage = (
       <div className="card-image">
         {isSingleCard && <img src={imgUrl} />}
         {!isSingleCard &&
           <Link to={`/events/${props.id}`}>
             <MasonryCardImage imageData={props.imageData} />
-          </Link>
-        }
+          </Link>}
       </div>
     );
 

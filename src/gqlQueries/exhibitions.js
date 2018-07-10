@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 // todo: can we use this fragment?
 // import { ObjectProps } from './objects';
 
-export const ExhibitionProps = gql `
+export const ExhibitionProps = gql`
   fragment ExhibitionProps on Exhibition {
     id
     title

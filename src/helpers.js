@@ -1,6 +1,6 @@
 import { META_TAGS, META_TAGS_DEFAULT, CANONICAL_DOMAIN } from './constants';
 
-  // use version as a test to ensure there is image data
+// use version as a test to ensure there is image data
 const parseImage = imgData => {
   if (!imgData || !imgData.version) {
     return {
@@ -8,10 +8,7 @@ const parseImage = imgData => {
     };
   }
 
-  const {
-    height,
-    width,
-  } = imgData;
+  const { height, width } = imgData;
 
   return {
     url: `http://res.cloudinary.com/wcma/image/upload/v${imgData.version}/${imgData.public_id}.${imgData.format}`,

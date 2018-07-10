@@ -9,14 +9,10 @@ class ArtObjectCard extends Component {
   render() {
     const props = parseObjectProps(this.props);
 
-    const {
-      isSingleCard,
-      maker,
-      medium,
-    } = props;
+    const { isSingleCard, maker, medium } = props;
 
     // todo: consolidate
-    const imgUrl = props.imageData && props.imageData.url || '/no-image-placeholder-big.png';
+    const imgUrl = (props.imageData && props.imageData.url) || '/no-image-placeholder-big.png';
 
     const statListItems = [
       {
