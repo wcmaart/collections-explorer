@@ -1,9 +1,7 @@
 @import '../../shared-styles/variables';
 @import '../../shared-styles/mixins';
-@import '../../shared-styles/materialize/index.scss';
+@import '../../shared-styles/materialize/materialize-variables.scss';
 
 .goBack {
-  @extend .btn-flat;
-
   padding-left: 0;
 }

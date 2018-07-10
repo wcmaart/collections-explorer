@@ -1,9 +1,12 @@
+// Note, this is being imported as :global in src/components/App/styles.scss
+
 // first override some materialize-specific variables
-@import './variables';
+@import 'materialize-variables.scss';
 
 // Then use this to import all of materialize.scss
 // @import '../../../node_modules/materialize-css/sass/materialize.scss';
 
 // Or, use this to custom import only the components that we need
 @import './materialize-custom';
+// Then overwrite anything as needed
 @import './extend/index';

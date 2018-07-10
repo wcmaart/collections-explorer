@@ -59,7 +59,7 @@ class SingleEventView extends Component {
 
     return (
       <div>
-        <button onClick={this.goBack.bind(this)} className={styles.goBack}>
+        <button onClick={this.goBack.bind(this)} className={`${styles.goBack} btn-flat`}>
           Go Back
         </button>
 
