@@ -15,7 +15,9 @@ function Home() {
         <h1 className={styles.h1} >WCMA Collection</h1>
         <h2 className={styles.h2} >Our collection is a dynamic source of inquiry, interpretation, and creative production.</h2>
         <div className={styles.buttonsWrap}>
-          <Link className={`${styles.btn} btn btn-large`} to="/objects">Enter</Link>
+          <Link className={`${styles.btn} btn btn-large`} to="/objects">
+            Enter
+          </Link>
         </div>
       </div>
     </section>

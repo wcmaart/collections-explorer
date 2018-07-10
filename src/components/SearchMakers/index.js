@@ -11,11 +11,11 @@ class SearchMakers extends Component {
         searchCategory: 'makers',
       },
       this.props,
-      {gqlQueries},
-      searchParams,
+      { gqlQueries },
+      searchParams
     );
 
-    return <SearchGenericPage {...mergedProps} />
+    return <SearchGenericPage {...mergedProps} />;
   }
 }
 

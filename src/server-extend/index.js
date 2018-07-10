@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import ensureHttps from './ensure-https';
 import basicAuth from './basic-auth';
 

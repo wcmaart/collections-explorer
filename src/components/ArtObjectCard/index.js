@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import styles from './styles.scss';
 import { Link } from 'react-router-dom';
 import { parseObjectProps } from '../../helpers';
@@ -21,25 +21,27 @@ class ArtObjectCard extends Component {
     const statListItems = [
       {
         label: 'Medium',
-        value: <Link to={`/mediums/${medium}`}>
-          {medium}
-        </Link>,
+        value: (
+          <Link to={`/mediums/${medium}`}>
+            {medium}
+          </Link>
+        ),
       },
       {
         label: 'Maker',
-        value: <Link to={`/makers/${maker}`}>
-          {maker}
-        </Link>,
+        value: (
+          <Link to={`/makers/${maker}`}>
+            {maker}
+          </Link>
+        ),
       },
       {
         label: 'Dimensions',
         value: props.dimensions,
-
       },
       {
         label: 'People',
         value: props.people,
-
       },
       {
         label: 'Creditline',
@@ -51,28 +53,26 @@ class ArtObjectCard extends Component {
       <div className={`${styles.cardContent} cardContent`}>
         <div className={`${styles.cardContentInner} cardContentInner`}>
           <div className={styles.cardTitle}>
-            {
-              isSingleCard && props.title
-            }
-            {
-              !isSingleCard &&
+            {isSingleCard && props.title}
+            {!isSingleCard &&
               <Link to={`/objects/${props.id}`}>
                 {props.title}
-              </Link>
-            }
+              </Link>}
           </div>
           <ul>
-            {
-              statListItems.map(statListItem => {
-                return statListItem.value && (
-                  <li className={styles.statListItem} key={statListItem.label}>
-                    <span className={styles.statLabel}>{statListItem.label}</span>
-                    <span className={styles.colon}>: </span>
-                    <span className={styles.statValue}>{statListItem.value}</span>
-                  </li>
-                );
-              })
-            }
+            {statListItems.map(
+              statListItem =>
+                statListItem.value &&
+                <li className={styles.statListItem} key={statListItem.label}>
+                  <span className={styles.statLabel}>
+                    {statListItem.label}
+                  </span>
+                  <span className={styles.colon}>: </span>
+                  <span className={styles.statValue}>
+                    {statListItem.value}
+                  </span>
+                </li>
+            )}
           </ul>
         </div>
       </div>
@@ -80,34 +80,29 @@ class ArtObjectCard extends Component {
 
     const cardImage = (
       <div className="card-image">
-        {
-          isSingleCard && <img src={imgUrl} />
-        }
-        {
-          !isSingleCard &&
+        {isSingleCard && <img src={imgUrl} />}
+        {!isSingleCard &&
           <Link to={`/objects/${props.id}`}>
             <MasonryCardImage imageData={props.imageData} />
-          </Link>
-        }
+          </Link>}
       </div>
     );
 
     return (
-      <div key={props.id} className={`${styles.card} ${isSingleCard ? styles.cardSingle : ''} card`}>
-        {
-          isSingleCard &&
+      <div
+        key={props.id}
+        className={`${styles.card} ${isSingleCard ? styles.cardSingle : ''} card`}
+      >
+        {isSingleCard &&
           <div>
             {cardContent}
             {cardImage}
-          </div>
-        }
-        {
-          !isSingleCard &&
+          </div>}
+        {!isSingleCard &&
           <div>
             {cardImage}
             {cardContent}
-          </div>
-        }
+          </div>}
       </div>
     );
   }

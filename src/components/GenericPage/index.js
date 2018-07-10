@@ -1,5 +1,4 @@
 import React, { PropTypes, Component } from 'react';
-import styles from './styles.scss';
 import Header from '../Header';
 
 class GenericPage extends Component {
@@ -8,7 +7,9 @@ class GenericPage extends Component {
       <div>
         <Header />
         <div className="container">
-          <h1>{this.props.title}</h1>
+          <h1>
+            {this.props.title}
+          </h1>
         </div>
       </div>
     );

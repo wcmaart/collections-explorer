@@ -11,11 +11,11 @@ class SearchEvents extends Component {
         searchCategory: 'events',
       },
       this.props,
-      {gqlQueries},
-      searchParams,
+      { gqlQueries },
+      searchParams
     );
 
-    return <SearchGenericPage {...mergedProps} />
+    return <SearchGenericPage {...mergedProps} />;
   }
 }
 

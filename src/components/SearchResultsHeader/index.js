@@ -22,16 +22,11 @@ class SearchResultsHeader extends Component {
 
     return (
       <div className={styles.searchResultsHeader}>
-        { searchCategory &&
+        {searchCategory &&
           <span className="left">
             Results for {searchCategory}
-          </span>
-        }
-        { !searchCategory &&
-          <span className="left">
-            Results
-          </span>
-        }
+          </span>}
+        {!searchCategory && <span className="left">Results</span>}
         {
           searchType && keyword &&
           <div>
@@ -48,27 +43,32 @@ class SearchResultsHeader extends Component {
         {
           !searchType &&
           <ul className="tabs left">
-            {
-              SEARCH_TABS.map((tab) => {
-                // for now, only show medium for objects
-                if (tab.key === 'medium' && searchCategory !== 'objects') {
-                  return null;
-                }
+            {SEARCH_TABS.map(tab => {
+              // for now, only show medium for objects
+              if (tab.key === 'medium' && searchCategory !== 'objects') {
+                return null;
+              }
 
-                return (
-                  <li
-                    className={`${styles.tab} tab left ${this.checkIfIsActive(tab.key)}`}
-                    key={tab.key}
+              return (
+                <li
+                  className={`${styles.tab} tab left ${this.checkIfIsActive(tab.key)}`}
+                  key={tab.key}
+                >
+                  <a
+                    href={
+                      tab.key ? `/${searchCategory}/search-type/${tab.key}` : `/${searchCategory}`
+                    }
+                    data-key={tab.key}
                   >
-                    <a href={tab.key ? `/${searchCategory}/search-type/${tab.key}` : `/${searchCategory}`} data-key={tab.key}>{tab.content}</a>
-                  </li>
-                );
-              })
-            }
+                    {tab.content}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         }
       </div>
-    )
+    );
   }
 }
 

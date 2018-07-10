@@ -1,8 +1,8 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 // todo: improve this #apiMakerId
 // After we fix ^ we shouldn't need to export this
-export const ObjectProps = gql `
+export const ObjectProps = gql`
   fragment ObjectProps on Object {
     id
     title

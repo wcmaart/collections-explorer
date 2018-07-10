@@ -15,7 +15,7 @@ function withSearchRouteHelper(WrappedComponent) {
       };
     }
 
-      // check the route state both on mount and update
+    // check the route state both on mount and update
     componentDidMount() {
       this.getRouteState(this.props);
     }
@@ -27,10 +27,7 @@ function withSearchRouteHelper(WrappedComponent) {
 
     getRouteState(props) {
       // get values from the router
-      const {
-        match: { params },
-        category,
-      } = props;
+      const { match: { params }, category } = props;
 
       // const thingId = params.id ? parseInt(params.id, 10) : null;
       // todo: improve this #apiMakerId
@@ -56,24 +53,27 @@ function withSearchRouteHelper(WrappedComponent) {
     }
 
     render() {
-      const {
-        routeError,
-      } = this.state;
+      const { routeError } = this.state;
 
       if (routeError) {
         // todo: make a helper for this and move this logic
-        return <Route
-          render={({ staticContext }) => {
-            // there is no `staticContext` on the client, so
-            // we need to guard against that here
-            if (staticContext) {
-              staticContext.status = routeError;
-            }
+        return (
+          <Route
+            render={({ staticContext }) => {
+              // there is no `staticContext` on the client, so
+              // we need to guard against that here
+              if (staticContext) {
+                staticContext.status = routeError;
+              }
 
-            return <div>{routeError}</div>;
-            }
-          }
-        />;
+              return (
+                <div>
+                  {routeError}
+                </div>
+              );
+            }}
+          />
+        );
       }
 
       return <WrappedComponent {...this.state} />;

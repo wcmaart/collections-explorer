@@ -11,11 +11,11 @@ class SearchExhibitions extends Component {
         searchCategory: 'exhibitions',
       },
       this.props,
-      {gqlQueries},
-      searchParams,
+      { gqlQueries },
+      searchParams
     );
 
-    return <SearchGenericPage {...mergedProps} />
+    return <SearchGenericPage {...mergedProps} />;
   }
 }
 

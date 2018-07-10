@@ -1,7 +1,7 @@
 import { META_TAGS, META_TAGS_DEFAULT, CANONICAL_DOMAIN } from './constants';
 
-const parseImage = (imgData) => {
   // use version as a test to ensure there is image data
+const parseImage = imgData => {
   if (!imgData || !imgData.version) {
     return {
       url: '/no-image-placeholder-big.png',
@@ -44,7 +44,7 @@ export const getGlobalAppData = () => {
   };
 };
 
-export const parseObjectProps = (props) => {
+export const parseObjectProps = props => {
   const imgData = props.remote;
 
   if (!imgData) {
@@ -56,7 +56,7 @@ export const parseObjectProps = (props) => {
   });
 };
 
-export const parseMakerProps = (props) => {
+export const parseMakerProps = props => {
   const imgData = props.keyImage || null;
 
   return Object.assign({}, props, {
@@ -65,19 +65,20 @@ export const parseMakerProps = (props) => {
   });
 };
 
-export const parseExhibitionProps = (props) => {
+export const parseExhibitionProps = props => {
   // todo: improve this #apiExhibitionId
   // we're not getting any image data yet for the exhibitions (plural) search
-  const imgData = props.keyImage || props.objects && props.objects[0] && props.objects[0].remote || null;
+  const imgData =
+    props.keyImage || (props.objects && props.objects[0] && props.objects[0].remote) || null;
 
   return Object.assign({}, props, {
     imageData: parseImage(imgData),
   });
 };
 
-export const parseEventProps = (props) => {
+export const parseEventProps = props => {
   // todo: improve this #apiEventId
-  const imgData = props.keyImage
+  const imgData = props.keyImage;
 
   return Object.assign({}, props, {
     imageData: parseImage(imgData),
@@ -86,19 +87,19 @@ export const parseEventProps = (props) => {
   });
 };
 
-export const getNormalizedDataResponse = (data) => {
+export const getNormalizedDataResponse = data => {
   // todo: see if we can change the API to make these uniform so we don't need this.
   const {
-   object,
-   objects,
-   maker,
-   makers,
-   medium,
-   mediums,
-   exhibition,
-   exhibitions,
-   event,
-   events,
+    object,
+    objects,
+    maker,
+    makers,
+    medium,
+    mediums,
+    exhibition,
+    exhibitions,
+    event,
+    events,
   } = data;
 
   const singleResult = object || maker || medium || exhibition || event;
@@ -106,9 +107,11 @@ export const getNormalizedDataResponse = (data) => {
 
   if (singleResult) {
     return [singleResult];
-  } else if (manyResults) {
-    return manyResults;
-  } else {
-    return [];
   }
+
+  if (manyResults) {
+    return manyResults;
+  }
+
+  return [];
 };

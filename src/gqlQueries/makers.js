@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 import { ObjectProps } from './objects';
 
-const MakerProps = gql `
+const MakerProps = gql`
   fragment MakerProps on Maker {
     id
     title

@@ -5,23 +5,21 @@ import { Link } from 'react-router-dom';
 
 class SearchResultsByMedium extends Component {
   render() {
-    const {
-      searchResultItems
-    } = this.props;
+    const { searchResultItems } = this.props;
 
     return (
-       <div className={`${styles.artObjects} row`}>
-        { searchResultItems.map(item => (
-            <div key={item.key} className={`${styles.section} col s12`}>
-              <div >
-                <div className={styles.sectionInnerHeader}>
-                  <h3 className={`${styles.h3} left`}>
-                    {item.content}
-                  </h3>
-                  <div className={`${styles.sectionHeaderRight} right`}>
-                    <Link className={styles.viewAllLink} to={`/mediums/${item.key}`}>View all</Link>
-                  </div>
-                  <div className={styles.clearfix}></div>
+      <div className={`${styles.artObjects} row`}>
+        {searchResultItems.map(item =>
+          <div key={item.key} className={`${styles.section} col s12`}>
+            <div>
+              <div className={styles.sectionInnerHeader}>
+                <h3 className={`${styles.h3} left`}>
+                  {item.content}
+                </h3>
+                <div className={`${styles.sectionHeaderRight} right`}>
+                  <Link className={styles.viewAllLink} to={`/mediums/${item.key}`}>
+                    View all
+                  </Link>
                 </div>
                 <div className="row">
                   {
@@ -56,8 +54,11 @@ class SearchResultsByMedium extends Component {
                 </h3>
               </div>
             </div>
-          ))
-        }
+            <div>
+              <h3 className={styles.h3} />
+            </div>
+          </div>
+        )}
       </div>
     );
   }

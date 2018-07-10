@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './styles.scss';
+
 const Masonry = require('react-masonry-component');
 
 const masonryOptions = {

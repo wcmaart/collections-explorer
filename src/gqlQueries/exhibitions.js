@@ -1,5 +1,4 @@
-import gql from "graphql-tag";
-import {SEARCH_ITEMS_PER_PAGE} from '../constants';
+import gql from 'graphql-tag';
 // todo: can we use this fragment?
 // import { ObjectProps } from './objects';
 

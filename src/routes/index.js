@@ -12,7 +12,7 @@ import SearchSingleMaker from '../components/SearchSingleMaker';
 import SearchSingleMedium from '../components/SearchSingleMedium';
 import SearchSingleExhibition from '../components/SearchSingleExhibition';
 import SearchSingleEvent from '../components/SearchSingleEvent';
-import GenericPage from '../components/GenericPage';
+// import GenericPage from '../components/GenericPage';
 
 const WrapSearchObjects = withSearchRouteHelper(SearchObjects);
 const WrapSearchMakers = withSearchRouteHelper(SearchMakers);
@@ -56,13 +56,13 @@ const NotFound = () =>
 function Routes() {
   return (
     <Switch>
-      <Redirect from='/objects/page/0' to='/objects' />
-      <Redirect from='/makers/page/0' to='/makers' />
+      <Redirect from="/objects/page/0" to="/objects" />
+      <Redirect from="/makers/page/0" to="/makers" />
 
       <Route exact path="/" component={Home} />
 
       {/*
-        Todo - These patterns can probably all be consolidated.
+        Todo: These patterns can probably all be consolidated.
         E.G. /objects/ can be /:searchCategory/
        */}
 
@@ -72,7 +72,6 @@ function Routes() {
       <Route exact path="/objects/search-type/:searchType" component={WrapSearchObjects} />
       <Route exact path="/objects/search-type/:searchType/:id" component={WrapSearchObjects} />
       <Route path="/objects/:id" component={WrapSearchSingleObject} />
-
 
       {/* Makers */}
       <Route exact path="/makers" component={WrapSearchMakers} />

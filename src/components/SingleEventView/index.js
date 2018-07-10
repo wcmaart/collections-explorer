@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import styles from './styles.scss';
 import { Link } from 'react-router-dom';
@@ -15,27 +15,21 @@ class SingleEventView extends Component {
   }
 
   getMasonryElements(elements) {
-    return elements.map(function(item) {
-      return (
-        <li key={item.id} className="masonryGridItem col s12 l3">
-          <ArtObjectCard {...item} />
-        </li>
-      );
-    });
+    return elements.map(item =>
+      <li key={item.id} className="masonryGridItem col s12 l3">
+        <ArtObjectCard {...item} />
+      </li>
+    );
   }
 
   // Todo #consolidateGoback functions and style
-  goBack (props) {
+  goBack(props) {
     this.props.history.goBack();
   }
 
   render() {
     const props = parseEventProps(this.props);
-    const {
-      title,
-      objects,
-      description,
-    } = props;
+    const { title, objects, description } = props;
 
     // todo: #dedupEventStatListItems
     const statListItems = [
@@ -64,7 +58,7 @@ class SingleEventView extends Component {
         </button>
 
         <h1>
-        {title}
+          {title}
         </h1>
 
         <section className="section">
@@ -75,28 +69,28 @@ class SingleEventView extends Component {
 
         <section className="section">
           <ul>
-            {
-              statListItems.map(statListItem => {
-                return statListItem.value && (
-                  <li className={styles.statListItem} key={statListItem.label}>
-                    <span className={styles.statLabel}>{statListItem.label}</span>
-                    <span className={styles.colon}>: </span>
-                    <span className={styles.statValue}>{statListItem.value}</span>
-                  </li>
-                );
-              })
-            }
+            {statListItems.map(
+              statListItem =>
+                statListItem.value &&
+                <li className={styles.statListItem} key={statListItem.label}>
+                  <span className={styles.statLabel}>
+                    {statListItem.label}
+                  </span>
+                  <span className={styles.colon}>: </span>
+                  <span className={styles.statValue}>
+                    {statListItem.value}
+                  </span>
+                </li>
+            )}
           </ul>
         </section>
 
         <section className="section">
-          <h2 className={styles.h2}>
-          Related Objects
-          </h2>
+          <h2 className={styles.h2}>Related Objects</h2>
 
-          { objects && objects.length &&
-            <MasonryGrid masonryElements={this.getMasonryElements(objects)} />
-          }
+          {objects &&
+            objects.length &&
+            <MasonryGrid masonryElements={this.getMasonryElements(objects)} />}
         </section>
       </div>
     );

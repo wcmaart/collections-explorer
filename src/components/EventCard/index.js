@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import moment from 'moment';
 import styles from './styles.scss';
 import { Link } from 'react-router-dom';
@@ -9,9 +9,7 @@ import MasonryCardImage from '../MasonryCardImage';
 class EventCard extends Component {
   getDateValue() {
     // todo: #normalizeDateFormats?
-    const {
-      startDate,
-    } = this.props;
+    const { startDate } = this.props;
 
     const start = startDate && moment(startDate).format('l');
 
@@ -21,9 +19,7 @@ class EventCard extends Component {
   render() {
     const props = parseEventProps(this.props);
 
-    const {
-      isSingleCard,
-    } = props;
+    const { isSingleCard } = props;
 
     // todo: #dedupEventStatListItems
     const statListItems = [
@@ -52,11 +48,8 @@ class EventCard extends Component {
     const imgUrl = props.imageData && props.imageData.url || '/no-image-placeholder-big.png';
     const cardImage = (
       <div className="card-image">
-        {
-          isSingleCard && <img src={imgUrl} />
-        }
-        {
-          !isSingleCard &&
+        {isSingleCard && <img src={imgUrl} />}
+        {!isSingleCard &&
           <Link to={`/events/${props.id}`}>
             <MasonryCardImage imageData={props.imageData} />
           </Link>
@@ -68,28 +61,26 @@ class EventCard extends Component {
       <div className={`${styles.cardContent} cardContent`}>
         <div className={`${styles.cardContentInner} cardContentInner`}>
           <div className={styles.cardTitle}>
-            {
-              isSingleCard && props.title
-            }
-            {
-              !isSingleCard &&
+            {isSingleCard && props.title}
+            {!isSingleCard &&
               <Link to={`/events/${props.id}`}>
                 {props.title}
-              </Link>
-            }
+              </Link>}
           </div>
           <ul>
-            {
-              statListItems.map(statListItem => {
-                return statListItem.value && (
-                  <li className={styles.statListItem} key={statListItem.label}>
-                    <span className={styles.statLabel}>{statListItem.label}</span>
-                    <span className={styles.colon}>: </span>
-                    <span className={styles.statValue}>{statListItem.value}</span>
-                  </li>
-                );
-              })
-            }
+            {statListItems.map(
+              statListItem =>
+                statListItem.value &&
+                <li className={styles.statListItem} key={statListItem.label}>
+                  <span className={styles.statLabel}>
+                    {statListItem.label}
+                  </span>
+                  <span className={styles.colon}>: </span>
+                  <span className={styles.statValue}>
+                    {statListItem.value}
+                  </span>
+                </li>
+            )}
           </ul>
         </div>
       </div>

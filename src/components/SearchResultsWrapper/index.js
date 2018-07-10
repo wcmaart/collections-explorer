@@ -7,9 +7,7 @@ import ArtObjectCard from '../ArtObjectCard';
 class SearchResultsWrapper extends Component {
   // todo: dedup #dedupGetActiveSearchType
   getActiveSearchType() {
-    const {
-      searchType,
-    } = this.props || {};
+    const { searchType } = this.props || {};
 
     return searchType || '';
   }
@@ -17,12 +15,7 @@ class SearchResultsWrapper extends Component {
   render() {
     const props = this.props;
 
-    const {
-      searchResultItems,
-      thisPageIdx,
-      searchCategory,
-      slugPrefix,
-    } = props;
+    const { searchResultItems, thisPageIdx, searchCategory, slugPrefix } = props;
 
     const searchTab = this.getActiveSearchType();
     const hasPageIdx = thisPageIdx || thisPageIdx === 0;
@@ -30,12 +23,8 @@ class SearchResultsWrapper extends Component {
     return (
       <div>
         <SearchResults {...props} />
-        {
-          // todo: figure out this proper logic
-          hasPageIdx &&
-          searchTab === '' &&
-          <SearchPagination {...props} />
-        }
+        {// todo: figure out this proper logic
+        hasPageIdx && searchTab === '' && <SearchPagination {...props} />}
       </div>
     );
   }

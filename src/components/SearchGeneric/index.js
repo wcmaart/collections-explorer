@@ -15,9 +15,7 @@ class SearchGeneric extends Component {
 
   // todo: dedup #dedupGetActiveSearchType
   getActiveSearchType() {
-    const {
-      searchType,
-    } = this.props || {};
+    const { searchType } = this.props || {};
 
     return searchType || '';
   }
@@ -48,10 +46,7 @@ class SearchGeneric extends Component {
   }
 
   render() {
-    const {
-      searchInputPlaceholder,
-      searchCategory,
-    } = this.props;
+    const { searchInputPlaceholder, searchCategory } = this.props;
 
     const searchType = this.getActiveSearchType();
 
@@ -78,10 +73,9 @@ class SearchGeneric extends Component {
             />
           </div>
           <div className="col s12">
-            { searchType ?
-              <QuerySearchResultsByType {...this.props} /> :
-              <QuerySearchResults {...this.props} />
-            }
+            {searchType
+              ? <QuerySearchResultsByType {...this.props} />
+              : <QuerySearchResults {...this.props} />}
           </div>
         </div>
       </div>

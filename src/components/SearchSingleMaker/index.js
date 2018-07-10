@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
-import styles from './styles.scss';
 import Header from '../Header';
 import SingleMakerView from '../SingleMakerView';
 import SearchSingleGeneric from '../SearchSingleGeneric';
 import gqlQueries from '../../gqlQueries/makers';
 import { SEARCH_MAKERS_CONSTS as searchParams } from '../../constants';
 
+// eslint-disable-next-line react/prefer-stateless-function
 class SearchSingleMaker extends Component {
   render() {
-    const mergedProps = Object.assign({
+    const mergedProps = Object.assign(
+      {
         gqlQuery: gqlQueries.byId,
       },
       this.props,
-      {gqlQueries},
-      searchParams,
+      { gqlQueries },
+      searchParams
     );
 
     return (
@@ -24,14 +25,14 @@ class SearchSingleMaker extends Component {
             <div className="col s12">
               <SearchSingleGeneric
                 {...mergedProps}
-                getResultWrapper={(params) => {
+                getResultWrapper={params => {
                   // todo: improve this #apiMakerId
                   const newMergedProps = Object.assign({}, params.result, {
                     thingId: mergedProps.thingId,
                     title: mergedProps.thingId,
                   });
 
-                  return <SingleMakerView {...newMergedProps} />
+                  return <SingleMakerView {...newMergedProps} />;
                 }}
               />
             </div>

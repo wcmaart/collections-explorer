@@ -1,4 +1,4 @@
-// eslint-disable-next-line
+// eslint-disable-next-line prettier/prettier
 const isDevelopment = (
   process.env.NODE_ENV !== 'production' &&
   process.env.NODE_ENV !== 'staging'

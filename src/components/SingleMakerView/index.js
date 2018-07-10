@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import styles from './styles.scss';
 import { Link } from 'react-router-dom';
@@ -14,17 +14,15 @@ class SingleMakerView extends Component {
   }
 
   getMasonryElements(elements) {
-    return elements.map(function(item) {
-      return (
-        <li key={item.id} className="masonryGridItem col s12 l3">
-          <ArtObjectCard {...item} />
-        </li>
-      );
-    });
+    return elements.map(item =>
+      <li key={item.id} className="masonryGridItem col s12 l3">
+        <ArtObjectCard {...item} />
+      </li>
+    );
   }
 
   // Todo #consolidateGoback functions and style
-  goBack (props) {
+  goBack(props) {
     this.props.history.goBack();
   }
 
@@ -36,19 +34,17 @@ class SingleMakerView extends Component {
         </button>
 
         <h1>
-        {this.props.title}
+          {this.props.title}
         </h1>
 
         <section className="section">
           <p className={`${styles.makerBio} paragraph`}>
-          {FAKE_MAKER_BIO}
+            {FAKE_MAKER_BIO}
           </p>
         </section>
 
         <section className="section">
-          <h2 className={styles.h2}>
-          Most Popular
-          </h2>
+          <h2 className={styles.h2}>Most Popular</h2>
 
           <MasonryGrid masonryElements={this.getMasonryElements(this.props.objects)} />
         </section>

@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 import { ObjectProps } from './objects';
 
-const MediumProps = gql `
+const MediumProps = gql`
   fragment MediumProps on Medium {
     id
     title

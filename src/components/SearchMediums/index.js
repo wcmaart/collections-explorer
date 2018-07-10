@@ -11,11 +11,11 @@ class SearchMediums extends Component {
         searchCategory: 'mediums',
       },
       this.props,
-      {gqlQueries},
-      searchParams,
+      { gqlQueries },
+      searchParams
     );
 
-    return <SearchGenericPage {...mergedProps} />
+    return <SearchGenericPage {...mergedProps} />;
   }
 }
 

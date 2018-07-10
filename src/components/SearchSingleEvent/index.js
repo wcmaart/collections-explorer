@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
-import styles from './styles.scss';
 import Header from '../Header';
 import SingleEventView from '../SingleEventView';
 import SearchSingleGeneric from '../SearchSingleGeneric';
 import gqlQueries from '../../gqlQueries/events';
 import { SEARCH_EVENTS_CONSTS as searchParams } from '../../constants';
 
+// eslint-disable-next-line react/prefer-stateless-function
 class SearchSingleEvent extends Component {
   render() {
-    const mergedProps = Object.assign({
+    const mergedProps = Object.assign(
+      {
         gqlQuery: gqlQueries.byId,
       },
       this.props,
-      {gqlQueries},
-      searchParams,
+      { gqlQueries },
+      searchParams
     );
-    const props = this.props;
 
     return (
       <div>
@@ -25,9 +25,7 @@ class SearchSingleEvent extends Component {
             <div className="col s12">
               <SearchSingleGeneric
                 {...mergedProps}
-                getResultWrapper={(params) => {
-                  return <SingleEventView {...params.result} />
-                }}
+                getResultWrapper={params => <SingleEventView {...params.result} />}
               />
             </div>
           </div>

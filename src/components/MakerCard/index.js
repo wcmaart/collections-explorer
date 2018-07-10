@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import styles from './styles.scss';
 import { Link } from 'react-router-dom';
 import { parseMakerProps } from '../../helpers';

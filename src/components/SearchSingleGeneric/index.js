@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from './styles.scss';
-import { ApolloProvider, Query } from "react-apollo";
+import { ApolloProvider, Query } from 'react-apollo';
 import GraphqlClient from '../../GraphqlClient';
 import QuerySingleResult from '../QuerySingleResult';
 import { withRouter } from 'react-router';

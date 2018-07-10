@@ -8,10 +8,12 @@ function Header() {
     <section>
       <nav className={styles.banner}>
         <div className="container">
-          <a href="/" className={styles.brandLogo}>WCMA</a>
+          <a href="/" className={styles.brandLogo}>
+            WCMA
+          </a>
         </div>
       </nav>
-      <NavMenu/>
+      <NavMenu />
     </section>
   );
 }

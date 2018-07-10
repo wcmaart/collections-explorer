@@ -11,11 +11,11 @@ class SearchObjects extends Component {
         searchCategory: 'objects',
       },
       this.props,
-      {gqlQueries},
-      searchParams,
+      { gqlQueries },
+      searchParams
     );
 
-    return <SearchGenericPage {...mergedProps} />
+    return <SearchGenericPage {...mergedProps} />;
   }
 }
 

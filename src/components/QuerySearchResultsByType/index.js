@@ -25,22 +25,17 @@ class QuerySearchResultsByType extends Component {
     const client = GraphqlClient();
     let searchResultItems = [];
 
-    const {
-      searchType,
-      gqlQueries,
-      searchCategory,
-      thingId,
-    } = props;
+    const { searchType, gqlQueries, searchCategory } = this.props;
+
+    this.state = {
+      searchResultItems: null,
+    };
 
     // quick test for now.
-    const gqlQueryKey = searchType === 'medium' ?
-      'byMedium' :
-      searchType === 'keyword' ?
-      'byKeyword' :
-      searchType === 'alphabetical' ?
-      'byAlphabetical' :
-       null;
-
+    const gqlQueryKey =
+      searchType === 'medium'
+        ? 'byMedium'
+        : searchType === 'alphabetical' ? 'byAlphabetical' : null;
     if (!gqlQueryKey) {
       return null;
     }
@@ -67,20 +62,17 @@ class QuerySearchResultsByType extends Component {
         });
     }
 
-    if(searchType === 'medium' ) {
+    if (searchType === 'medium') {
       OBJECT_MEDIUMS.map(type => {
-
         client
           .query({
             query: gqlQuery,
             variables: {
               medium: type.key,
-            }
+            },
           })
           .then(response => {
-            const {
-              data
-            } = response;
+            const { data } = response;
 
             searchResultItems.push({
               key: type.key,
@@ -88,26 +80,24 @@ class QuerySearchResultsByType extends Component {
               objects: data.objects,
             });
 
-            this.setState({searchResultItems: searchResultItems});
+            this.setState({ searchResultItems });
           });
       });
     }
 
-    if(searchType === 'alphabetical' ) {
+    if (searchType === 'alphabetical') {
       client
         .query({
           query: gqlQuery,
         })
         .then(response => {
-          const {
-            data
-          } = response;
+          const { data } = response;
 
           let results = getNormalizedDataResponse(data);
 
           // temp fix for api
           if (searchCategory === 'makers') {
-             results = results.map(parseMakerProps);
+            results = results.map(parseMakerProps);
           }
 
           if (!results) {
@@ -115,8 +105,8 @@ class QuerySearchResultsByType extends Component {
           }
 
           ALPHABET.map(letter => {
-            const titlesByThisLetter = results.filter(
-              obj => (obj.title.toLocaleUpperCase().startsWith(letter))
+            const titlesByThisLetter = results.filter(obj =>
+              obj.title.toLocaleUpperCase().startsWith(letter)
             );
 
             searchResultItems.push({
@@ -126,7 +116,7 @@ class QuerySearchResultsByType extends Component {
             });
           });
 
-          this.setState({searchResultItems: searchResultItems});
+          this.setState({ searchResultItems });
         });
     }
   }
@@ -142,9 +132,7 @@ class QuerySearchResultsByType extends Component {
   render() {
     const props = this.props;
 
-    const {
-      searchResultItems,
-    } = this.state;
+    const { searchResultItems } = this.state;
 
     if (!searchResultItems) {
       return null;
@@ -166,7 +154,7 @@ class QuerySearchResultsByType extends Component {
           <SearchResultsByAlphabetical {...mergedParams} />
         }
       </div>
-    )
+    );
   }
 }
 

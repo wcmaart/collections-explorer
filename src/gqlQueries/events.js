@@ -1,10 +1,10 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 // todo: can we use this fragment?
 // import { ObjectProps } from './objects';
 
 // Todo, can we fix the api so that we can re-use the fragment instead like we could before?
 // I think this should be (plural) objects($id: Int!)
-export const EventProps = gql `
+export const EventProps = gql`
   fragment EventProps on Event {
     eventId
     eventName

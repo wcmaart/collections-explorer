@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import moment from 'moment';
 import styles from './styles.scss';
 import { Link } from 'react-router-dom';
@@ -8,17 +8,14 @@ import { parseExhibitionProps } from '../../helpers';
 class ExhibitionCard extends Component {
   getDateValue() {
     // todo: #normalizeDateFormats?
-    const {
-      beginISODate,
-      endISODate,
-    } = this.props;
+    const { beginISODate, endISODate } = this.props;
 
     const start = beginISODate && moment(beginISODate).format('l');
     const end = endISODate && moment(endISODate).format('l');
 
     // const start = beginISODate;
     // const end = endISODate;
-    if (!end || (end === start)) {
+    if (!end || end === start) {
       return start;
     }
 
@@ -28,9 +25,7 @@ class ExhibitionCard extends Component {
   render() {
     const props = parseExhibitionProps(this.props);
 
-    const {
-      isSingleCard,
-    } = props;
+    const { isSingleCard } = props;
 
     const statListItems = [
       {
@@ -40,17 +35,14 @@ class ExhibitionCard extends Component {
       {
         label: 'Is In House',
         value: props.isInHouse ? 'yes' : 'no',
-      }
+      },
     ];
 
     const imgUrl = props.imageData && props.imageData.url || '/no-image-placeholder-big.png';
     const cardImage = (
       <div className="card-image">
-        {
-          isSingleCard && <img src={imgUrl} />
-        }
-        {
-          !isSingleCard &&
+        {isSingleCard && <img src={imgUrl} />}
+        {!isSingleCard &&
           <Link to={`/exhibitions/${props.id}`}>
             <div className={styles.cardImgWrap} >
               <img className={styles.cardImg} src={imgUrl} padding={`${100 / (props.imageData.width / props.imageData.height)}% 0 0 0`} />
@@ -64,28 +56,26 @@ class ExhibitionCard extends Component {
       <div className={`${styles.cardContent} cardContent`}>
         <div className={`${styles.cardContentInner} cardContentInner`}>
           <div className={styles.cardTitle}>
-            {
-              isSingleCard && props.title
-            }
-            {
-              !isSingleCard &&
+            {isSingleCard && props.title}
+            {!isSingleCard &&
               <Link to={`/exhibitions/${props.id}`}>
                 {props.title}
-              </Link>
-            }
+              </Link>}
           </div>
           <ul>
-            {
-              statListItems.map(statListItem => {
-                return statListItem.value && (
-                  <li className={styles.statListItem} key={statListItem.label}>
-                    <span className={styles.statLabel}>{statListItem.label}</span>
-                    <span className={styles.colon}>: </span>
-                    <span className={styles.statValue}>{statListItem.value}</span>
-                  </li>
-                );
-              })
-            }
+            {statListItems.map(
+              statListItem =>
+                statListItem.value &&
+                <li className={styles.statListItem} key={statListItem.label}>
+                  <span className={styles.statLabel}>
+                    {statListItem.label}
+                  </span>
+                  <span className={styles.colon}>: </span>
+                  <span className={styles.statValue}>
+                    {statListItem.value}
+                  </span>
+                </li>
+            )}
           </ul>
         </div>
       </div>

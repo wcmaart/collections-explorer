@@ -15,25 +15,24 @@ class SearchSingleObject extends Component {
   }
 
   // Todo #consolidateGoback functions and style
-  goBack (props) {
+  goBack(props) {
     this.props.history.goBack();
   }
 
   render() {
-
-    const mergedProps = Object.assign({
+    const mergedProps = Object.assign(
+      {
         gqlQuery: gqlQueries.byId,
       },
       this.props,
-      {gqlQueries},
-      searchParams,
+      { gqlQueries },
+      searchParams
     );
 
     return (
       <div>
         <Header />
-        <span>
-        </span>
+        <span />
         <div className="container">
           <button onClick={this.goBack.bind(this)} className={`${styles.goBack} btn-flat`}>
             Go Back
@@ -41,9 +40,7 @@ class SearchSingleObject extends Component {
 
           <SearchSingleGeneric
             {...mergedProps}
-            getResultWrapper={(params) => {
-              return <ArtObjectCard {...params.result} isSingleCard={true} />
-            }}
+            getResultWrapper={params => <ArtObjectCard {...params.result} isSingleCard />}
           />
         </div>
       </div>
