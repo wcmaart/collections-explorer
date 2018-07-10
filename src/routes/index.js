@@ -61,7 +61,6 @@ function Routes() {
 
       <Route exact path="/" component={Home} />
 
-
       {/*
         Todo - These patterns can probably all be consolidated.
         E.G. /objects/ can be /:searchCategory/
