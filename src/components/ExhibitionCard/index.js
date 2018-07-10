@@ -3,6 +3,7 @@ import moment from 'moment';
 import styles from './styles.scss';
 import { Link } from 'react-router-dom';
 import { parseExhibitionProps } from '../../helpers';
+import MasonryCardImage from '../MasonryCardImage';
 
 // todo: #consolidateCards ?
 class ExhibitionCard extends Component {
@@ -44,13 +45,7 @@ class ExhibitionCard extends Component {
         {isSingleCard && <img src={imgUrl} />}
         {!isSingleCard &&
           <Link to={`/exhibitions/${props.id}`}>
-            <div className={styles.cardImgWrap}>
-              <img
-                className={styles.cardImg}
-                src={imgUrl}
-                padding={`${100 / (props.imageData.width / props.imageData.height)}% 0 0 0`}
-              />
-            </div>
+            <MasonryCardImage imageData={props.imageData} />
           </Link>}
       </div>
     );
